@@ -3007,10 +3007,10 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/Path.png?1534781635757", id:"Path"},
-		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1534781635757", id:"lib/jquery-2.2.4.min.js"},
-		{src:"components/sdk/anwidget.js?1534781635757", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1534781635757", id:"an.TextInput"}
+		{src:"images/Path.png?1534782498110", id:"Path"},
+		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1534782498110", id:"lib/jquery-2.2.4.min.js"},
+		{src:"components/sdk/anwidget.js?1534782498110", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1534782498110", id:"an.TextInput"}
 	],
 	preloads: []
 };
