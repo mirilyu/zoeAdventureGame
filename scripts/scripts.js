@@ -7,12 +7,14 @@ var playBtn,
     clock,
     closeBtn,
     correctOption,
-    optionStone,
+    // optionStone,
     qBoard,
     statueCounter,
     wrongOption,
     openingSceneElements,
     navigation;
+
+var qIndex = 0;
 
 function declareLibraryElements() {
     head = new lib.head();
@@ -23,7 +25,7 @@ function declareLibraryElements() {
     clock = new lib.clock();
     closeBtn = new lib.closeBtn();
     correctOption = new lib.correctOption();
-    optionStone = new lib.optionStone();
+    // optionStone = new lib.optionStone();
     qBoard = new lib.qBoard();
     statueCounter = new lib.statueCounter();
     wrongOption = new lib.wrongOption();
@@ -39,6 +41,19 @@ function cleanStage() {
     stage.addChild(navigation);
 }
 
+function placeLibEl(x, y, el) {
+    el.x = x;
+    el.y = y;
+    stage.addChild(el);
+}
+
+function addGameScene() {
+    placeLibEl(10, 80, qBoard);
+    placeLibEl(1200, 100, clock);
+    placeLibEl(1200, 600, statueCounter);
+    printQuestion();
+}
+
 setTimeout(function() {
     declareLibraryElements();
     playBtn = stage.children[0].instance_1;
@@ -47,11 +62,12 @@ setTimeout(function() {
         console.log($(this));
         if(playBtn.enabled) {
             cleanStage();
+            addGameScene();
         } else {
             console.log("do nothing")
         }
     })
-}, 500)
+}, 1000)
 
 $(document).ready(function(){
     $(document).on("keyup", "#gameCodeInput", function(e) {
