@@ -21,10 +21,18 @@
 	top:0;bottom:0;
   }
 </style>
-<script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
-<script src="zoe1.js?1535378865543"></script>
+<!-- <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script> -->
+<script src="libs/createjs-2015.11.26.min.js"></script>
+<script src="zoe1.js?1535462780065"></script>
+<script>
+// Global Scripts
+	// lib is no longer globally defined in the latest version of animate
+// defining it manually
+var comp=AdobeAn.getComposition("3373781C9321154880124364328DC8EF");
+var lib=comp.getLibrary();
+console.log("global script");</script>
 <script type='text/javascript' src='libs/jquery-1.12.0.min.js'></script>
-<script type='text/javascript' src='libs/scripts.js'></script>
+<script type='text/javascript' src='scripts/scripts.js'></script>
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
 function init() {
