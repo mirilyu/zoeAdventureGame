@@ -1,23 +1,28 @@
-var playBtn;
+function cleanStage() {
+    stage.removeAllChildren();
+    navigation.x = 0;
+    navigation.y = 0;
+    stage.addChild(navigation);
+}
 
-setTimeout(function() {
-    playBtn = stage.children[0].instance_1;
-    playBtn.alpha = 0.5;
-    playBtn.on('click', function() {
-        console.log($(this));
-        if(playBtn.enabled) {
-            console.log("go to qBoard")
-        } else {
-            console.log("do nothing")
-        }
-    })
-}, 500)
+function placeLibEl(x, y, el) {
+    el.x = x;
+    el.y = y;
+    stage.addChild(el);
+}
+
+function addGameScene() {
+    placeLibEl(0, 62, qBg);
+    placeLibEl(10, 80, qBoard);
+    placeLibEl(1200, 100, clock);
+    placeLibEl(1200, 600, statueCounter);
+    printQuestion();
+}
 
 $(document).ready(function(){
     $(document).on("keyup", "#gameCodeInput", function(e) {
         if($(this).val().length > 2) {
             playBtn.enabled = true;
-            console.log(playBtn);
             playBtn.alpha = 1;
         } else {
             playBtn.enabled = false;
