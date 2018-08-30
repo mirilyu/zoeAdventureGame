@@ -95,11 +95,11 @@ var testQuestions = {
 var chosenTopicQuestions = testQuestions.questions.slice();
 var numberOfQuestions = chosenTopicQuestions.length;
 
-var qIndex = 0;
+var timerSeconds;
 
 // counters
 var correctAnswersCounter = 0;
-var questionTime = 59;
+var questionTime = 9;
 var timeSpent = 0;
 var goldQuantity = 10;
 
@@ -114,7 +114,9 @@ function startTimer() {
 	timerSeconds = setInterval(function() {
 		var remainingTime = clock.clockText.text - 1;
 		if(remainingTime == 0) {
-			alert("time is up");
+			stopTimer();
+			moveQuestionToEnd();
+			stage.addChild(continueBtn);
 		}
 		clock.clockText.text = remainingTime;
 	}, 1000);
@@ -203,6 +205,10 @@ function correctAnswer(questionOption) {
 function wrongAnswer(questionOption) {
 	questionOption.optionWrong.alpha = 1;
 	stage.addChild(continueBtn);
+	moveQuestionToEnd();
+}
+
+function moveQuestionToEnd() {
 	chosenTopicQuestions.splice(chosenTopicQuestions.length, 0, chosenTopicQuestions[0]);
 	chosenTopicQuestions.splice(0,1);
 }

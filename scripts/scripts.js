@@ -1,5 +1,3 @@
-var timerSeconds;
-
 function cleanStage() {
     stage.removeAllChildren();
     navigation.x = 0;
