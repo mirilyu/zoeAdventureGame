@@ -1,3 +1,5 @@
+var timerSeconds;
+
 function cleanStage() {
     stage.removeAllChildren();
     navigation.x = 0;
@@ -14,8 +16,12 @@ function placeLibEl(x, y, el) {
 function addGameScene() {
     placeLibEl(0, 75, qBg);
     qBg.alpha = 0.5;
+
     placeLibEl(10, 80, qBoard);
     placeLibEl(1200, 100, clock);
+    clock.clockText.font = "50px 'Heebo'";
+    clock.clockText.color = "#333";
+    
     placeLibEl(1200, 600, statueCounter);
     printQuestion();
 }

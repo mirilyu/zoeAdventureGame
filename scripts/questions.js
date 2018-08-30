@@ -93,6 +93,7 @@ var testQuestions = {
 }
 
 var chosenTopicQuestions = testQuestions.questions.slice();
+var numberOfQuestions = chosenTopicQuestions.length;
 
 var qIndex = 0;
 
@@ -102,15 +103,33 @@ var questionTime = 59;
 var timeSpent = 0;
 var goldQuantity = 10;
 
-var numberOfQuestions = 0;
-
 // arrays and objects
 var optionsArray = [];
 var cursorsArray = [];
 var questionTries = {};
 
+function startTimer() {
+	clock.clockText.text = questionTime;
+
+	timerSeconds = setInterval(function() {
+		var remainingTime = clock.clockText.text - 1;
+		if(remainingTime == 0) {
+			alert("time is up");
+		}
+		clock.clockText.text = remainingTime;
+	}, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerSeconds);
+    timeSpent += questionTime - parseInt(clock.clockText.text);
+}
+
 function printQuestion() {
-	//debugger;
+	if(chosenTopicQuestions.length == 0) {
+		alert("Game is over");
+		return;
+	}
 
 	if(optionsArray.length > 0) {
 		optionsArray.forEach(function(option) {
@@ -118,10 +137,12 @@ function printQuestion() {
 		});
 	}
 
+	startTimer();
+
 	stage.removeChild(continueBtn);
 
     qBoard.qBoardText.color = "#333333";
-    qBoard.qBoardText.font = "18px 'Heebo'";
+    qBoard.qBoardText.font = "20px 'Heebo'";
     qBoard.qBoardText.text = chosenTopicQuestions[0].questionText;
 
 	chosenTopicQuestions[0].options.forEach(function(option, index) {
@@ -129,7 +150,7 @@ function printQuestion() {
         var optionWidth = questionOption.nominalBounds.width;
 
         questionOption.stoneText.color = "#333333";
-        questionOption.stoneText.font = "15px 'Heebo'";
+        questionOption.stoneText.font = "16px 'Heebo'";
 		questionOption.stoneText.text = option.text;
 		questionOption.optionCorrect.alpha = 0;
 		questionOption.optionWrong.alpha = 0;
@@ -141,7 +162,7 @@ function printQuestion() {
         optionsArray.push(questionOption);
 
         questionOption.addEventListener("click", function() {
-			// stopTimer();
+			stopTimer();
 			chosenTopicQuestions[0].numberOfTries++;
 			
 			var isCorrect = questionOption.isCorrect;
@@ -163,26 +184,25 @@ function correctAnswer(questionOption) {
 		questionTries[chosenTopicQuestions[0].numberOfTries]++;
 	}
 	
+	stage.addChild(continueBtn);
 	chosenTopicQuestions.splice(0,1);
 	questionOption.optionCorrect.alpha = 1;
+
 	if(chosenTopicQuestions.length > 0) {
-		stage.addChild(continueBtn);
+		//alert("Game is over");
 	} else {
 		var finalScore = 0;
 		for (var property1 in questionTries) {
 			finalScore += parseInt(questionTries[property1])*(100 / (numberOfQuestions * parseInt(property1)));
 		}
+
+		alert("Your final score is: " + finalScore);
 	}
 }
 
 function wrongAnswer(questionOption) {
-	questionOption.optionWrong.alpha = 0;
-	moveQuestionToEnd();
-	// showAnswerModal('wrong');
-	alert('wrong');
-}
-
-function moveQuestionToEnd() {
+	questionOption.optionWrong.alpha = 1;
+	stage.addChild(continueBtn);
 	chosenTopicQuestions.splice(chosenTopicQuestions.length, 0, chosenTopicQuestions[0]);
 	chosenTopicQuestions.splice(0,1);
 }

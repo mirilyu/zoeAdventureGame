@@ -10095,6 +10095,14 @@ p.nominalBounds = new cjs.Rectangle(0,0,148,148);
 	this.initialize(mode,startPosition,loop,{});
 
 	// clock(1).ai
+	this.clockText = new cjs.Text("", "24px 'Times New Roman'", "#FF9933");
+	this.clockText.name = "clockText";
+	this.clockText.textAlign = "center";
+	this.clockText.lineHeight = 31;
+	this.clockText.lineWidth = 54;
+	this.clockText.parent = this;
+	this.clockText.setTransform(56,26.3);
+
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f("#534741").s().p("AADFyQgEAAgEgEQgEgEAAgFQAAgFAEgEQAEgEAEAAIABAAQAGAAADADQAEAEAAAGQAAAFgEAEQgDAEgGAAgAi1FCIAAAAIAAAAQgFgDgBgFQgCgFADgFQAEgHAHAAQAEAAADACIAAAAQAFADABAFQACAFgDAFQgDAHgIAAQgEAAgDgCgACrE6QgDgFABgFQABgGAFgCIABgBIAGgCQAIAAAEAHQACAFgBAFQgBAFgFADIAAAAQgDACgEAAQgHAAgEgGgAk+C8IAAgBQgDgFABgFQACgFAEgDQAEgCADAAQAIAAAEAHIAAAAQACAFgBAFQgBAGgFACQgDACgEAAQgHAAgEgGgAExC6QgFgDgBgFQgCgFADgFIAAgBQAEgGAIAAQADAAADABQAFADABAFQACAFgDAFIAAABQgEAHgIAAQgEAAgCgCgAltAMQgEgEAAgGIAAAAQAAgFAEgEQAEgDAFAAQAGAAADADQAEAEAAAFIAAAAQAAAGgDAEQgEADgGABQgFAAgEgEgAFcAEQgEgEAAgEIAAgBQgBgFAEgEQAEgEAGAAQAFAAAEAEQAEAEAAAFIAAABQAAAEgEAEQgEAEgFAAQgGAAgDgEgAk7ikQgFgDgBgFQgCgGADgEIAAgBQAEgHAHAAQAEAAADACQAFADABAFQABAFgCAFIAAABQgEAGgIAAQgDAAgDgBgAEniwIgBAAQgCgFABgFQABgFAFgDIAHgCQAHAAAEAGIAAABQADAFgBAFQgBAFgFADQgDACgEAAQgHAAgEgHgAi+ktQgCgFABgFQABgFAFgDIAAAAIAHgCQAIAAAEAHQACAEgBAGQgBAFgFADIgBAAQgCACgEAAQgIAAgEgHgACmksIAAAAQgFgCgBgGQgCgFADgFQAEgHAHAAQAEAAADACIAAAAIAAAAQAFADACAFQABAFgDAFQgDAHgIAAQgEAAgDgCgAAAlXQgFAAgEgDQgEgEAAgGQAAgFAEgEQAEgEAFAAIAAAAQAGAAADAEQAEAEAAAFQAAAGgEAEQgDADgGAAg");
 	this.shape.setTransform(55,55);
@@ -10115,7 +10123,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,148,148);
 	this.shape_4.graphics.f("#FFFFFF").s().p("AmEGFQihiiAAjjQAAjjChihQChihDjAAQDjAACiChQChChAADjQAADjihCiQiiChjjAAQjjAAihihg");
 	this.shape_4.setTransform(55,55);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_4},{t:this.shape_3},{t:this.shape_2},{t:this.shape_1},{t:this.shape}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_4},{t:this.shape_3},{t:this.shape_2},{t:this.shape_1},{t:this.shape},{t:this.clockText}]}).wait(1));
 
 }).prototype = getMCSymbolPrototype(lib.clock, new cjs.Rectangle(0,0,110,110), null);
 
@@ -11872,9 +11880,9 @@ lib.properties = {
 	color: "#182E30",
 	opacity: 1.00,
 	manifest: [
-		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1535561215057", id:"lib/jquery-2.2.4.min.js"},
-		{src:"components/sdk/anwidget.js?1535561215057", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1535561215057", id:"an.TextInput"}
+		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1535651684968", id:"lib/jquery-2.2.4.min.js"},
+		{src:"components/sdk/anwidget.js?1535651684968", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1535651684969", id:"an.TextInput"}
 	],
 	preloads: []
 };
