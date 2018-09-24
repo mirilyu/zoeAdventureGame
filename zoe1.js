@@ -1425,7 +1425,7 @@ p._updateVisibility = _updateVisibility;
 	this.shape_140.setTransform(780,237.4);
 
 	this.shape_141 = new cjs.Shape();
-	this.shape_141.graphics.f("#735C46").s().p("EAg6AJjQggh1gOiBQgLhnAAh9QAAg6ADhmQADhmAAgsQAAgjgBggIgGhrQgDgkgIgRQgFgKgHgHQgIgHgYgOQgxgagigXQheg+h1gbQhngYiLAAQhoAAi2AQQkdAak4AAQi7AAmZgNQnqgPk4gFIg9AAQhUAAicAEQibAFhHAAQhVAAhAgEIgTgCQiMAHh9AAQi2AAhvgMQgcgCgXgFIgSgEIACgDQAIADAMACIAdAEIAFgTIgagEIgNgDIgIAIIAKgLIAKADQAHACAQABQAeAEAqADQBpAHCFAAQCCAACKgHIAAAEIAAAAIAAACIAAgCIhgAEIACATIBcgEIACgRIABgFIATABQA+AEBTAAQBFAACcgEQCbgFBWAAIA9ABQE6AEHqAQQGZAMC5AAQEzAAEdgZQCygQBxAAQCTAABrAZQB+AdBkBCQAbASAdAQIAoAWQALAHAKAIQANALAGANQAIARAEAfQADAZAFBgIABBEQAAAsgDBnQgDBmAAA5QAAB8ALBnQANB/AgB0IADAMIgmAFgEAgvAIkIAPA/IAdgEIgQg+gEAgYAGlIAKA/IAdgCQgHgjgDgcgEAgLAElIAFBAIAdgBIgFhAgEAgIADlIAdAAIgChAIgdAAQAAAgACAggEAgGABmIAdAAIABhAIgdAAgEAgJgAZIAdABIAChAIgdAAgEAgLgDXIABA/IAdAAIgBhAgEAgFgFWQACAUACArIAdAAQgCgsgCgUgAe9m9QAgASAGAFQANAIAHAMIAcgGQgKgQgRgMIgpgXgActoQQAoATAgAVIAUgNQglgZgmgRgAIIouIBhABIAAgUIhgAAgALJpCIABATIBhgCIgCgTgAFHowIBhABIABgTIhhgBgAaFpGQAwAKAnAMIANgRQgsgOgwgJgACGo1IBhACIABgTIhggCgAOJpIIACATIBhgFIgDgTIhgAFgAg5o7IBfADIABgTIhfgDgAj6pBIBgADIACgTIhhgDgARIpUIAEATIBggIIgEgTgAm7pGIBhACIABgTIhggCgA8MpYIAAATIBhAAIgBgTgA1/pGIBhAAIAAgTIhgAAgA/OpKQA4ADApABIABgTIhggEgAy+pbIABAUIBhgDIgCgTgAp7pLIBgACIABgTIhggCgAs8pOIBgACIABgUIhggBgAv9pgIABATIBggBIAAgTQgxAAgwABgAUIpkIADATIBggFIgCgTIhhAFgAXKpXQAxABAtAEIAEgTQgwgEgxgBg");
+	this.shape_141.graphics.f("#735C46").s().p("EAg6AJjQggh1gOiBQgLhnAAh9QAAg6ADhmQADhmAAgsQAAgjgBggIgGhrQgDgkgIgRQgFgKgHgHQgIgHgYgOQgxgagigXQheg+h1gbQhngYiLAAQhoAAi2AQQkdAak4AAQi7AAmZgNQnqgPk4gFIg9AAQhUAAicAEQibAFhHAAQhVAAhAgEIgTgCQiMAHh9AAQi2AAhvgMQgcgCgXgFIgSgEIACgDQAIADAMACIAdAEIAFgTIgagEIgNgDIgIAIIAKgLIAKADQAHACAQABQAeAEAqADQBpAHCFAAQCCAACKgHIAAAEIhgAEIACATIBcgEIACgRIABgFIATABQA+AEBTAAQBFAACcgEQCbgFBWAAIA9ABQE6AEHqAQQGZAMC5AAQEzAAEdgZQCygQBxAAQCTAABrAZQB+AdBkBCQAbASAdAQIAoAWQALAHAKAIQANALAGANQAIARAEAfQADAZAFBgIABBEQAAAsgDBnQgDBmAAA5QAAB8ALBnQANB/AgB0IADAMIgmAFgEAgvAIkIAPA/IAdgEIgQg+gEAgYAGlIAKA/IAdgCQgHgjgDgcgEAgLAElIAFBAIAdgBIgFhAgEAgIADlIAdAAIgChAIgdAAQAAAgACAggEAgGABmIAdAAIABhAIgdAAgEAgJgAZIAdABIAChAIgdAAgEAgLgDXIABA/IAdAAIgBhAgEAgFgFWQACAUACArIAdAAQgCgsgCgUgAe9m9QAgASAGAFQANAIAHAMIAcgGQgKgQgRgMIgpgXgActoQQAoATAgAVIAUgNQglgZgmgRgAIIouIBhABIAAgUIhgAAgALJpCIABATIBhgCIgCgTgAFHowIBhABIABgTIhhgBgAaFpGQAwAKAnAMIANgRQgsgOgwgJgACGo1IBhACIABgTIhggCgAOJpIIACATIBhgFIgDgTIhgAFgAg5o7IBfADIABgTIhfgDgAj6pBIBgADIACgTIhhgDgARIpUIAEATIBggIIgEgTgAm7pGIBhACIABgTIhggCgA8MpYIAAATIBhAAIgBgTgA1/pGIBhAAIAAgTIhgAAgA/OpKQA4ADApABIABgTIhggEgAy+pbIABAUIBhgDIgCgTgAp7pLIBgACIABgTIhggCgAs8pOIBgACIABgUIhggBgAv9pgIABATIBggBIAAgTQgxAAgwABgAUIpkIADATIBggFIgCgTIhhAFgAXKpXQAxABAtAEIAEgTQgwgEgxgBgA3speIAAAAIAAACg");
 	this.shape_141.setTransform(637.4,90.5);
 
 	this.shape_142 = new cjs.Shape();
@@ -1545,9 +1545,9 @@ p._updateVisibility = _updateVisibility;
 	this.initialize(mode,startPosition,loop,{});
 
 	// Layer 1
-	this.text = new cjs.Text("שחק", "24px 'Arial'", "#FFFFFF");
+	this.text = new cjs.Text("שחק", "24px 'Heebo'", "#FFFFFF");
 	this.text.textAlign = "right";
-	this.text.lineHeight = 32;
+	this.text.lineHeight = 40;
 	this.text.parent = this;
 	this.text.setTransform(117.4,10.3);
 
@@ -3394,8 +3394,8 @@ p.nominalBounds = new cjs.Rectangle(0,0,186,55.2);
 	this.initialize(mode,startPosition,loop,{});
 
 	// Layer_1
-	this.text = new cjs.Text("לוגו", "23px 'Arial'", "#FFFFFF");
-	this.text.lineHeight = 30;
+	this.text = new cjs.Text("לוגו", "bold 23px 'Open Sans Hebrew'", "#FFFFFF");
+	this.text.lineHeight = 36;
 	this.text.parent = this;
 	this.text.setTransform(1239.9,12.1);
 
@@ -3403,29 +3403,29 @@ p.nominalBounds = new cjs.Rectangle(0,0,186,55.2);
 	this.shape.graphics.f("#677F4E").s().p("AlxDIQhTAAg6g7Qg7g6AAhTIAAAAQABhSA6g6QA6g7BTAAILjAAQBTAAA6A7QA7A6AABSIAAAAQAABTg7A6Qg6A7hTAAg");
 	this.shape.setTransform(1258.5,30.5);
 
-	this.text_1 = new cjs.Text("משחק לדוגמה", "18px 'Arial'", "#002929");
-	this.text_1.lineHeight = 24;
+	this.text_1 = new cjs.Text("משחק לדוגמה", "18px 'Open Sans Hebrew'", "#002929");
+	this.text_1.lineHeight = 28;
 	this.text_1.parent = this;
 	this.text_1.setTransform(1084.1,16.9);
 
-	this.text_2 = new cjs.Text("איך משחקים?", "18px 'Arial'", "#677F4E");
-	this.text_2.lineHeight = 24;
+	this.text_2 = new cjs.Text("איך משחקים?", "18px 'Open Sans Hebrew'", "#677F4E");
+	this.text_2.lineHeight = 28;
 	this.text_2.parent = this;
 	this.text_2.setTransform(125.7,16.5);
 
-	this.text_3 = new cjs.Text("עורך", "18px 'Arial'", "#677F4E");
-	this.text_3.lineHeight = 24;
+	this.text_3 = new cjs.Text("עורך", "18px 'Open Sans Hebrew'", "#677F4E");
+	this.text_3.lineHeight = 28;
 	this.text_3.parent = this;
 	this.text_3.setTransform(339,16.5);
 
-	this.text_4 = new cjs.Text("משחק", "18px 'Arial'", "#677F4E");
-	this.text_4.lineHeight = 24;
+	this.text_4 = new cjs.Text("משחק", "18px 'Open Sans Hebrew'", "#677F4E");
+	this.text_4.lineHeight = 28;
 	this.text_4.parent = this;
 	this.text_4.setTransform(257.4,16.5);
 
-	this.text_5 = new cjs.Text("אודות", "18px 'Arial'", "#677F4E");
+	this.text_5 = new cjs.Text("אודות", "18px 'Open Sans Hebrew'", "#677F4E");
 	this.text_5.textAlign = "right";
-	this.text_5.lineHeight = 24;
+	this.text_5.lineHeight = 28;
 	this.text_5.parent = this;
 	this.text_5.setTransform(89.4,16.5);
 
@@ -3442,21 +3442,21 @@ p.nominalBounds = new cjs.Rectangle(0,0,186,55.2);
 	this.initialize(mode,startPosition,loop,{});
 
 	// Layer_1
-	this.text = new cjs.Text("קוד משחק", "18px 'Arial'", "#FFFFFF");
+	this.text = new cjs.Text("קוד משחק", "18px 'Heebo'", "#FFFFFF");
 	this.text.textAlign = "right";
-	this.text.lineHeight = 24;
+	this.text.lineHeight = 30;
 	this.text.parent = this;
 	this.text.setTransform(108.9,2);
 
-	this.text_1 = new cjs.Text("משחק לדוגמה: 101", "18px 'Arial'", "#FFFFFF");
+	this.text_1 = new cjs.Text("משחק לדוגמה: 101", "18px 'Heebo'", "#FFFFFF");
 	this.text_1.textAlign = "right";
-	this.text_1.lineHeight = 24;
+	this.text_1.lineHeight = 30;
 	this.text_1.parent = this;
 	this.text_1.setTransform(142,92.5);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text_1},{t:this.text}]}).wait(1));
 
-}).prototype = getMCSymbolPrototype(lib.introTexts, new cjs.Rectangle(0,0,144,120.9), null);
+}).prototype = getMCSymbolPrototype(lib.introTexts, new cjs.Rectangle(-4.5,0,148.5,120.9), null);
 
 
 (lib.ClipGroup = function(mode,startPosition,loop) {
@@ -9234,7 +9234,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,186,55.2);
 	this.shape_1440.setTransform(682.1,555.2);
 
 	this.shape_1441 = new cjs.Shape();
-	this.shape_1441.graphics.f("#002D14").s().p("EgFcAlCIgCglQABiEAUiSIAMiDQAOieAEgTQA6j8ConoQCnnoA6j7QBUlqgSndQgGiqgWj6QgakZgLiOQgUj4AAimQgBjiAgi6QAKg4BIjiQBTkEAYANQgNgGhKD5QgmB8gjB/QgeCugBDQQgBCjARDdQAJBrAgFDQAaENAJCgQAcHthNFrQg4EJiMGYQi4IZgmCAQg/DaghCsQgLA+gJA7QgJB2gFBsIgFBZIAOC2QASDcAKgCIgEAAQg2AAAQmQg");
+	this.shape_1441.graphics.f("#002D14").s().p("EgFcAlCIgCglQABiEAUiSQgJB2gFBsIgFBZIAOC2QASDcAKgCIgEAAQg2AAAQmQgAk9eEQAOieAEgTQA6j8ConoQCnnoA6j7QBUlqgSndQgGiqgWj6QgakZgLiOQgUj4AAimQgBjiAgi6QAKg4BIjiQBTkEAYANQgNgGhKD5QgmB8gjB/QgeCugBDQQgBCjARDdQAJBrAgFDQAaENAJCgQAcHthNFrQg4EJiMGYQi4IZgmCAQg/DaghCsQgLA+gJA7IAMiDg");
 	this.shape_1441.setTransform(649.4,611.3);
 
 	this.shape_1442 = new cjs.Shape();
@@ -10053,9 +10053,9 @@ p.nominalBounds = new cjs.Rectangle(0,0,186,55.2);
 	this.initialize(mode,startPosition,loop,{});
 
 	// Layer 1
-	this.text = new cjs.Text("המשך", "24px 'Arial'", "#FFFFFF");
+	this.text = new cjs.Text("המשך", "24px 'Heebo'", "#FFFFFF");
 	this.text.textAlign = "right";
-	this.text.lineHeight = 32;
+	this.text.lineHeight = 40;
 	this.text.parent = this;
 	this.text.setTransform(91.4,3.3);
 
@@ -11880,9 +11880,9 @@ lib.properties = {
 	color: "#182E30",
 	opacity: 1.00,
 	manifest: [
-		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1535651684968", id:"lib/jquery-2.2.4.min.js"},
-		{src:"components/sdk/anwidget.js?1535651684968", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1535651684969", id:"an.TextInput"}
+		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1537770982378", id:"lib/jquery-2.2.4.min.js"},
+		{src:"components/sdk/anwidget.js?1537770982378", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1537770982378", id:"an.TextInput"}
 	],
 	preloads: []
 };

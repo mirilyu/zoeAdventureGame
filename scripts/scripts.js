@@ -21,7 +21,31 @@ function addGameScene() {
     clock.clockText.color = "#333";
     
     placeLibEl(1200, 600, statueCounter);
-    printQuestion();
+    getJSON();
+}
+
+function configureQuestions(data) {
+    return data.game.questions;
+}
+
+function getJSON() {
+    gameCodeUser = 101;
+
+    $.post("/Handler.ashx", {
+        gameCode: gameCodeUser
+    })
+    .done(function (response) {
+        if (response == "game not found") {
+            console.log("not found");
+        } else {
+            var gameObj = JSON.parse(response);
+            chosenTopicQuestions = configureQuestions(gameObj);
+            printQuestion();
+        }
+    })
+    .fail(function (error) {
+        console.log(error)
+    })
 }
 
 $(document).ready(function(){

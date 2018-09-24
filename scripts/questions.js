@@ -1,3 +1,5 @@
+var chosenTopicQuestions;
+
 var testQuestions = {
 	topic: 'test topic',
 	questions: [
@@ -92,8 +94,7 @@ var testQuestions = {
 	]
 }
 
-var chosenTopicQuestions = testQuestions.questions.slice();
-var numberOfQuestions = chosenTopicQuestions.length;
+//var numberOfQuestions = chosenTopicQuestions.length;
 
 var timerSeconds;
 
