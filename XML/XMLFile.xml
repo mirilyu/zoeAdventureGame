@@ -4,40 +4,40 @@
   <game isPublished="true" timePerQuestion="30" gameCode="101">
     <subject>Cinematography</subject>
     <questions>
-      <question id="1">
+      <question numberOfTries="0">
         <questionText>Who directed The Isle of Dogs?</questionText>
         <img/>
         <answers>
-          <answer AnsType="text" feedback="true">Wes Anderson</answer>
-          <answer AnsType="text" feedback="false">Martin Scorsese</answer>
-          <answer AnsType="text" feedback="false">steven_soderbergh.png</answer>
+          <answer AnsType="text" isCorrect="true">Wes Anderson</answer>
+          <answer AnsType="text" isCorrect="false">Martin Scorsese</answer>
+          <answer AnsType="text" isCorrect="false">steven_soderbergh.png</answer>
         </answers>
       </question>
-      <question id="2">
+      <question numberOfTries="0">
         <questionText>What's the name of this actor?</questionText>
         <img>actor.jpg</img>
         <answers>
-          <answer AnsType="text" feedback="true">Russell Crowe</answer>
-          <answer AnsType="text" feedback="false">Kurt Russell</answer>
+          <answer AnsType="text" isCorrect="true">Russell Crowe</answer>
+          <answer AnsType="text" isCorrect="false">Kurt Russell</answer>
         </answers>
       </question>
-      <question id="3">
+      <question numberOfTries="0">
         <questionText>What was the first film directed by Quentin Tarantino?</questionText>
         <img/>
         <answers>
-          <answer AnsType="text" feedback="false">Pulp Fiction</answer>
-          <answer AnsType="text" feedback="false">The Hateful Eight</answer>
-          <answer AnsType="text" feedback="false">kill_bill.jpeg</answer>
-          <answer AnsType="text" feedback="true">Reservoir Dogs</answer>
+          <answer AnsType="text" isCorrect="false">Pulp Fiction</answer>
+          <answer AnsType="text" isCorrect="false">The Hateful Eight</answer>
+          <answer AnsType="text" isCorrect="false">kill_bill.jpeg</answer>
+          <answer AnsType="text" isCorrect="true">Reservoir Dogs</answer>
         </answers>
       </question>
-      <question id="5">
+      <question numberOfTries="0">
         <questionText>Who was the leading actor in the Lord of the Rings?</questionText>
         <img/>
         <answers>
-          <answer AnsType="text" feedback="false">Dominic Monaghan</answer>
-          <answer AnsType="text" feedback="false">Billy Boyd</answer>
-          <answer AnsType="text" feedback="true">Elijah Wood</answer>
+          <answer AnsType="text" isCorrect="false">Dominic Monaghan</answer>
+          <answer AnsType="text" isCorrect="false">Billy Boyd</answer>
+          <answer AnsType="text" isCorrect="true">Elijah Wood</answer>
         </answers>
       </question>
     </questions>
@@ -46,63 +46,43 @@
   <game isPublished="false" timePerQuestion="50" gameCode="102">
     <subject>World History</subject>
     <questions>
-      <question id="1">
+      <question numberOfTries="0">
         <questionText>In which year began world war two?</questionText>
         <img/>
         <answers>
-          <answer AnsType="text" feedback="true">1934</answer>
-          <answer AnsType="text" feedback="false">1919</answer>
-          <answer AnsType="text" feedback="false">1824</answer>
+          <answer AnsType="text" isCorrect="true">1934</answer>
+          <answer AnsType="text" isCorrect="false">1919</answer>
+          <answer AnsType="text" isCorrect="false">1824</answer>
         </answers>
       </question>
-      <question id="2">
+      <question numberOfTries="0">
         <questionText>Where was John F.Kennedy assassinated?</questionText>
         <img/>
         <answers>
-          <answer AnsType="text" feedback="true">Dallas</answer>
-          <answer AnsType="text" feedback="false">Massachusetts</answer>
-          <answer AnsType="text" feedback="false">Austin</answer>
-          <answer AnsType="text" feedback="false">Cleveland</answer>
+          <answer AnsType="text" isCorrect="true">Dallas</answer>
+          <answer AnsType="text" isCorrect="false">Massachusetts</answer>
+          <answer AnsType="text" isCorrect="false">Austin</answer>
+          <answer AnsType="text" isCorrect="false">Cleveland</answer>
         </answers>
       </question>
-      <question id="3">
+      <question numberOfTries="0">
         <questionText>Who wrote Israel's national anthem ?</questionText>
         <img/>
         <answers>
-          <answer AnsType="image" feedback="true">Naftali_Hertz_Imber.jpeg</answer>
-          <answer AnsType="image" feedback="false">Judah_Halevi.jpeg</answer>
-          <answer AnsType="text" feedback="false">Chaim Nachman Bialik</answer>
-          <answer AnsType="image" feedback="false">Zvike_Pik.jpeg</answer>
+          <answer AnsType="image" isCorrect="true">Naftali_Hertz_Imber.jpeg</answer>
+          <answer AnsType="image" isCorrect="false">Judah_Halevi.jpeg</answer>
+          <answer AnsType="text" isCorrect="false">Chaim Nachman Bialik</answer>
+          <answer AnsType="image" isCorrect="false">Zvike_Pik.jpeg</answer>
         </answers>
       </question>
-      <question id="4">
+      <question numberOfTries="0">
         <questionText>In what year was the Israeli Six-Day war?</questionText>
         <img/>
         <answers>
-          <answer AnsType="text" feedback="true">1967</answer>
-          <answer AnsType="text" feedback="false">1673</answer>
-          <answer AnsType="text" feedback="false">1948</answer>
-          <answer AnsType="text" feedback="false">1960</answer>
-        </answers>
-      </question>
-      <question id="5">
-        <questionText> One of the most important people in the early days of Eastern European immigration was The person in the picture. Who was he?</questionText>
-        <img>Abraham_Cahan.jpg</img>
-        <answers>
-          <answer AnsType="text" feedback="true">Editor of the "Daily Forward"</answer>
-          <answer AnsType="text" feedback="false"> Chief Rabbi of New York</answer>
-          <answer AnsType="text" feedback="false">The founder of Yeshiva University</answer>
-          <answer AnsType="text" feedback="false">The first Jewish congressman in the US</answer>
-        </answers>
-      </question>
-      <question id="6">
-        <questionText>What was in the White Papers of 1939, also known as the MacDonald White Paper?</questionText>
-        <img/>
-        <answers>
-          <answer AnsType="text" feedback="true">A limit of 75,000 Jewish immigrants was set for the five-year period 1940-1944</answer>
-          <answer AnsType="text" feedback="false">Palestine governed by Palestinian Arabs and Jews with no proportion to their numbers in the population</answer>
-          <answer AnsType="text" feedback="false">Dividing land between Jews and Arabs </answer>
-          <answer AnsType="text" feedback="false">Establishing Palestine as a country for Jews only</answer>
+          <answer AnsType="text" isCorrect="true">1967</answer>
+          <answer AnsType="text" isCorrect="false">1673</answer>
+          <answer AnsType="text" isCorrect="false">1948</answer>
+          <answer AnsType="text" isCorrect="false">1960</answer>
         </answers>
       </question>
     </questions>

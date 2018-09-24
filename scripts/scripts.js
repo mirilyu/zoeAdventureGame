@@ -25,7 +25,7 @@ function addGameScene() {
 }
 
 function configureQuestions(data) {
-    return data.game.questions;
+    return data.game.questions.question;
 }
 
 function getJSON() {
@@ -40,6 +40,7 @@ function getJSON() {
         } else {
             var gameObj = JSON.parse(response);
             chosenTopicQuestions = configureQuestions(gameObj);
+            numberOfQuestions = chosenTopicQuestions.length;
             printQuestion();
         }
     })
