@@ -49,11 +49,34 @@
                     <asp:Panel class="formMessages" ID="formMsg" runat="server"></asp:Panel>
 
                     <div class="row justify-content-center">
-                        <asp:Button class="btn btn-primary btn-block" ID="Button1" runat="server" Text="כניסה" OnClick="Button1_Click" />
+                        <asp:Button disabled="true" class="btn btn-primary btn-block" ID="Button1" runat="server" Text="כניסה" OnClick="Button1_Click" />
                     </div>
                 </form>
             </div>
         </div>
     </main>
+
+    <script>
+        var userNameField = document.getElementById("userName");
+        var passwordField = document.getElementById("password");
+        var btn = document.getElementById("Button1");
+
+        function checkMinChar(num) {
+            if ((userNameField.value.length >= num) && (passwordField.value.length >= num)) {
+                btn.disabled = false;
+            } else {
+                btn.disabled = true;
+            }
+        }
+
+        userNameField.addEventListener("keyup", function (e) {
+            checkMinChar();
+        })
+
+        passwordField.addEventListener("keyup", function (e) {
+            checkMinChar(6);
+        })
+    </script>
 </body>
+
 </html>

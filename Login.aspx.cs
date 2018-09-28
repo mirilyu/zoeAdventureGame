@@ -9,7 +9,10 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //if (Session["isAuthenticated"] != null)
+        //{
+        //    Response.Redirect("GamesList.aspx");
+        //}
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -17,7 +20,7 @@ public partial class Login : System.Web.UI.Page
         string userName = Request.Form["userName"];
         string password = Request.Form["password"];
 
-        if (userName == "admin" && password == "12345")
+        if (userName == "admin1" && password == "123456")
         {
             Session["isAuthenticated"] = true;
             Response.Redirect("GamesList.aspx");

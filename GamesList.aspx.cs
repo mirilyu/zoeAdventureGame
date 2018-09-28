@@ -11,18 +11,16 @@ public partial class GamesList : System.Web.UI.Page
     {
         if (Session["isAuthenticated"] != null)
         {
-            var errorLabel = new Label();
-            errorLabel.Text = "is authenticated";
-            form1.Controls.Add(errorLabel);
-            form1.DataBind();
+            
         }
         else
         {
-            var errorLabel = new Label();
-            errorLabel.Text = "is not authenticated";
-            errorLabel.CssClass = "error-text";
-            form1.Controls.Add(errorLabel);
-            form1.DataBind();
+            Response.Redirect("Login.aspx");
         }
+    }
+
+    protected void createGame_Click(object sender, EventArgs e)
+    {
+
     }
 }
