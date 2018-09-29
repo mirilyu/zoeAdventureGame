@@ -20,6 +20,16 @@ public partial class GamesList : System.Web.UI.Page
         }
     }
 
+    public bool CheckIfCanPublish(string gameCode)
+    {
+        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
+        XmlNode myGame = xmlDoc.SelectSingleNode("/project/game[@gameCode=" + gameCode + "]");
+
+        bool canPublish = Convert.ToInt16(myGame.Attributes["questionsNumber"].InnerXml) >= 10 ? true : false;
+
+        return canPublish;
+    }
+
     protected void createGame_Click(object sender, EventArgs e)
     {
         // loading XML file

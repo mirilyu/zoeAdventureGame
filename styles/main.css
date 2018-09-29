@@ -20,3 +20,29 @@ header {
 .formMessages {
     margin: 20px 0;
 }
+
+.tableWrapper {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.tableWrapper table {
+    table-layout: fixed;
+}
+
+.tableWrapper th:nth-child(1) {
+    width: 50%;
+}
+
+.tableWrapper th:nth-child(2),
+.tableWrapper th:nth-child(3) {
+    width: 12%;
+}
+
+.tableWrapper th:nth-child(4),
+.tableWrapper th:nth-child(5),
+.tableWrapper th:nth-child(6),
+.tableWrapper th:nth-child(7) {
+    width: 6.5%;
+}

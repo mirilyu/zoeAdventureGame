@@ -45,7 +45,7 @@
                 <form id="form1" runat="server">
                     <div class="row">
                         <div class="form-group col-8">
-                            <asp:TextBox ID="gameName" placeholder="שם המשחק" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="gameName" MaxLength="60" placeholder="שם המשחק" class="form-control" runat="server"></asp:TextBox>
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@
         var gameTimeDropdown = document.getElementById("gameTimeDropdown");
 
         gameNameField.addEventListener("keyup", function (e) {
-            if (gameNameField.value.length >= 2) {
+            if (gameNameField.value.length >= 2 && gameNameField.value.length <= 60) {
                 saveBtn.disabled = false;
             } else {
                 saveBtn.disabled = true;
@@ -92,7 +92,7 @@
         });
 
         gameTimeDropdown.onchange = function (e) {
-            if (gameNameField.value.length >= 2) {
+            if (gameNameField.value.length >= 2 && gameNameField.value.length <= 60) {
                 saveBtn.disabled = false;
             }
         };
