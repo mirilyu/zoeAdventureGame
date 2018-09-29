@@ -52,4 +52,23 @@ public partial class GamesList : System.Web.UI.Page
         // cleaning the gameName form field
         gameName.Text = "";
     }
+
+    protected void isPublished_CheckedChanged(object sender, EventArgs e)
+    {
+        // loading XML file
+        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
+
+        // getting the relevant id
+        CheckBox myCheckBox = (CheckBox)sender;
+        string theId = myCheckBox.Attributes["theItemId"];
+
+        // switching the checkbox value
+        XmlNode theGame = xmlDoc.SelectSingleNode("/project/game[@gameCode=" + theId + "]");
+        bool newIsPublished = myCheckBox.Checked;
+        theGame.Attributes["isPublished"].InnerText = newIsPublished.ToString();
+
+        // saving the XML file
+        XmlDataSource1.Save();
+        GridView1.DataBind();
+    }
 }

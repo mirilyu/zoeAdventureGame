@@ -89,7 +89,12 @@
 
                             <asp:TemplateField HeaderText="פרסם">
                                 <ItemTemplate>
-                                    <asp:CheckBox ID="isPublished" runat="server" Checked='<%#Convert.ToBoolean(XPathBinder.Eval(Container.DataItem,"@isPublished"))%>' theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>' />
+                                    <asp:CheckBox
+                                        ID="isPublished" runat="server"
+                                        AutoPostBack="true"
+                                        OnCheckedChanged="isPublished_CheckedChanged"
+                                        Checked='<%#Convert.ToBoolean(XPathBinder.Eval(Container.DataItem,"@isPublished"))%>'
+                                        theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

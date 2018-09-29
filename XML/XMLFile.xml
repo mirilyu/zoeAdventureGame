@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
   <idCounter>103</idCounter>
-  <game gameCode="103" isPublished="false" questionsNumber="0" timePerQuestion="50">
+  <game gameCode="103" isPublished="False" questionsNumber="0" timePerQuestion="50">
     <subject>masha test</subject>
   </game>
-  <game isPublished="true" questionsNumber="4" timePerQuestion="30" gameCode="102">
+  <game isPublished="True" questionsNumber="4" timePerQuestion="30" gameCode="102">
     <subject>Cinematography</subject>
     <questions>
       <question numberOfTries="0">
@@ -45,7 +45,7 @@
       </question>
     </questions>
   </game>
-  <game isPublished="false" questionsNumber="4" timePerQuestion="50" gameCode="101">
+  <game isPublished="False" questionsNumber="4" timePerQuestion="50" gameCode="101">
     <subject>World History</subject>
     <questions>
       <question numberOfTries="0">
