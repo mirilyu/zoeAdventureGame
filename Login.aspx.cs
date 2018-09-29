@@ -9,10 +9,10 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session["isAuthenticated"] != null)
-        //{
-        //    Response.Redirect("GamesList.aspx");
-        //}
+        if (Session["isAuthenticated"] != null)
+        {
+            Response.Redirect("GamesList.aspx");
+        }
     }
 
     protected void Button1_Click(object sender, EventArgs e)

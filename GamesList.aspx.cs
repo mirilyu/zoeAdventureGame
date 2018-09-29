@@ -40,7 +40,7 @@ public partial class GamesList : System.Web.UI.Page
 
         // creating game subject node
         XmlElement newGameSubjectNode = xmlDoc.CreateElement("subject");
-        newGameSubjectNode.InnerXml = gameName.Text;
+        newGameSubjectNode.InnerXml = Server.UrlEncode(gameName.Text);
         newGameNode.AppendChild(newGameSubjectNode);
 
         // inserting the new node in XML file
@@ -71,4 +71,37 @@ public partial class GamesList : System.Web.UI.Page
         XmlDataSource1.Save();
         GridView1.DataBind();
     }
+
+    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        ImageButton i = (ImageButton)e.CommandSource;
+        string theId = i.Attributes["theItemId"];
+        Session["theItemIdSession"] = i.Attributes["theItemId"];
+
+        switch (e.CommandName)
+        {
+            case "deleteGame":
+                deleteGame(theId);
+                break;
+
+            case "editGame":
+                Response.Redirect("Edit.aspx");
+                break;
+
+            case "goToSettings":
+                Response.Redirect("Settings.aspx");
+                break;
+        }
+    }
+
+    void deleteGame(string theItemId)
+    {
+        XmlDocument Document = XmlDataSource1.GetXmlDocument();
+        XmlNode node = Document.SelectSingleNode("/project/game[@gameCode='" + theItemId + "']");
+        node.ParentNode.RemoveChild(node);
+
+        XmlDataSource1.Save();
+        GridView1.DataBind();
+    }
+
 }

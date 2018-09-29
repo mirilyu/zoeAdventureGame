@@ -50,41 +50,57 @@
 
                     <p class="error-text text-right col-12">2-60 תווים</p>
                     
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="XmlDataSource1" Width="1034px">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="XmlDataSource1" Width="1034px" OnRowCommand="GridView1_RowCommand">
                         <Columns>
                             <asp:TemplateField HeaderText="שם">
                                 <ItemTemplate>
-                                    <asp:Label ID="gameSubject" runat="server" Text='<%#XPathBinder.Eval(Container.DataItem, "subject").ToString() %>'></asp:Label>
+                                    <asp:Label ID="gameSubject" runat="server"
+                                        Text='<%#Server.UrlDecode(XPathBinder.Eval(Container.DataItem, "subject").ToString())%>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="קוד">
                                 <ItemTemplate>
-                                    <asp:Label ID="gameCode" runat="server" Text='<%#XPathBinder.Eval(Container.DataItem, "@gameCode") %>'></asp:Label>
+                                    <asp:Label ID="gameCode" runat="server"
+                                        Text='<%#XPathBinder.Eval(Container.DataItem, "@gameCode") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="מספר שאלות">
                                 <ItemTemplate>
-                                    <asp:Label ID="questionsNumber" runat="server" Text='<%#XPathBinder.Eval(Container.DataItem, "@questionsNumber") %>'></asp:Label>
+                                    <asp:Label ID="questionsNumber" runat="server"
+                                        Text='<%#XPathBinder.Eval(Container.DataItem, "@questionsNumber") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="הגדרות">
                                 <ItemTemplate>
-                                    <asp:ImageButton ID="gameSettingsButton" theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>' runat="server" ImageUrl="~/images/icon-properties.png" />
+                                    <asp:ImageButton
+                                        ID="gameSettingsButton"
+                                        CommandName="goToSettings"
+                                        theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>'
+                                        runat="server"
+                                        ImageUrl="~/images/icon-properties.png" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="עריכה">
                                 <ItemTemplate>
-                                    <asp:ImageButton ID="gameEditButton" theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>' runat="server" ImageUrl="~/images/icon-edit.png" />
+                                    <asp:ImageButton
+                                        ID="gameEditButton"
+                                        CommandName="editGame"
+                                        theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>'
+                                        runat="server" ImageUrl="~/images/icon-edit.png" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="מחק">
                                 <ItemTemplate>
-                                    <asp:ImageButton ID="gameDeleteButton" theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>' runat="server" ImageUrl="~/images/icon-delete.png" /></ItemTemplate>
+                                    <asp:ImageButton
+                                        ID="gameDeleteButton"
+                                        CommandName="deleteGame"
+                                        theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>'
+                                        runat="server" ImageUrl="~/images/icon-delete.png" /></ItemTemplate>
                             </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="פרסם">
