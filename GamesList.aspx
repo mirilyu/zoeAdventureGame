@@ -43,12 +43,59 @@
                     <div class="form-group col-8">
                         <asp:TextBox ID="gameName" placeholder="שם המשחק" class="form-control" runat="server"></asp:TextBox>
                     </div>
-
+                     
                     <div class="col-2">
                         <asp:Button disabled="true" class="btn btn-primary btn-block" ID="createGame" runat="server" Text="צור משחק" OnClick="createGame_Click" />
                     </div>
 
                     <p class="error-text text-right col-12">2-60 תווים</p>
+                    
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="XmlDataSource1" Width="1034px">
+                        <Columns>
+                            <asp:TemplateField HeaderText="שם">
+                                <ItemTemplate>
+                                    <asp:Label ID="gameSubject" runat="server" Text='<%#XPathBinder.Eval(Container.DataItem, "subject").ToString() %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="קוד">
+                                <ItemTemplate>
+                                    <asp:Label ID="gameCode" runat="server" Text='<%#XPathBinder.Eval(Container.DataItem, "@gameCode") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="מספר שאלות">
+                                <ItemTemplate>
+                                    <asp:Label ID="questionsNumber" runat="server" Text='<%#XPathBinder.Eval(Container.DataItem, "@questionsNumber") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="הגדרות">
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="gameSettingsButton" theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>' runat="server" ImageUrl="~/images/icon-properties.png" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="עריכה">
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="gameEditButton" theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>' runat="server" ImageUrl="~/images/icon-edit.png" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="מחק">
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="gameDeleteButton" theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>' runat="server" ImageUrl="~/images/icon-delete.png" /></ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="פרסם">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="isPublished" runat="server" Checked='<%#Convert.ToBoolean(XPathBinder.Eval(Container.DataItem,"@isPublished"))%>' theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                    
+                    <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/XML/XMLFile.xml" XPath="/project/game"></asp:XmlDataSource>
                 </form>
             </div>
         </div>
