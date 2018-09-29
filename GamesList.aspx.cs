@@ -94,14 +94,29 @@ public partial class GamesList : System.Web.UI.Page
         }
     }
 
-    void deleteGame(string theItemId)
+    void deleteGame(string theId)
+    {
+        confirmDeleteBtn.Attributes["data-id"] = theId;
+        deleteGamePopup.Style.Add("display", "block");
+        modalBackdrop.Style.Add("display", "block");
+    }
+
+    protected void confirmDeleteBtn_Click(object sender, EventArgs e)
     {
         XmlDocument Document = XmlDataSource1.GetXmlDocument();
-        XmlNode node = Document.SelectSingleNode("/project/game[@gameCode='" + theItemId + "']");
+        XmlNode node = Document.SelectSingleNode("/project/game[@gameCode='" + confirmDeleteBtn.Attributes["data-id"] + "']");
         node.ParentNode.RemoveChild(node);
 
         XmlDataSource1.Save();
         GridView1.DataBind();
+
+        deleteGamePopup.Style.Add("display", "none");
+        modalBackdrop.Style.Add("display", "none");
     }
 
+    protected void cancelDeleteBtn_Click(object sender, EventArgs e)
+    {
+        deleteGamePopup.Style.Add("display", "none");
+        modalBackdrop.Style.Add("display", "none");
+    }
 }

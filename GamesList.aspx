@@ -43,13 +43,13 @@
                     <div class="form-group col-8">
                         <asp:TextBox ID="gameName" placeholder="שם המשחק" class="form-control" runat="server"></asp:TextBox>
                     </div>
-                     
+
                     <div class="col-2">
                         <asp:Button disabled="true" class="btn btn-primary btn-block" ID="createGame" runat="server" Text="צור משחק" OnClick="createGame_Click" />
                     </div>
 
                     <p class="error-text text-right col-12">2-60 תווים</p>
-                    
+
                     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="XmlDataSource1" Width="1034px" OnRowCommand="GridView1_RowCommand">
                         <Columns>
                             <asp:TemplateField HeaderText="שם">
@@ -100,7 +100,8 @@
                                         ID="gameDeleteButton"
                                         CommandName="deleteGame"
                                         theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>'
-                                        runat="server" ImageUrl="~/images/icon-delete.png" /></ItemTemplate>
+                                        runat="server" ImageUrl="~/images/icon-delete.png" />
+                                </ItemTemplate>
                             </asp:TemplateField>
 
                             <asp:TemplateField HeaderText="פרסם">
@@ -115,12 +116,33 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
-                    
+
+                    <asp:Panel ID="deleteGamePopup" Style="display: none;" CssClass="modal fade show" runat="server">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">אישור מחיקה</h5>
+                                </div>
+
+                                <div class="modal-body">
+                                    <p class="popup-text">האם אתה בטוח שברצונך למחוק את משחק?</p>
+                                </div>
+
+                                <div class="modal-footer justify-content-start">
+                                    <asp:Button ID="confirmDeleteBtn" data-id="" CssClass="btn btn-primary ml-3" runat="server" Text="כן - מחק" OnClick="confirmDeleteBtn_Click" />
+                                    <asp:Button ID="cancelDeleteBtn" CssClass="btn btn-secondary" runat="server" Text="לא - חזור" OnClick="cancelDeleteBtn_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </asp:Panel>
+
                     <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/XML/XMLFile.xml" XPath="/project/game"></asp:XmlDataSource>
                 </form>
             </div>
         </div>
     </main>
+    
+    <asp:Panel ID="modalBackdrop" Style="display: none;" CssClass="modal-backdrop fade show" runat="server"></asp:Panel>
 
     <script>
         var gameNameField = document.getElementById("gameName");
