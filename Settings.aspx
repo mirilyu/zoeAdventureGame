@@ -75,10 +75,34 @@
                     <p class="error-text text-right col-12">2-60 תווים</p>
 
                     <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/XML/XMLFile.xml" XPath="/project/game"></asp:XmlDataSource>
+
+                    <asp:Panel ID="goBackPopup" Style="display: none;" CssClass="modal fade show" runat="server">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">חזרה למשחקים שלי</h5>
+                                </div>
+
+                                <div class="modal-body">
+                                    <p class="popup-text">ישנם שינויים שלא נשמרו.</p>
+                                    <p class="popup-text">האם ברצונך לחזור לתפריט המשחקים?</p>
+                                </div>
+
+                                <div class="modal-footer justify-content-start">
+                                    <asp:Button ID="exitBtn" CssClass="btn btn-secondary ml-3" runat="server" Text="כן - לצאת" OnClick="exitBtn_Click" />
+                                    <asp:Button ID="stayBtn" CssClass="btn btn-primary" runat="server" Text="לא - להישאר" OnClick="stayBtn_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </asp:Panel>
                 </form>
             </div>
         </div>
     </main>
+
+
+    <asp:Panel ID="modalBackdrop" Style="display: none;" CssClass="modal-backdrop fade show" runat="server"></asp:Panel>
+
 
     <script>
         var saveBtn = document.getElementById("saveGame");
