@@ -9,27 +9,29 @@
     <link href="styles/main.css" rel="stylesheet" />
 </head>
 <body>
-    <header class="row align-items-center">
-        <div class="col-4">
-            <div class="row justify-content-start">
-                <img src="#" alt="Alternate Text" />
-                <span>zoe</span>
+    <header class="header container-fluid">
+        <div class="row align-items-center">
+            <div class="col-4">
+                <div class="row justify-content-start">
+                    <img src="#" alt="Alternate Text" />
+                    <span>zoe</span>
+                </div>
             </div>
-        </div>
 
-        <nav class="col-8">
-            <ul class="nav row justify-content-end">
-                <li class="nav-item">
-                    <span class="nav-link disabled">עזרה</span>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">אודות</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">למשחק</a>
-                </li>
-            </ul>
-        </nav>
+            <nav class="col-8">
+                <ul class="nav row justify-content-end">
+                    <li class="nav-item">
+                        <span class="nav-link disabled">עזרה</span>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">אודות</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">למשחק</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -60,17 +62,17 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
-                                <asp:TemplateField HeaderText="קוד">
-                                    <ItemTemplate>
-                                        <asp:Label ID="gameCode" runat="server"
-                                            Text='<%#XPathBinder.Eval(Container.DataItem, "@gameCode") %>'></asp:Label>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-
                                 <asp:TemplateField HeaderText="מספר שאלות">
                                     <ItemTemplate>
                                         <asp:Label ID="questionsNumber" runat="server"
                                             Text='<%#XPathBinder.Eval(Container.DataItem, "@questionsNumber") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="קוד">
+                                    <ItemTemplate>
+                                        <asp:Label ID="gameCode" runat="server"
+                                            Text='<%#XPathBinder.Eval(Container.DataItem, "@gameCode") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 

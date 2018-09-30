@@ -3,7 +3,7 @@
     text-align: right;
 }
 
-header {
+.header {
     height: 50px;
     padding: 0 60px;
     margin-bottom: 100px;
@@ -28,18 +28,19 @@ header {
 }
 
 .tableWrapper table {
+    text-align: center;
     table-layout: fixed;
 }
 
 .tableWrapper th:nth-child(1) {
-    width: 50%;
+    width: 55.5%;
 }
 
-.tableWrapper th:nth-child(2),
-.tableWrapper th:nth-child(3) {
+.tableWrapper th:nth-child(2) {
     width: 12%;
 }
 
+.tableWrapper th:nth-child(3),
 .tableWrapper th:nth-child(4),
 .tableWrapper th:nth-child(5),
 .tableWrapper th:nth-child(6),
