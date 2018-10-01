@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
-  <idCounter>111</idCounter>
-  <game gameCode="110" isPublished="false" questionsNumber="0" timePerQuestion="50">
-    <subject>test+name</subject>
-  </game>
+  <idCounter>102</idCounter>
   <game isPublished="True" questionsNumber="4" timePerQuestion="30" gameCode="102">
     <subject>Cinematography</subject>
     <questions>

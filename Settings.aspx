@@ -48,6 +48,8 @@
                     <div class="row">
                         <div class="form-group col-8">
                             <asp:TextBox ID="gameName" MaxLength="60" placeholder="שם המשחק" class="form-control" runat="server"></asp:TextBox>
+
+                            <p class="error-text text-right col-12">2-60 תווים</p>
                         </div>
                     </div>
 
@@ -71,8 +73,6 @@
                             <asp:Button class="btn btn-primary btn-block" ID="goBack" runat="server" Text="חזור" OnClick="goBack_Click" />
                         </div>
                     </div>
-
-                    <p class="error-text text-right col-12">2-60 תווים</p>
 
                     <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/XML/XMLFile.xml" XPath="/project/game"></asp:XmlDataSource>
 

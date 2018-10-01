@@ -53,6 +53,10 @@ public partial class GamesList : System.Web.UI.Page
         newGameSubjectNode.InnerXml = Server.UrlEncode(gameName.Text);
         newGameNode.AppendChild(newGameSubjectNode);
 
+        // creating <questions> node
+        XmlElement newQuesitons = xmlDoc.CreateElement("questions");
+        newGameNode.AppendChild(newQuesitons);
+
         // inserting the new node in XML file
         XmlNode firstGame = xmlDoc.SelectNodes("/project/game").Item(0);
         xmlDoc.SelectSingleNode("/project").InsertBefore(newGameNode, firstGame);
