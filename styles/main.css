@@ -6,7 +6,7 @@
 .header {
     height: 50px;
     padding: 0 60px;
-    margin-bottom: 100px;
+    margin-bottom: 48px;
     background-color: #f4f4f4;
 }
 
@@ -50,4 +50,38 @@
 
 .list-group {
     padding-right: 0;
+}
+
+.qListTable table {
+    table-layout: fixed;
+}
+
+.qListTable th:nth-child(1) {
+    width: 70%;
+}
+
+.qListTable th:nth-child(2),
+.qListTable th:nth-child(3) {
+    padding: 0;
+    width: 15%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.qListTable tr td:nth-child(1) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.qListTable tr td:nth-child(2),
+.qListTable tr td:nth-child(3) {
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.qListTable input {
+    width: 20px;
+    height: 20px;
 }

@@ -8,20 +8,14 @@ using System.Xml;
 
 public partial class Edit : System.Web.UI.Page
 {
-
-    public string gameSubject = "";
-    public string timePerQuestion = "";
-    public string path = "";
-    public string gameCode;
-    public XmlNodeList gameQuestions;
-
     protected void Page_Init(object sender, EventArgs e)
     {
-        path = "/project/game[@gameCode=" + Session["theItemIdSession"] + "]/questions/question".ToString();
+        var path = "/project/game[@gameCode=" + Session["theItemIdSession"] + "]/questions/question".ToString();
         XmlDataSource2.XPath = path;
 
         XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
-        gameSubject = xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/subject").InnerXml;
+        qNumber.Text = Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]").Attributes["questionsNumber"].InnerText);
+        gameSubject.Text = Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/subject").InnerXml);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -34,6 +28,18 @@ public partial class Edit : System.Web.UI.Page
     }
 
     protected void saveQuestion_Click(object sender, EventArgs e)
+    {
+        if(saveQBtn.Attributes["qType"] == "newQ")
+        {
+            saveNewQuestion();
+        }
+        else
+        {
+            updateQuestion(0);
+        }
+    }
+
+    void saveNewQuestion()
     {
         // loading XML file
         XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
@@ -89,7 +95,7 @@ public partial class Edit : System.Web.UI.Page
         // insert <answers> into <question>
         newQNode.AppendChild(newAnswers);
 
-        // inserting <questions> in XML file
+        // updating questionsNumber attribute
         int questionsNumber = Convert.ToInt16(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]").Attributes["questionsNumber"].InnerText);
         questionsNumber++;
         string newQuestionsNumber = questionsNumber.ToString();
@@ -97,9 +103,11 @@ public partial class Edit : System.Web.UI.Page
         XmlNode game = xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]");
         game.Attributes["questionsNumber"].InnerText = newQuestionsNumber;
 
+        // inserting <questions> in XML file
         XmlNode gameQuestions = xmlDoc.SelectNodes("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/questions").Item(0);
         gameQuestions.AppendChild(newQNode);
         XmlDataSource1.Save();
+        GridView1.DataBind();
 
         // cleaning the gameName form field
         qText.Text = "";
@@ -109,14 +117,159 @@ public partial class Edit : System.Web.UI.Page
         option4Text.Text = "";
     }
 
+    void updateQuestion(int RowIndex)
+    {
+        // loading XML file
+        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
+
+        // getting selected question
+        XmlNode editedQ = xmlDoc.SelectNodes("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/questions/question")[RowIndex];
+
+        editedQ["questionText"].InnerXml = Server.UrlEncode(qText.Text);
+
+        // option 1
+        if(option1Text.Text.Length > 0)
+        {
+            if (editedQ.SelectNodes("answers/answer")[0] != null)
+            {
+                editedQ.SelectNodes("answers/answer")[0].InnerXml = option1Text.Text != "" ? Server.UrlEncode(option1Text.Text) : null;
+            }
+            else
+            {
+                addAnswerOption(option1Text.Text, editedQ, true);
+            }
+        }
+
+        if (option1Text.Text.Length == 0)
+        {
+            if (editedQ.SelectNodes("answers/answer")[0] != null)
+            {
+                editedQ.LastChild.RemoveChild(editedQ.SelectNodes("answers/answer")[0]);
+            }
+        }
+
+        // option 2
+        if (option2Text.Text.Length > 0)
+        {
+            if (editedQ.SelectNodes("answers/answer")[1] != null)
+            {
+                editedQ.SelectNodes("answers/answer")[1].InnerXml = option2Text.Text != "" ? Server.UrlEncode(option2Text.Text) : null;
+            }
+            else
+            {
+                addAnswerOption(option2Text.Text, editedQ, false);
+            }
+        }
+
+        if (option2Text.Text.Length == 0)
+        {
+            if (editedQ.SelectNodes("answers/answer")[1] != null)
+            {
+                editedQ.LastChild.RemoveChild(editedQ.SelectNodes("answers/answer")[1]);
+            }
+        }
+
+        // option 3
+        if (option3Text.Text.Length > 0)
+        {
+            if (editedQ.SelectNodes("answers/answer")[2] != null)
+            {
+                editedQ.SelectNodes("answers/answer")[2].InnerXml = option3Text.Text != "" ? Server.UrlEncode(option3Text.Text) : null;
+            }
+            else
+            {
+                addAnswerOption(option3Text.Text, editedQ, false);
+            }
+        }
+
+        if (option3Text.Text.Length == 0)
+        {
+            if (editedQ.SelectNodes("answers/answer")[2] != null)
+            {
+                editedQ.LastChild.RemoveChild(editedQ.SelectNodes("answers/answer")[2]);
+            }
+        }
+
+        // option 4
+        if (option4Text.Text.Length > 0)
+        {
+            if (editedQ.SelectNodes("answers/answer")[3] != null)
+            {
+                editedQ.SelectNodes("answers/answer")[3].InnerXml = option4Text.Text != "" ? Server.UrlEncode(option4Text.Text) : null;
+            }
+            else
+            {
+                addAnswerOption(option4Text.Text, editedQ, false);
+            }
+        }
+
+        if (option4Text.Text.Length == 0)
+        {
+            if (editedQ.SelectNodes("answers/answer")[3] != null)
+            {
+                editedQ.LastChild.RemoveChild(editedQ.SelectNodes("answers/answer")[3]);
+            }
+        }
+        
+
+        XmlDataSource1.Save();
+        GridView1.DataBind();
+    }
+
+    void addAnswerOption(string optionText, XmlNode qNode, bool isCorrect)
+    {
+        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
+
+        XmlElement answer = xmlDoc.CreateElement("answer");
+        answer.SetAttribute("AnsType", "text");
+        if(isCorrect == true)
+        {
+            answer.SetAttribute("isCorrect", "True");
+        }
+        answer.InnerXml = (optionText != "") ? Server.UrlEncode(optionText) : null;
+        qNode.LastChild.AppendChild(answer);
+    }
+
     protected void rowCommand(object sender, GridViewCommandEventArgs e)
     {
+        // loading XML file
+        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
+
+        // getting selected row index
+        GridViewRow gvr = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
+        int RowIndex = gvr.RowIndex;
+
+        // getting selected question
+        XmlNode selectedQ = xmlDoc.SelectNodes("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/questions/question")[RowIndex];
+
         switch (e.CommandName)
         {
             case "qDelete":
+                // removing question node
+                selectedQ.ParentNode.RemoveChild(selectedQ);
+
+                // updating questionsNumber attribute
+                int questionsNumber = Convert.ToInt16(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]").Attributes["questionsNumber"].InnerText);
+                questionsNumber--;
+                string newQuestionsNumber = questionsNumber.ToString();
+
+                XmlNode game = xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]");
+                game.Attributes["questionsNumber"].InnerText = newQuestionsNumber;
+
+                // saving changes to XML file
+                XmlDataSource1.Save();
+                GridView1.DataBind();
                 break;
 
             case "qEdit":
+                saveQBtn.Attributes["qType"] = "editedQ";
+
+                qText.Text = Server.UrlDecode(selectedQ["questionText"].InnerXml);
+                option1Text.Text = selectedQ.SelectNodes("answers/answer")[0] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[0].InnerXml) : "";
+                option2Text.Text = selectedQ.SelectNodes("answers/answer")[1] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[1].InnerXml) : "";
+                option3Text.Text = selectedQ.SelectNodes("answers/answer")[2] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[2].InnerXml) : "";
+                option4Text.Text = selectedQ.SelectNodes("answers/answer")[3] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[3].InnerXml) : "";
+
                 break;
         }
     }

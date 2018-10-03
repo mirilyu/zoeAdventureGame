@@ -38,7 +38,7 @@
         <div class="container">
             <h1>
                 <span>עריכת משחק:</span>
-                <span class="text-info"><%=Server.UrlDecode(gameSubject) %></span>
+                <asp:Label ID="gameSubject" class="text-info" runat="server" Text="Label"></asp:Label>
             </h1>
 
             <form id="form1" class="row" runat="server">
@@ -86,7 +86,7 @@
 
                             <div class="row">
                                 <div class="col-3">
-                                    <asp:Button disabled="true" class="btn btn-primary btn-block" ID="saveQBtn" runat="server" Text="שמור שאלה" OnClick="saveQuestion_Click" />
+                                    <asp:Button disabled="true" class="btn btn-primary btn-block" ID="saveQBtn" qType="newQ" runat="server" Text="שמור שאלה" OnClick="saveQuestion_Click" />
                                 </div>
 
                                 <div class="col-2">
@@ -101,8 +101,10 @@
 
                 <div class="col-4">
                     <h5 class="text-secondary">
-                        <span>השאלות</span>
-                        <b>3</b>
+                        <b>
+                            <asp:Label ID="qNumber" runat="server" Text="Label"></asp:Label>
+                        </b>
+                        <span>שאלות</span>
                         <small class="mr-4 text-danger">לפחות 10 שאלות לפרסום</small>
                     </h5>
 
@@ -110,12 +112,14 @@
 
                     </asp:Panel>
 
-                    <div>
+                    <div class="qListTable">
                         <asp:GridView ID="GridView1" CssClass="table table-hover table-bordered" runat="server" AutoGenerateColumns="False" DataSourceID="XmlDataSource2" OnRowCommand="rowCommand">
                             <Columns>
                                 <asp:TemplateField HeaderText="שאלות">
                                     <ItemTemplate>
-                                        <asp:Label ID="questionText" runat="server" Text='<%#Server.UrlDecode(XPathBinder.Eval(Container.DataItem, "questionText").ToString())%>'></asp:Label>
+                                        <asp:Label ID="questionText" runat="server"
+                                                   Title='<%#Server.UrlDecode(XPathBinder.Eval(Container.DataItem, "questionText").ToString())%>'
+                                                   Text='<%#Server.UrlDecode(XPathBinder.Eval(Container.DataItem, "questionText").ToString())%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -169,8 +173,16 @@
         arr.forEach(function (e) {
             e.addEventListener("keyup", function (e) {
                 validateQData();
+
+                if (option3.value.length > 0) { option4.disabled = false; } else { option4.disabled = true; }
+                if (option2.value.length > 0) { option3.disabled = false; } else { option3.disabled = true; option4.disabled = true; }
+                if (option1.value.length > 0) { option2.disabled = false; } else { option2.disabled = true; option3.disabled = true; option4.disabled = true; }
             });
         })
+
+        if (option1.value.length == 0) option2.disabled = true;
+        if (option2.value.length == 0) option3.disabled = true;
+        if (option3.value.length == 0) option4.disabled = true;
 
     </script>
 
