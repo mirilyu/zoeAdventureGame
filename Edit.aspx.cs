@@ -18,6 +18,23 @@ public partial class Edit : System.Web.UI.Page
         gameSubject.Text = Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/subject").InnerXml);
     }
 
+    void resetForm()
+    {
+        qText.Text = "";
+        option1Text.Text = "";
+        option2Text.Text = "";
+        option3Text.Text = "";
+        option4Text.Text = "";
+
+        saveQBtn.Attributes["qType"] = "newQ";
+        saveQBtn.Attributes["qIndex"] = "";
+    }
+
+    protected void createNewQ_Click(object sender, EventArgs e)
+    {
+        resetForm();
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
     }
@@ -35,7 +52,7 @@ public partial class Edit : System.Web.UI.Page
         }
         else
         {
-            updateQuestion(0);
+            updateQuestion(Convert.ToInt16(saveQBtn.Attributes["qIndex"]));
         }
     }
 
@@ -110,11 +127,7 @@ public partial class Edit : System.Web.UI.Page
         GridView1.DataBind();
 
         // cleaning the gameName form field
-        qText.Text = "";
-        option1Text.Text = "";
-        option2Text.Text = "";
-        option3Text.Text = "";
-        option4Text.Text = "";
+        resetForm();
     }
 
     void updateQuestion(int RowIndex)
@@ -263,6 +276,7 @@ public partial class Edit : System.Web.UI.Page
 
             case "qEdit":
                 saveQBtn.Attributes["qType"] = "editedQ";
+                saveQBtn.Attributes["qIndex"] = RowIndex.ToString();
 
                 qText.Text = Server.UrlDecode(selectedQ["questionText"].InnerXml);
                 option1Text.Text = selectedQ.SelectNodes("answers/answer")[0] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[0].InnerXml) : "";

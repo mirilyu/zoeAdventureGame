@@ -5,16 +5,18 @@
     <subject>some+other+game</subject>
     <questions>
       <question numberOfTries="0">
-        <questionText>waw</questionText>
+        <questionText>Is+my+Masha+the+best%3f</questionText>
         <answers>
-          <answer AnsType="text" isCorrect="True">test1</answer>
-          <answer AnsType="text">test2</answer>
+          <answer AnsType="text" isCorrect="True">yes</answer>
+          <answer AnsType="text">of+course</answer>
+          <answer AnsType="text">sure</answer>
         </answers>
       </question>
       <question numberOfTries="0">
-        <questionText>lalala</questionText>
+        <questionText>another+one</questionText>
         <answers>
-          <answer AnsType="text" isCorrect="True">yes</answer>
+          <answer AnsType="text" isCorrect="True">fafafa</answer>
+          <answer AnsType="text">ololo</answer>
         </answers>
       </question>
     </questions>

@@ -92,6 +92,10 @@
                                 <div class="col-2">
                                     <asp:Button class="btn btn-secondary btn-block" ID="goBackBtn" runat="server" Text="חזור" OnClick="goBack_Click" />
                                 </div>
+
+                                <div class="col-3">
+                                    <asp:Button class="btn btn-outline-primary btn-block" ID="createNewQ" runat="server" Text="שאלה חדשה" OnClick="createNewQ_Click" />
+                                </div>
                             </div>
 
                             <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/XML/XMLFile.xml" XPath="/project/game"></asp:XmlDataSource>
