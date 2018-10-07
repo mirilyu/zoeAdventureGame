@@ -51,9 +51,12 @@
 
                     <div>
                         <div class="row">
-                            <div class="form-group col-9">
-                                <asp:TextBox class="form-control" MaxLength="140" ID="qText" runat="server" TextMode="MultiLine" Rows="6"></asp:TextBox>
+                            <div class="col-9">
+                                <asp:TextBox class="form-control" MaxLength="140" ID="qText" runat="server" TextMode="MultiLine" Rows="4"></asp:TextBox>
                                 <div class="mt-3">
+                                    <button id="qImageFileDeleteBtn" type="button" class="close ml-2" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <asp:FileUpload ID="qImageFileUpload" runat="server" />
                                 </div>
                             </div>
@@ -70,12 +73,20 @@
                                     <p class="mb-0 text-success"><b>תשובה נכונה</b></p>
                                     <asp:TextBox class="form-control is-valid" MaxLength="70" ID="option1Text" runat="server" isCorrect="true"></asp:TextBox>
                                 </div>
-                                <div class="col-2">
+
+                                <asp:Panel ID="option1ImgPanel" style="display: none;" class="col-2" runat="server">
+                                    <button id="option1ImgDeleteBtn" type="button" class="close" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <asp:Image ID="option1Img" runat="server" />
-                                </div>
-                                <div class="col-4 d-flex align-items-end">
+                                </asp:Panel>
+
+                                <asp:Panel ID="option1UploadPanel" class="col-4 d-flex align-items-end" runat="server">
+                                    <button id="option1FileDeleteBtn" type="button" class="close" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <asp:FileUpload ID="option1ImgUpload" runat="server" />
-                                </div>
+                                </asp:Panel>
                             </div>
 
                             <div class="row form-group">
@@ -86,6 +97,9 @@
                                     <asp:Image ID="option2Img" runat="server" />
                                 </div>
                                 <div class="col-4 d-flex align-items-end">
+                                    <button id="option2FileDeleteBtn" type="button" class="close" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <asp:FileUpload ID="option2ImgUpload" runat="server" />
                                 </div>
                             </div>
@@ -98,6 +112,9 @@
                                     <asp:Image ID="option3Img" runat="server" />
                                 </div>
                                 <div class="col-4 d-flex align-items-end">
+                                    <button id="option3FileDeleteBtn" type="button" class="close" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <asp:FileUpload ID="option3ImgUpload" runat="server" />
                                 </div>
                             </div>
@@ -110,6 +127,9 @@
                                     <asp:Image ID="option4Img" runat="server" />
                                 </div>
                                 <div class="col-4 d-flex align-items-end">
+                                    <button id="option4FileDeleteBtn" type="button" class="close" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <asp:FileUpload ID="option4ImgUpload" runat="server" />
                                 </div>
                             </div>
@@ -185,39 +205,7 @@
         </div>
     </main>
 
-    <script>
-        var qText = document.getElementById("qText");
-        var option1 = document.getElementById("option1Text");
-        var option2 = document.getElementById("option2Text");
-        var option3 = document.getElementById("option3Text");
-        var option4 = document.getElementById("option4Text");
-        var saveQBtn = document.getElementById("saveQBtn");
-
-        var arr = [qText, option1, option2, option3, option4];
-
-        function validateQData() {
-            if (qText.value.length >= 2 && option1.value.length > 0) {
-                saveQBtn.disabled = false;
-            } else {
-                saveQBtn.disabled = true;
-            }
-        }
-
-        arr.forEach(function (e) {
-            e.addEventListener("keyup", function (e) {
-                validateQData();
-
-                if (option3.value.length > 0) { option4.disabled = false; } else { option4.disabled = true; }
-                if (option2.value.length > 0) { option3.disabled = false; } else { option3.disabled = true; option4.disabled = true; }
-                if (option1.value.length > 0) { option2.disabled = false; } else { option2.disabled = true; option3.disabled = true; option4.disabled = true; }
-            });
-        })
-
-        if (option1.value.length == 0) option2.disabled = true;
-        if (option2.value.length == 0) option3.disabled = true;
-        if (option3.value.length == 0) option4.disabled = true;
-
-    </script>
+    <script src="scripts/editPage.js"></script>
 
 </body>
 </html>

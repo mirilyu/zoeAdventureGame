@@ -1,9 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
   <idCounter>103</idCounter>
-  <game gameCode="103" isPublished="false" questionsNumber="0" timePerQuestion="0">
-    <subject>some+other+game</subject>
-    <questions></questions>
+  <game gameCode="103" isPublished="false" questionsNumber="1" timePerQuestion="0">
+    <subject>test + game</subject>
+    <questions>
+      <question numberOfTries="0">
+        <questionText>Who+is+there%3f</questionText>
+        <img />
+        <answers>
+          <answer img="option1_07-10-18_11-27-59.JPG" isCorrect="True" />
+          <answer img="option2_07-10-18_11-27-59.JPG" />
+          <answer img="option3_07-10-18_11-27-59.JPG" />
+          <answer img="option4_07-10-18_11-27-59.JPG" />
+        </answers>
+      </question>
+    </questions>
   </game>
   <game isPublished="True" questionsNumber="4" timePerQuestion="30" gameCode="102">
     <subject>Cinematography</subject>
@@ -12,36 +23,36 @@
         <questionText>Who directed The Isle of Dogs?</questionText>
         <img />
         <answers>
-          <answer AnsType="text" isCorrect="true">Wes Anderson</answer>
-          <answer AnsType="text" isCorrect="false">Martin Scorsese</answer>
-          <answer AnsType="text" isCorrect="false">steven_soderbergh.png</answer>
+          <answer isCorrect="true">Wes Anderson</answer>
+          <answer>Martin Scorsese</answer>
+          <answer>steven_soderbergh.png</answer>
         </answers>
       </question>
       <question numberOfTries="0">
         <questionText>What's the name of this actor?</questionText>
         <img>actor.jpg</img>
         <answers>
-          <answer AnsType="text" isCorrect="true">Russell Crowe</answer>
-          <answer AnsType="text" isCorrect="false">Kurt Russell</answer>
+          <answer isCorrect="true">Russell Crowe</answer>
+          <answer>Kurt Russell</answer>
         </answers>
       </question>
       <question numberOfTries="0">
         <questionText>What was the first film directed by Quentin Tarantino?</questionText>
         <img />
         <answers>
-          <answer AnsType="text" isCorrect="false">Pulp Fiction</answer>
-          <answer AnsType="text" isCorrect="false">The Hateful Eight</answer>
-          <answer AnsType="text" isCorrect="false">kill_bill.jpeg</answer>
-          <answer AnsType="text" isCorrect="true">Reservoir Dogs</answer>
+          <answer isCorrect="false">Pulp Fiction</answer>
+          <answer>The Hateful Eight</answer>
+          <answer>kill_bill.jpeg</answer>
+          <answer>Reservoir Dogs</answer>
         </answers>
       </question>
       <question numberOfTries="0">
         <questionText>Who was the leading actor in the Lord of the Rings?</questionText>
         <img />
         <answers>
-          <answer AnsType="text" isCorrect="false">Dominic Monaghan</answer>
-          <answer AnsType="text" isCorrect="false">Billy Boyd</answer>
-          <answer AnsType="text" isCorrect="true">Elijah Wood</answer>
+          <answer isCorrect="false">Dominic Monaghan</answer>
+          <answer>Billy Boyd</answer>
+          <answer>Elijah Wood</answer>
         </answers>
       </question>
     </questions>
@@ -53,39 +64,39 @@
         <questionText>In which year began world war two?</questionText>
         <img />
         <answers>
-          <answer AnsType="text" isCorrect="true">1934</answer>
-          <answer AnsType="text" isCorrect="false">1919</answer>
-          <answer AnsType="text" isCorrect="false">1824</answer>
+          <answer isCorrect="true">1934</answer>
+          <answer isCorrect="false">1919</answer>
+          <answer isCorrect="false">1824</answer>
         </answers>
       </question>
       <question numberOfTries="0">
         <questionText>Where was John F.Kennedy assassinated?</questionText>
         <img />
         <answers>
-          <answer AnsType="text" isCorrect="true">Dallas</answer>
-          <answer AnsType="text" isCorrect="false">Massachusetts</answer>
-          <answer AnsType="text" isCorrect="false">Austin</answer>
-          <answer AnsType="text" isCorrect="false">Cleveland</answer>
+          <answer isCorrect="true">Dallas</answer>
+          <answer>Massachusetts</answer>
+          <answer>Austin</answer>
+          <answer>Cleveland</answer>
         </answers>
       </question>
       <question numberOfTries="0">
         <questionText>Who wrote Israel's national anthem ?</questionText>
         <img />
         <answers>
-          <answer AnsType="image" isCorrect="true">Naftali_Hertz_Imber.jpeg</answer>
-          <answer AnsType="image" isCorrect="false">Judah_Halevi.jpeg</answer>
-          <answer AnsType="text" isCorrect="false">Chaim Nachman Bialik</answer>
-          <answer AnsType="image" isCorrect="false">Zvike_Pik.jpeg</answer>
+          <answer isCorrect="true">Naftali_Hertz_Imber.jpeg</answer>
+          <answer>Judah_Halevi.jpeg</answer>
+          <answer>Chaim Nachman Bialik</answer>
+          <answer>Zvike_Pik.jpeg</answer>
         </answers>
       </question>
       <question numberOfTries="0">
         <questionText>In what year was the Israeli Six-Day war?</questionText>
         <img />
         <answers>
-          <answer AnsType="text" isCorrect="true">1967</answer>
-          <answer AnsType="text" isCorrect="false">1673</answer>
-          <answer AnsType="text" isCorrect="false">1948</answer>
-          <answer AnsType="text" isCorrect="false">1960</answer>
+          <answer isCorrect="true">1967</answer>
+          <answer>1673</answer>
+          <answer>1948</answer>
+          <answer>1960</answer>
         </answers>
       </question>
     </questions>

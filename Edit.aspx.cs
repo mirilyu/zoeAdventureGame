@@ -30,6 +30,18 @@ public partial class Edit : System.Web.UI.Page
 
         saveQBtn.Attributes["qType"] = "newQ";
         saveQBtn.Attributes["qIndex"] = "";
+
+        qImage.ImageUrl = "";
+        option1Img.ImageUrl = "";
+        option2Img.ImageUrl = "";
+        option3Img.ImageUrl = "";
+        option4Img.ImageUrl = "";
+
+        qImageFileUpload.Dispose();
+        option1ImgUpload.Dispose();
+        option2ImgUpload.Dispose();
+        option3ImgUpload.Dispose();
+        option4ImgUpload.Dispose();
     }
 
     protected void createNewQ_Click(object sender, EventArgs e)
@@ -84,45 +96,28 @@ public partial class Edit : System.Web.UI.Page
         XmlElement newAnswers = xmlDoc.CreateElement("answers");
 
         // creating <answer1> node
-        XmlElement answer1 = xmlDoc.CreateElement("answer");
-        answer1.SetAttribute("AnsType", "text");
+        XmlElement answer1 = addAnswerOption(xmlDoc, option1Text, option1ImgUpload, option1Img, "option1");
         answer1.SetAttribute("isCorrect", "True");
-        answer1.InnerXml = Server.UrlEncode(option1Text.Text);
-        string answer1ImgName = Server.UrlEncode(uploadImage(option1ImgUpload, option1Img, "option1"));
-        answer1.SetAttribute("img", answer1ImgName);
         newAnswers.AppendChild(answer1);
 
-
         // creating <answer2> node
-        if (option2Text.Text.Length > 0)
+        if (option2Text.Text.Length > 0 || option2ImgUpload.PostedFile.ContentLength > 0)
         {
-            XmlElement answer2 = xmlDoc.CreateElement("answer");
-            answer2.SetAttribute("AnsType", "text");
-            answer2.InnerXml = Server.UrlEncode(option2Text.Text);
-            string answer2ImgName = Server.UrlEncode(uploadImage(option2ImgUpload, option2Img, "option2"));
-            answer2.SetAttribute("img", answer1ImgName);
+            XmlElement answer2 = addAnswerOption(xmlDoc, option2Text, option2ImgUpload, option2Img, "option2");
             newAnswers.AppendChild(answer2);
         }
 
         // creating <answer3> node
-        if (option3Text.Text.Length > 0)
+        if (option3Text.Text.Length > 0 || option3ImgUpload.PostedFile.ContentLength > 0)
         {
-            XmlElement answer3 = xmlDoc.CreateElement("answer");
-            answer3.SetAttribute("AnsType", "text");
-            answer3.InnerXml = Server.UrlEncode(option3Text.Text);
-            string answer3ImgName = Server.UrlEncode(uploadImage(option3ImgUpload, option3Img, "option3"));
-            answer3.SetAttribute("img", answer3ImgName);
+            XmlElement answer3 = addAnswerOption(xmlDoc, option3Text, option3ImgUpload, option3Img, "option3");
             newAnswers.AppendChild(answer3);
         }
 
         // creating <answer4> node
-        if (option4Text.Text.Length > 0)
+        if (option4Text.Text.Length > 0 || option4ImgUpload.PostedFile.ContentLength > 0)
         {
-            XmlElement answer4 = xmlDoc.CreateElement("answer");
-            answer4.SetAttribute("AnsType", "text");
-            answer4.InnerXml = Server.UrlEncode(option4Text.Text);
-            string answer4ImgName = Server.UrlEncode(uploadImage(option4ImgUpload, option4Img, "option4"));
-            answer4.SetAttribute("img", answer4ImgName);
+            XmlElement answer4 = addAnswerOption(xmlDoc, option4Text, option4ImgUpload, option4Img, "option4");
             newAnswers.AppendChild(answer4);
         }
 
@@ -145,6 +140,37 @@ public partial class Edit : System.Web.UI.Page
 
         // cleaning the gameName form field
         resetForm();
+    }
+
+    XmlElement addAnswerOption(XmlDocument xmlDoc, TextBox optionInput, FileUpload optionFile, Image optionImg, string prefix)
+    {
+        XmlElement answer = xmlDoc.CreateElement("answer");
+        answer.InnerXml = Server.UrlEncode(optionInput.Text);
+        string answerImgName = Server.UrlEncode(uploadImage(optionFile, optionImg, prefix));
+        answer.SetAttribute("img", answerImgName);
+
+        return answer;
+    }
+
+    string uploadImage(FileUpload input, Image img, string prefix)
+    {
+        string fileType = input.PostedFile.ContentType;
+        if (fileType.Contains("image"))
+        {
+            string fileName = input.PostedFile.FileName;
+            string endOfFileName = fileName.Substring(fileName.LastIndexOf("."));
+            string myTime = DateTime.Now.ToString("dd-MM-yy_HH-mm-ss");
+            string imageNewName = prefix + "_" + myTime + endOfFileName;
+            input.PostedFile.SaveAs(Server.MapPath(imagesLibPath) + imageNewName);
+
+            img.ImageUrl = imagesLibPath + imageNewName;
+
+            return imageNewName;
+        }
+        else
+        {
+            return "";
+        }
     }
 
     void updateQuestion(int RowIndex)
@@ -301,29 +327,38 @@ public partial class Edit : System.Web.UI.Page
                 option3Text.Text = selectedQ.SelectNodes("answers/answer")[2] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[2].InnerXml) : "";
                 option4Text.Text = selectedQ.SelectNodes("answers/answer")[3] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[3].InnerXml) : "";
 
-                qImage.ImageUrl = selectedQ.SelectNodes("img")[0] != null ? imagesLibPath + Server.UrlDecode(selectedQ.SelectNodes("img")[0].InnerXml) : "";
+                qImage.ImageUrl = selectedQ.SelectNodes("img")[0] != null ? imagesLibPath + Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("img")[0].InnerXml) : "";
+                option1Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[0] != null ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText) : "";
+                option2Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[1] != null ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText) : "";
+                option3Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[2] != null ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText) : "";
+                option4Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[3] != null ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText) : "";
 
                 break;
         }
     }
 
-    string uploadImage(FileUpload input, Image img, string prefix)
+    protected void qImageFileUploadDelete_click(object sender, EventArgs e)
     {
-        string fileType = input.PostedFile.ContentType;
-        if (fileType.Contains("image"))
-        {
-            string fileName = input.PostedFile.FileName;
-            string endOfFileName = fileName.Substring(fileName.LastIndexOf("."));
-            string myTime = DateTime.Now.ToString("dd-MM-yy_HH-mm-ss");
-            string imageNewName = prefix + "_" + myTime + endOfFileName;
-            input.PostedFile.SaveAs(Server.MapPath(imagesLibPath) + imageNewName);
+        qImageFileUpload.Dispose();
+    }
 
-            img.ImageUrl = imagesLibPath + imageNewName;
+    protected void option1FileDeleteBtn_click(object sender, EventArgs e)
+    {
+        option1ImgUpload.Dispose();
+    }
 
-            return imageNewName;
-        } else
-        {
-            return "";
-        }
+    protected void option2FileDeleteBtn_click(object sender, EventArgs e)
+    {
+        option2ImgUpload.Dispose();
+    }
+
+    protected void option3FileDeleteBtn_click(object sender, EventArgs e)
+    {
+        option3ImgUpload.Dispose();
+    }
+
+    protected void option4FileDeleteBtn_click(object sender, EventArgs e)
+    {
+        option4ImgUpload.Dispose();
     }
 }

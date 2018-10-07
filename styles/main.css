@@ -6,7 +6,7 @@
 .header {
     height: 50px;
     padding: 0 60px;
-    margin-bottom: 48px;
+    margin-bottom: 24px;
     background-color: #f4f4f4;
 }
 
@@ -88,4 +88,10 @@
 
 form img {
     max-width: 100%;
+}
+
+.form-group .close {
+    top: -5px;
+    margin-left: 8px;
+    position: relative;
 }
