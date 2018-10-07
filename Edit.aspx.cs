@@ -8,6 +8,8 @@ using System.Xml;
 
 public partial class Edit : System.Web.UI.Page
 {
+    string imagesLibPath = "uploads/";
+
     protected void Page_Init(object sender, EventArgs e)
     {
         var path = "/project/game[@gameCode=" + Session["theItemIdSession"] + "]/questions/question".ToString();
@@ -71,6 +73,12 @@ public partial class Edit : System.Web.UI.Page
 
         // insert <questionText> into <question>
         newQNode.AppendChild(newQTextNode);
+        
+        // creating question image
+        string qImgName = uploadImage(qImageFileUpload, qImage, "qImage");
+        XmlElement qImg = xmlDoc.CreateElement("img");
+        qImg.InnerXml = Server.UrlEncode(qImgName);
+        newQNode.AppendChild(qImg);
 
         // creating <answers> node to hold all answers
         XmlElement newAnswers = xmlDoc.CreateElement("answers");
@@ -80,7 +88,10 @@ public partial class Edit : System.Web.UI.Page
         answer1.SetAttribute("AnsType", "text");
         answer1.SetAttribute("isCorrect", "True");
         answer1.InnerXml = Server.UrlEncode(option1Text.Text);
+        string answer1ImgName = Server.UrlEncode(uploadImage(option1ImgUpload, option1Img, "option1"));
+        answer1.SetAttribute("img", answer1ImgName);
         newAnswers.AppendChild(answer1);
+
 
         // creating <answer2> node
         if (option2Text.Text.Length > 0)
@@ -88,6 +99,8 @@ public partial class Edit : System.Web.UI.Page
             XmlElement answer2 = xmlDoc.CreateElement("answer");
             answer2.SetAttribute("AnsType", "text");
             answer2.InnerXml = Server.UrlEncode(option2Text.Text);
+            string answer2ImgName = Server.UrlEncode(uploadImage(option2ImgUpload, option2Img, "option2"));
+            answer2.SetAttribute("img", answer1ImgName);
             newAnswers.AppendChild(answer2);
         }
 
@@ -97,6 +110,8 @@ public partial class Edit : System.Web.UI.Page
             XmlElement answer3 = xmlDoc.CreateElement("answer");
             answer3.SetAttribute("AnsType", "text");
             answer3.InnerXml = Server.UrlEncode(option3Text.Text);
+            string answer3ImgName = Server.UrlEncode(uploadImage(option3ImgUpload, option3Img, "option3"));
+            answer3.SetAttribute("img", answer3ImgName);
             newAnswers.AppendChild(answer3);
         }
 
@@ -106,6 +121,8 @@ public partial class Edit : System.Web.UI.Page
             XmlElement answer4 = xmlDoc.CreateElement("answer");
             answer4.SetAttribute("AnsType", "text");
             answer4.InnerXml = Server.UrlEncode(option4Text.Text);
+            string answer4ImgName = Server.UrlEncode(uploadImage(option4ImgUpload, option4Img, "option4"));
+            answer4.SetAttribute("img", answer4ImgName);
             newAnswers.AppendChild(answer4);
         }
 
@@ -284,7 +301,29 @@ public partial class Edit : System.Web.UI.Page
                 option3Text.Text = selectedQ.SelectNodes("answers/answer")[2] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[2].InnerXml) : "";
                 option4Text.Text = selectedQ.SelectNodes("answers/answer")[3] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[3].InnerXml) : "";
 
+                qImage.ImageUrl = selectedQ.SelectNodes("img")[0] != null ? imagesLibPath + Server.UrlDecode(selectedQ.SelectNodes("img")[0].InnerXml) : "";
+
                 break;
+        }
+    }
+
+    string uploadImage(FileUpload input, Image img, string prefix)
+    {
+        string fileType = input.PostedFile.ContentType;
+        if (fileType.Contains("image"))
+        {
+            string fileName = input.PostedFile.FileName;
+            string endOfFileName = fileName.Substring(fileName.LastIndexOf("."));
+            string myTime = DateTime.Now.ToString("dd-MM-yy_HH-mm-ss");
+            string imageNewName = prefix + "_" + myTime + endOfFileName;
+            input.PostedFile.SaveAs(Server.MapPath(imagesLibPath) + imageNewName);
+
+            img.ImageUrl = imagesLibPath + imageNewName;
+
+            return imageNewName;
+        } else
+        {
+            return "";
         }
     }
 }

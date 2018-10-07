@@ -1,25 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
   <idCounter>103</idCounter>
-  <game gameCode="103" isPublished="false" questionsNumber="2" timePerQuestion="0">
+  <game gameCode="103" isPublished="false" questionsNumber="0" timePerQuestion="0">
     <subject>some+other+game</subject>
-    <questions>
-      <question numberOfTries="0">
-        <questionText>Is+my+Masha+the+best%3f</questionText>
-        <answers>
-          <answer AnsType="text" isCorrect="True">yes</answer>
-          <answer AnsType="text">of+course</answer>
-          <answer AnsType="text">sure</answer>
-        </answers>
-      </question>
-      <question numberOfTries="0">
-        <questionText>another+one</questionText>
-        <answers>
-          <answer AnsType="text" isCorrect="True">fafafa</answer>
-          <answer AnsType="text">ololo</answer>
-        </answers>
-      </question>
-    </questions>
+    <questions></questions>
   </game>
   <game isPublished="True" questionsNumber="4" timePerQuestion="30" gameCode="102">
     <subject>Cinematography</subject>

@@ -49,57 +49,87 @@
                         <small class="text-danger">2-140 תווים</small>
                     </h5>
 
-                    <div class="mt-3">
-                        <div>
-                            <div class="row">
-                                <div class="form-group col-9">
-                                    <asp:TextBox class="form-control" MaxLength="140" ID="qText" runat="server" TextMode="MultiLine" Rows="6"></asp:TextBox>
-                                </div>
-                                <div class="col-3">
+                    <div>
+                        <div class="row">
+                            <div class="form-group col-9">
+                                <asp:TextBox class="form-control" MaxLength="140" ID="qText" runat="server" TextMode="MultiLine" Rows="6"></asp:TextBox>
+                                <div class="mt-3">
+                                    <asp:FileUpload ID="qImageFileUpload" runat="server" />
                                 </div>
                             </div>
+                            <div class="col-3">
+                                <asp:Image ID="qImage" runat="server" />
+                            </div>
+                        </div>
 
-                            <p class="mt-3 mb-1 text-danger">עד 70 תווים לתשובה</p>
+                        <p class="mt-3 mb-1 text-danger">עד 70 תווים לתשובה</p>
 
-                            <div class="row">
-                                <div class="form-group col-10">
+                        <div>
+                            <div class="row form-group">
+                                <div class="col-6">
                                     <p class="mb-0 text-success"><b>תשובה נכונה</b></p>
                                     <asp:TextBox class="form-control is-valid" MaxLength="70" ID="option1Text" runat="server" isCorrect="true"></asp:TextBox>
                                 </div>
-                                <div class="col-2"></div>
+                                <div class="col-2">
+                                    <asp:Image ID="option1Img" runat="server" />
+                                </div>
+                                <div class="col-4 d-flex align-items-end">
+                                    <asp:FileUpload ID="option1ImgUpload" runat="server" />
+                                </div>
+                            </div>
 
-                                <div class="form-group col-10">
+                            <div class="row form-group">
+                                <div class="col-6">
                                     <asp:TextBox class="form-control" MaxLength="70" ID="option2Text" runat="server"></asp:TextBox>
                                 </div>
-                                <div class="col-2"></div>
+                                <div class="col-2">
+                                    <asp:Image ID="option2Img" runat="server" />
+                                </div>
+                                <div class="col-4 d-flex align-items-end">
+                                    <asp:FileUpload ID="option2ImgUpload" runat="server" />
+                                </div>
+                            </div>
 
-                                <div class="form-group col-10">
+                            <div class="row form-group">
+                                <div class="col-6">
                                     <asp:TextBox class="form-control" MaxLength="70" ID="option3Text" runat="server"></asp:TextBox>
                                 </div>
-                                <div class="col-2"></div>
+                                <div class="col-2">
+                                    <asp:Image ID="option3Img" runat="server" />
+                                </div>
+                                <div class="col-4 d-flex align-items-end">
+                                    <asp:FileUpload ID="option3ImgUpload" runat="server" />
+                                </div>
+                            </div>
 
-                                <div class="form-group col-10">
+                            <div class="row form-group">
+                                <div class="col-6">
                                     <asp:TextBox class="form-control" MaxLength="70" ID="option4Text" runat="server"></asp:TextBox>
                                 </div>
-                                <div class="col-2"></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-3">
-                                    <asp:Button disabled="true" class="btn btn-primary btn-block" ID="saveQBtn" qType="newQ" runat="server" Text="שמור שאלה" OnClick="saveQuestion_Click" />
-                                </div>
-
                                 <div class="col-2">
-                                    <asp:Button class="btn btn-secondary btn-block" ID="goBackBtn" runat="server" Text="חזור" OnClick="goBack_Click" />
+                                    <asp:Image ID="option4Img" runat="server" />
                                 </div>
-
-                                <div class="col-3">
-                                    <asp:Button class="btn btn-outline-primary btn-block" ID="createNewQ" runat="server" Text="שאלה חדשה" OnClick="createNewQ_Click" />
+                                <div class="col-4 d-flex align-items-end">
+                                    <asp:FileUpload ID="option4ImgUpload" runat="server" />
                                 </div>
                             </div>
-
-                            <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/XML/XMLFile.xml" XPath="/project/game"></asp:XmlDataSource>
                         </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <asp:Button disabled="true" class="btn btn-primary btn-block" ID="saveQBtn" qType="newQ" runat="server" Text="שמור שאלה" OnClick="saveQuestion_Click" />
+                            </div>
+
+                            <div class="col-2">
+                                <asp:Button class="btn btn-secondary btn-block" ID="goBackBtn" runat="server" Text="חזור" OnClick="goBack_Click" />
+                            </div>
+
+                            <div class="col-3">
+                                <asp:Button class="btn btn-outline-primary btn-block" ID="createNewQ" runat="server" Text="שאלה חדשה" OnClick="createNewQ_Click" />
+                            </div>
+                        </div>
+
+                        <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/XML/XMLFile.xml" XPath="/project/game"></asp:XmlDataSource>
                     </div>
                 </div>
 
@@ -113,7 +143,6 @@
                     </h5>
 
                     <asp:Panel ID="gameQuestionsPanel" runat="server">
-
                     </asp:Panel>
 
                     <div class="qListTable">
@@ -122,8 +151,8 @@
                                 <asp:TemplateField HeaderText="שאלות">
                                     <ItemTemplate>
                                         <asp:Label ID="questionText" runat="server"
-                                                   Title='<%#Server.UrlDecode(XPathBinder.Eval(Container.DataItem, "questionText").ToString())%>'
-                                                   Text='<%#Server.UrlDecode(XPathBinder.Eval(Container.DataItem, "questionText").ToString())%>'></asp:Label>
+                                            Title='<%#Server.UrlDecode(XPathBinder.Eval(Container.DataItem, "questionText").ToString())%>'
+                                            Text='<%#Server.UrlDecode(XPathBinder.Eval(Container.DataItem, "questionText").ToString())%>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 

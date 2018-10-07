@@ -85,3 +85,7 @@
     width: 20px;
     height: 20px;
 }
+
+form img {
+    max-width: 100%;
+}
