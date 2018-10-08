@@ -107,7 +107,6 @@ form img {
 
 .uploadImgBtn {
     padding: 0;
-    width: 40px;
     border: none;
     cursor: pointer;
     background: none;
@@ -120,9 +119,12 @@ form img {
 
 .imgPreviewWrapper {
     width: 64px;
-    max-height: 64px;
     display: none;
     position: relative;
+}
+
+.imgPreviewWrapper img {
+    max-height: 64px;
 }
 
 .imgPreviewWrapper .close {
@@ -132,5 +134,15 @@ form img {
     position: absolute;
 }
 
-.imgPreview {
+#qImgPanel .uploadImgBtn img {
+    width: 80px;
+    height: 80px;
+}
+
+#qImgPanel .imgPreviewWrapper {
+    width: 140px;
+}
+
+#qImgPanel .imgPreviewWrapper img {
+    max-height: 90px;
 }

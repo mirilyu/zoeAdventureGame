@@ -54,15 +54,20 @@
                         <div class="row">
                             <div class="col-9">
                                 <asp:TextBox class="form-control" MaxLength="140" ID="qText" runat="server" TextMode="MultiLine" Rows="4"></asp:TextBox>
-                                <div class="mt-3">
-                                    <button id="qImageFileDeleteBtn" type="button" class="close ml-2" aria-label="Close">
+                            </div>
+
+                            <div id="qImgPanel" class="col-3 d-flex align-items-center">
+                                <asp:FileUpload ID="qImageFileUpload" class="uploadFileInput" runat="server" />
+                                <button id="qImgUploadIcon" class="uploadImgBtn">
+                                    <img src="images/icon-upload.svg" alt="image upload" />
+                                </button>
+
+                                <div class="imgPreviewWrapper">
+                                    <button id="qImgDeleteBtn" type="button" class="close" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <asp:FileUpload ID="qImageFileUpload" runat="server" />
+                                    <asp:Image ID="qImage" class="imgPreview" runat="server" />
                                 </div>
-                            </div>
-                            <div class="col-3">
-                                <asp:Image ID="qImage" runat="server" />
                             </div>
                         </div>
 

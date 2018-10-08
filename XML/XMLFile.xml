@@ -5,10 +5,11 @@
     <subject>test + game</subject>
     <questions>
       <question numberOfTries="0">
-        <questionText>fff</questionText>
+        <questionText>fffs</questionText>
         <img />
         <answers>
-          <answer img="option1_07-10-18_22-02-18.JPG" isCorrect="True" />
+          <answer img="option1_08-10-18_16-39-12.JPG" isCorrect="True">s</answer>
+          <answer img="option2_08-10-18_16-43-10.JPG" />
         </answers>
       </question>
     </questions>
