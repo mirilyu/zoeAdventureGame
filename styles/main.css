@@ -112,6 +112,11 @@ form img {
     background: none;
 }
 
+.uploadImgBtn[disabled] {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
 .uploadImgBtn img {
     width: 40px;
     height: 40px;
@@ -140,7 +145,7 @@ form img {
 }
 
 #qImgPanel .imgPreviewWrapper {
-    width: 140px;
+    width: 110px;
 }
 
 #qImgPanel .imgPreviewWrapper img {

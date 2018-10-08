@@ -43,7 +43,7 @@
             </h1>
 
             <form id="form1" class="row" runat="server">
-                <div class="col-8">
+                <div class="col-7">
 
                     <h5 class="text-secondary">
                         <span>השאלה</span>
@@ -52,11 +52,11 @@
 
                     <div>
                         <div class="row">
-                            <div class="col-9">
-                                <asp:TextBox class="form-control" MaxLength="140" ID="qText" runat="server" TextMode="MultiLine" Rows="4"></asp:TextBox>
+                            <div class="col-8">
+                                <asp:TextBox class="form-control" ID="qText" runat="server" TextMode="MultiLine" Rows="4"></asp:TextBox>
                             </div>
 
-                            <div id="qImgPanel" class="col-3 d-flex align-items-center">
+                            <div id="qImgPanel" class="col-4 d-flex align-items-center">
                                 <asp:FileUpload ID="qImageFileUpload" class="uploadFileInput" runat="server" />
                                 <button id="qImgUploadIcon" class="uploadImgBtn">
                                     <img src="images/icon-upload.svg" alt="image upload" />
@@ -66,7 +66,7 @@
                                     <button id="qImgDeleteBtn" type="button" class="close" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <asp:Image ID="qImage" class="imgPreview" runat="server" />
+                                    <asp:Image ID="qImage" class="imgPreview" src="" runat="server" />
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                                         <button id="option1ImgDeleteBtn" type="button" class="close" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <asp:Image ID="option1Img" class="imgPreview" runat="server" />
+                                        <asp:Image ID="option1Img" class="imgPreview" src="" runat="server" />
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                         <button id="option2ImgDeleteBtn" type="button" class="close" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <asp:Image ID="option2Img" class="imgPreview" runat="server" />
+                                        <asp:Image ID="option2Img" class="imgPreview" src="" runat="server" />
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                                         <button id="option3ImgDeleteBtn" type="button" class="close" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <asp:Image ID="option3Img" class="imgPreview" runat="server" />
+                                        <asp:Image ID="option3Img" class="imgPreview" src="" runat="server" />
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                                         <button id="option4ImgDeleteBtn" type="button" class="close" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <asp:Image ID="option4Img" class="imgPreview" runat="server" />
+                                        <asp:Image ID="option4Img" class="imgPreview" src="" runat="server" />
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +174,7 @@
                     </div>
                 </div>
 
-                <div class="col-4">
+                <div class="col-5">
                     <h5 class="text-secondary">
                         <b>
                             <asp:Label ID="qNumber" runat="server" Text="Label"></asp:Label>
