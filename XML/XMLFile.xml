@@ -1,17 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
   <idCounter>103</idCounter>
-  <game gameCode="103" isPublished="false" questionsNumber="1" timePerQuestion="0">
+  <game gameCode="103" isPublished="false" questionsNumber="2" timePerQuestion="0">
     <subject>test + game</subject>
     <questions>
       <question numberOfTries="0">
-        <questionText>Who+is+there%3f</questionText>
+        <questionText>fff</questionText>
         <img />
         <answers>
-          <answer img="option1_07-10-18_11-27-59.JPG" isCorrect="True" />
-          <answer img="option2_07-10-18_11-27-59.JPG" />
-          <answer img="option3_07-10-18_11-27-59.JPG" />
-          <answer img="option4_07-10-18_11-27-59.JPG" />
+          <answer img="option1_07-10-18_22-02-18.JPG" isCorrect="True" />
         </answers>
       </question>
     </questions>

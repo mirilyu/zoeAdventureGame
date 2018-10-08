@@ -51,27 +51,98 @@ if (option1.value.length == 0 && option1Img.value.length == 0) option2.disabled 
 if (option2.value.length == 0 && option2Img.value.length == 0) option3.disabled = true;
 if (option3.value.length == 0 && option3Img.value.length == 0) option4.disabled = true;
 
-var qImageFileDeleteBtn = document.getElementById("qImageFileDeleteBtn");
-qImageFileDeleteBtn.addEventListener("click", function () {
-    document.getElementById("qImageFileUpload").value = "";
+
+// from https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded
+function readURL(input, imgId, btnId) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $(imgId).closest(".imgPreviewWrapper").show();
+            $(imgId).attr('src', e.target.result);
+            $(btnId).hide();
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// option 1
+var option1ImgUploadIcon = $("#option1ImgUploadIcon");
+var option1ImgUpload = $("#option1ImgUpload");
+var option1ImgDeleteBtn = $("#option1ImgDeleteBtn");
+
+option1ImgUploadIcon.on("click", function (e) {
+    e.preventDefault();
+    option1ImgUpload.click();
 });
 
-var option1FileDeleteBtn = document.getElementById("option1FileDeleteBtn");
-option1FileDeleteBtn.addEventListener("click", function () {
-    option1Img.value = "";
+option1ImgUpload.change(function () {
+    readURL(this, "#option1Img", "#option1ImgUploadIcon");
 });
 
-var option2FileDeleteBtn = document.getElementById("option2FileDeleteBtn");
-option2FileDeleteBtn.addEventListener("click", function () {
-    option2Img.value = "";
+option1ImgDeleteBtn.on("click", function () {
+    $("#option1Img").value = "";
+    option1ImgUploadIcon.show();
+    $("#option1Img").closest(".imgPreviewWrapper").hide();
+})
+
+// option 2
+var option2ImgUploadIcon = $("#option2ImgUploadIcon");
+var option2ImgUpload = $("#option2ImgUpload");
+var option2ImgDeleteBtn = $("#option2ImgDeleteBtn");
+
+option2ImgUploadIcon.on("click", function (e) {
+    e.preventDefault();
+    option2ImgUpload.click();
 });
 
-var option3FileDeleteBtn = document.getElementById("option3FileDeleteBtn");
-option3FileDeleteBtn.addEventListener("click", function () {
-    option3Img.value = "";
+option2ImgUpload.change(function () {
+    readURL(this, "#option2Img", "#option2ImgUploadIcon");
 });
 
-var option4FileDeleteBtn = document.getElementById("option4FileDeleteBtn");
-option4FileDeleteBtn.addEventListener("click", function () {
-    option4Img.value = "";
+option2ImgDeleteBtn.on("click", function () {
+    $("#option2Img").value = "";
+    option2ImgUploadIcon.show();
+    $("#option2Img").closest(".imgPreviewWrapper").hide();
+})
+
+// option 3
+var option3ImgUploadIcon = $("#option3ImgUploadIcon");
+var option3ImgUpload = $("#option3ImgUpload");
+var option3ImgDeleteBtn = $("#option3ImgDeleteBtn");
+
+option3ImgUploadIcon.on("click", function (e) {
+    e.preventDefault();
+    option3ImgUpload.click();
 });
+
+option3ImgUpload.change(function () {
+    readURL(this, "#option3Img", "#option3ImgUploadIcon");
+});
+
+option3ImgDeleteBtn.on("click", function () {
+    $("#option3Img").value = "";
+    option3ImgUploadIcon.show();
+    $("#option3Img").closest(".imgPreviewWrapper").hide();
+})
+
+// option 4
+var option4ImgUploadIcon = $("#option4ImgUploadIcon");
+var option4ImgUpload = $("#option4ImgUpload");
+var option4ImgDeleteBtn = $("#option4ImgDeleteBtn");
+
+option4ImgUploadIcon.on("click", function (e) {
+    e.preventDefault();
+    option4ImgUpload.click();
+});
+
+option4ImgUpload.change(function () {
+    readURL(this, "#option4Img", "#option4ImgUploadIcon");
+});
+
+option4ImgDeleteBtn.on("click", function () {
+    $("#option4Img").value = "";
+    option4ImgUploadIcon.show();
+    $("#option4Img").closest(".imgPreviewWrapper").hide();
+})

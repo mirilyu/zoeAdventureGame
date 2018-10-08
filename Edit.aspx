@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Edit Questions</title>
+    <script src="scripts/jquery-1.12.0.min.js"></script>
     <link href="styles/bootstrap.css" rel="stylesheet" />
     <link href="styles/main.css" rel="stylesheet" />
 </head>
@@ -55,7 +56,7 @@
                                 <asp:TextBox class="form-control" MaxLength="140" ID="qText" runat="server" TextMode="MultiLine" Rows="4"></asp:TextBox>
                                 <div class="mt-3">
                                     <button id="qImageFileDeleteBtn" type="button" class="close ml-2" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
+                                        <span aria-hidden="true">&times;</span>
                                     </button>
                                     <asp:FileUpload ID="qImageFileUpload" runat="server" />
                                 </div>
@@ -69,68 +70,83 @@
 
                         <div>
                             <div class="row form-group">
-                                <div class="col-6">
+                                <div class="col-9">
                                     <p class="mb-0 text-success"><b>תשובה נכונה</b></p>
                                     <asp:TextBox class="form-control is-valid" MaxLength="70" ID="option1Text" runat="server" isCorrect="true"></asp:TextBox>
                                 </div>
 
-                                <asp:Panel ID="option1ImgPanel" style="display: none;" class="col-2" runat="server">
-                                    <button id="option1ImgDeleteBtn" type="button" class="close" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                                <div id="option1ImgPanel" class="col-3 d-flex align-items-end">
+                                    <asp:FileUpload ID="option1ImgUpload" class="uploadFileInput" runat="server" />
+                                    <button id="option1ImgUploadIcon" class="uploadImgBtn">
+                                        <img src="images/icon-upload-green.svg" alt="image upload" />
                                     </button>
-                                    <asp:Image ID="option1Img" runat="server" />
-                                </asp:Panel>
 
-                                <asp:Panel ID="option1UploadPanel" class="col-4 d-flex align-items-end" runat="server">
-                                    <button id="option1FileDeleteBtn" type="button" class="close" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <asp:FileUpload ID="option1ImgUpload" runat="server" />
-                                </asp:Panel>
+                                    <div class="imgPreviewWrapper">
+                                        <button id="option1ImgDeleteBtn" type="button" class="close" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <asp:Image ID="option1Img" class="imgPreview" runat="server" />
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col-6">
+                                <div class="col-9">
                                     <asp:TextBox class="form-control" MaxLength="70" ID="option2Text" runat="server"></asp:TextBox>
                                 </div>
-                                <div class="col-2">
-                                    <asp:Image ID="option2Img" runat="server" />
-                                </div>
-                                <div class="col-4 d-flex align-items-end">
-                                    <button id="option2FileDeleteBtn" type="button" class="close" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
+
+                                <div id="option2ImgPanel" class="col-3 d-flex align-items-end">
+                                    <asp:FileUpload ID="option2ImgUpload" class="uploadFileInput" runat="server" />
+                                    <button id="option2ImgUploadIcon" class="uploadImgBtn">
+                                        <img src="images/icon-upload.svg" alt="image upload" />
                                     </button>
-                                    <asp:FileUpload ID="option2ImgUpload" runat="server" />
+
+                                    <div class="imgPreviewWrapper">
+                                        <button id="option2ImgDeleteBtn" type="button" class="close" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <asp:Image ID="option2Img" class="imgPreview" runat="server" />
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col-6">
+                                <div class="col-9">
                                     <asp:TextBox class="form-control" MaxLength="70" ID="option3Text" runat="server"></asp:TextBox>
                                 </div>
-                                <div class="col-2">
-                                    <asp:Image ID="option3Img" runat="server" />
-                                </div>
-                                <div class="col-4 d-flex align-items-end">
-                                    <button id="option3FileDeleteBtn" type="button" class="close" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
+
+                                <div id="option3ImgPanel" class="col-3 d-flex align-items-end">
+                                    <asp:FileUpload ID="option3ImgUpload" class="uploadFileInput" runat="server" />
+                                    <button id="option3ImgUploadIcon" class="uploadImgBtn">
+                                        <img src="images/icon-upload.svg" alt="image upload" />
                                     </button>
-                                    <asp:FileUpload ID="option3ImgUpload" runat="server" />
+
+                                    <div class="imgPreviewWrapper">
+                                        <button id="option3ImgDeleteBtn" type="button" class="close" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <asp:Image ID="option3Img" class="imgPreview" runat="server" />
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="row form-group">
-                                <div class="col-6">
+                                <div class="col-9">
                                     <asp:TextBox class="form-control" MaxLength="70" ID="option4Text" runat="server"></asp:TextBox>
                                 </div>
-                                <div class="col-2">
-                                    <asp:Image ID="option4Img" runat="server" />
-                                </div>
-                                <div class="col-4 d-flex align-items-end">
-                                    <button id="option4FileDeleteBtn" type="button" class="close" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
+
+                                <div id="option4ImgPanel" class="col-3 d-flex align-items-end">
+                                    <asp:FileUpload ID="option4ImgUpload" class="uploadFileInput" runat="server" />
+                                    <button id="option4ImgUploadIcon" class="uploadImgBtn">
+                                        <img src="images/icon-upload.svg" alt="image upload" />
                                     </button>
-                                    <asp:FileUpload ID="option4ImgUpload" runat="server" />
+
+                                    <div class="imgPreviewWrapper">
+                                        <button id="option4ImgDeleteBtn" type="button" class="close" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <asp:Image ID="option4Img" class="imgPreview" runat="server" />
+                                    </div>
                                 </div>
                             </div>
                         </div>

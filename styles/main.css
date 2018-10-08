@@ -95,3 +95,42 @@ form img {
     margin-left: 8px;
     position: relative;
 }
+
+.uploadFileInput {
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    z-index: -1;
+    position: fixed;
+}
+
+.uploadImgBtn {
+    padding: 0;
+    width: 40px;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+.uploadImgBtn img {
+    width: 40px;
+    height: 40px;
+}
+
+.imgPreviewWrapper {
+    width: 64px;
+    max-height: 64px;
+    display: none;
+    position: relative;
+}
+
+.imgPreviewWrapper .close {
+    top: -8px;
+    right: 100%;
+    margin-right: 4px;
+    position: absolute;
+}
+
+.imgPreview {
+}

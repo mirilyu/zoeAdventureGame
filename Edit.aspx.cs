@@ -173,6 +173,35 @@ public partial class Edit : System.Web.UI.Page
         }
     }
 
+    void updateAnswerOption(TextBox optionText, FileUpload optionImgUpload, Image optionImg, XmlNode editedQ, string prefix, int qIndex)
+    {
+        if (optionText.Text.Length > 0 || optionImgUpload.PostedFile.FileName.Length > 0)
+        {
+            if (editedQ.SelectNodes("answers/answer")[qIndex] != null)
+            {
+                editedQ.SelectNodes("answers/answer")[qIndex].InnerXml = optionText.Text != "" ? Server.UrlEncode(optionText.Text) : null;
+
+                if (optionImgUpload.PostedFile.FileName.Length > 0)
+                {
+                    editedQ.SelectNodes("answers/answer")[qIndex].Attributes["img"].InnerText = uploadImage(optionImgUpload, optionImg, "option1");
+                }
+            }
+            else
+            {
+                bool isCorrect = qIndex == 0 ? true : false;
+                addAnswerOption(optionText.Text, editedQ, isCorrect, optionImgUpload, optionImg, prefix);
+            }
+        }
+
+        if (optionText.Text.Length == 0 && optionImgUpload.PostedFile.ContentLength == 0 && optionImg.ImageUrl.Length == 0)
+        {
+            if (editedQ.SelectNodes("answers/answer")[qIndex] != null)
+            {
+                editedQ.LastChild.RemoveChild(editedQ.SelectNodes("answers/answer")[qIndex]);
+            }
+        }
+    }
+
     void updateQuestion(int RowIndex)
     {
         // loading XML file
@@ -184,106 +213,35 @@ public partial class Edit : System.Web.UI.Page
         editedQ["questionText"].InnerXml = Server.UrlEncode(qText.Text);
 
         // option 1
-        if(option1Text.Text.Length > 0)
-        {
-            if (editedQ.SelectNodes("answers/answer")[0] != null)
-            {
-                editedQ.SelectNodes("answers/answer")[0].InnerXml = option1Text.Text != "" ? Server.UrlEncode(option1Text.Text) : null;
-            }
-            else
-            {
-                addAnswerOption(option1Text.Text, editedQ, true);
-            }
-        }
-
-        if (option1Text.Text.Length == 0)
-        {
-            if (editedQ.SelectNodes("answers/answer")[0] != null)
-            {
-                editedQ.LastChild.RemoveChild(editedQ.SelectNodes("answers/answer")[0]);
-            }
-        }
+        updateAnswerOption(option1Text, option1ImgUpload, option1Img, editedQ, "option1", 0);
 
         // option 2
-        if (option2Text.Text.Length > 0)
-        {
-            if (editedQ.SelectNodes("answers/answer")[1] != null)
-            {
-                editedQ.SelectNodes("answers/answer")[1].InnerXml = option2Text.Text != "" ? Server.UrlEncode(option2Text.Text) : null;
-            }
-            else
-            {
-                addAnswerOption(option2Text.Text, editedQ, false);
-            }
-        }
-
-        if (option2Text.Text.Length == 0)
-        {
-            if (editedQ.SelectNodes("answers/answer")[1] != null)
-            {
-                editedQ.LastChild.RemoveChild(editedQ.SelectNodes("answers/answer")[1]);
-            }
-        }
+        updateAnswerOption(option2Text, option2ImgUpload, option2Img, editedQ, "option2", 1);
 
         // option 3
-        if (option3Text.Text.Length > 0)
-        {
-            if (editedQ.SelectNodes("answers/answer")[2] != null)
-            {
-                editedQ.SelectNodes("answers/answer")[2].InnerXml = option3Text.Text != "" ? Server.UrlEncode(option3Text.Text) : null;
-            }
-            else
-            {
-                addAnswerOption(option3Text.Text, editedQ, false);
-            }
-        }
-
-        if (option3Text.Text.Length == 0)
-        {
-            if (editedQ.SelectNodes("answers/answer")[2] != null)
-            {
-                editedQ.LastChild.RemoveChild(editedQ.SelectNodes("answers/answer")[2]);
-            }
-        }
+        updateAnswerOption(option3Text, option3ImgUpload, option3Img, editedQ, "option3", 2);
 
         // option 4
-        if (option4Text.Text.Length > 0)
-        {
-            if (editedQ.SelectNodes("answers/answer")[3] != null)
-            {
-                editedQ.SelectNodes("answers/answer")[3].InnerXml = option4Text.Text != "" ? Server.UrlEncode(option4Text.Text) : null;
-            }
-            else
-            {
-                addAnswerOption(option4Text.Text, editedQ, false);
-            }
-        }
+        updateAnswerOption(option4Text, option4ImgUpload, option4Img, editedQ, "option4", 3);
 
-        if (option4Text.Text.Length == 0)
-        {
-            if (editedQ.SelectNodes("answers/answer")[3] != null)
-            {
-                editedQ.LastChild.RemoveChild(editedQ.SelectNodes("answers/answer")[3]);
-            }
-        }
-        
-
-        XmlDataSource1.Save();
+        //XmlDataSource1.Save();
         GridView1.DataBind();
     }
 
-    void addAnswerOption(string optionText, XmlNode qNode, bool isCorrect)
+    void addAnswerOption(string optionText, XmlNode qNode, bool isCorrect, FileUpload optionFile, Image optionImg, string prefix)
     {
         XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
 
         XmlElement answer = xmlDoc.CreateElement("answer");
-        answer.SetAttribute("AnsType", "text");
         if(isCorrect == true)
         {
             answer.SetAttribute("isCorrect", "True");
         }
         answer.InnerXml = (optionText != "") ? Server.UrlEncode(optionText) : null;
+        answer.SetAttribute("img", uploadImage(optionFile, optionImg, prefix));
         qNode.LastChild.AppendChild(answer);
+
+        XmlDataSource1.Save();
     }
 
     protected void rowCommand(object sender, GridViewCommandEventArgs e)
@@ -335,30 +293,5 @@ public partial class Edit : System.Web.UI.Page
 
                 break;
         }
-    }
-
-    protected void qImageFileUploadDelete_click(object sender, EventArgs e)
-    {
-        qImageFileUpload.Dispose();
-    }
-
-    protected void option1FileDeleteBtn_click(object sender, EventArgs e)
-    {
-        option1ImgUpload.Dispose();
-    }
-
-    protected void option2FileDeleteBtn_click(object sender, EventArgs e)
-    {
-        option2ImgUpload.Dispose();
-    }
-
-    protected void option3FileDeleteBtn_click(object sender, EventArgs e)
-    {
-        option3ImgUpload.Dispose();
-    }
-
-    protected void option4FileDeleteBtn_click(object sender, EventArgs e)
-    {
-        option4ImgUpload.Dispose();
     }
 }
