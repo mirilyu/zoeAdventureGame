@@ -136,6 +136,7 @@
                 $(imgId).closest(".imgPreviewWrapper").show();
                 $(imgId).attr('src', e.target.result);
                 $(btnId).hide();
+                validateQData();
                 disableEnableFields();
             }
 
@@ -163,6 +164,7 @@
         option1ImgUploadIcon.show();
         option1Img.closest(".imgPreviewWrapper").hide();
         $("#option1Text").removeAttr('disabled');
+        validateQData();
         disableEnableFields();
     })
 
@@ -186,6 +188,7 @@
         option2ImgUploadIcon.show();
         option2Img.closest(".imgPreviewWrapper").hide();
         $("#option2Text").removeAttr('disabled');
+        validateQData();
         disableEnableFields();
     })
 
@@ -209,6 +212,7 @@
         option3ImgUploadIcon.show();
         option3Img.closest(".imgPreviewWrapper").hide();
         $("#option3Text").removeAttr('disabled');
+        validateQData();
         disableEnableFields();
     })
 
@@ -232,6 +236,7 @@
         option4ImgUploadIcon.show();
         option4Img.closest(".imgPreviewWrapper").hide();
         $("#option4Text").removeAttr('disabled');
+        validateQData();
         disableEnableFields();
     })
 

@@ -58,6 +58,26 @@ public partial class Edit : System.Web.UI.Page
        
     }
 
+    protected void option1ImgDeleteBtn_Click(object sender, EventArgs e)
+    {
+        option1Img.ImageUrl = "";
+    }
+
+    protected void option2ImgDeleteBtn_Click(object sender, EventArgs e)
+    {
+        option2Img.ImageUrl = "";
+    }
+
+    protected void option3ImgDeleteBtn_Click(object sender, EventArgs e)
+    {
+        option3Img.ImageUrl = "";
+    }
+
+    protected void option4ImgDeleteBtn_Click(object sender, EventArgs e)
+    {
+        option4Img.ImageUrl = "";
+    }
+
     protected void saveQuestion_Click(object sender, EventArgs e)
     {
         if(saveQBtn.Attributes["qType"] == "newQ")
@@ -87,7 +107,7 @@ public partial class Edit : System.Web.UI.Page
         newQNode.AppendChild(newQTextNode);
         
         // creating question image
-        string qImgName = uploadImage(qImageFileUpload, qImage, "qImage");
+        string qImgName = uploadImage(qImageFileUpload, "qImage");
         XmlElement qImg = xmlDoc.CreateElement("img");
         qImg.InnerXml = Server.UrlEncode(qImgName);
         newQNode.AppendChild(qImg);
@@ -146,13 +166,13 @@ public partial class Edit : System.Web.UI.Page
     {
         XmlElement answer = xmlDoc.CreateElement("answer");
         answer.InnerXml = Server.UrlEncode(optionInput.Text);
-        string answerImgName = Server.UrlEncode(uploadImage(optionFile, optionImg, prefix));
+        string answerImgName = Server.UrlEncode(uploadImage(optionFile, prefix));
         answer.SetAttribute("img", answerImgName);
 
         return answer;
     }
 
-    string uploadImage(FileUpload input, Image img, string prefix)
+    string uploadImage(FileUpload input, string prefix)
     {
         string fileType = input.PostedFile.ContentType;
         if (fileType.Contains("image"))
@@ -162,8 +182,6 @@ public partial class Edit : System.Web.UI.Page
             string myTime = DateTime.Now.ToString("dd-MM-yy_HH-mm-ss");
             string imageNewName = prefix + "_" + myTime + endOfFileName;
             input.PostedFile.SaveAs(Server.MapPath(imagesLibPath) + imageNewName);
-
-            img.ImageUrl = imagesLibPath + imageNewName;
 
             return imageNewName;
         }
@@ -175,15 +193,27 @@ public partial class Edit : System.Web.UI.Page
 
     void updateAnswerOption(TextBox optionText, FileUpload optionImgUpload, Image optionImg, XmlNode editedQ, string prefix, int qIndex)
     {
-        if (optionText.Text.Length > 0 || optionImgUpload.PostedFile.FileName.Length > 0)
-        {
+        if (optionText.Text.Length > 0 || optionImg.ImageUrl.Length > 0)
+        {   
+            // if it is an exising answer option
             if (editedQ.SelectNodes("answers/answer")[qIndex] != null)
             {
                 editedQ.SelectNodes("answers/answer")[qIndex].InnerXml = optionText.Text != "" ? Server.UrlEncode(optionText.Text) : null;
 
-                if (optionImgUpload.PostedFile.FileName.Length > 0)
+                // if a new img is uploaded
+                if (optionImgUpload.FileName.Length > 0)
                 {
-                    editedQ.SelectNodes("answers/answer")[qIndex].Attributes["img"].InnerText = uploadImage(optionImgUpload, optionImg, "option1");
+                    editedQ.SelectNodes("answers/answer")[qIndex].Attributes["img"].InnerText = uploadImage(optionImgUpload, "option1");
+                } else
+                {
+                    // if there is an image already
+                    if(editedQ.SelectNodes("answers/answer")[qIndex].Attributes["img"].InnerText.Length > 0)
+                    {
+                        if(optionImg.ImageUrl.Length == 0)
+                        {
+                            editedQ.SelectNodes("answers/answer")[qIndex].Attributes["img"].InnerText = "";
+                        }
+                    }
                 }
             }
             else
@@ -193,6 +223,7 @@ public partial class Edit : System.Web.UI.Page
             }
         }
 
+        // if an existing qOption is being deleted
         if (optionText.Text.Length == 0 && optionImgUpload.PostedFile.ContentLength == 0 && optionImg.ImageUrl.Length == 0)
         {
             if (editedQ.SelectNodes("answers/answer")[qIndex] != null)
@@ -238,7 +269,7 @@ public partial class Edit : System.Web.UI.Page
             answer.SetAttribute("isCorrect", "True");
         }
         answer.InnerXml = (optionText != "") ? Server.UrlEncode(optionText) : null;
-        answer.SetAttribute("img", uploadImage(optionFile, optionImg, prefix));
+        answer.SetAttribute("img", uploadImage(optionFile, prefix));
         qNode.LastChild.AppendChild(answer);
 
         XmlDataSource1.Save();
@@ -286,10 +317,27 @@ public partial class Edit : System.Web.UI.Page
                 option4Text.Text = selectedQ.SelectNodes("answers/answer")[3] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[3].InnerXml) : "";
 
                 qImage.ImageUrl = selectedQ.SelectNodes("img")[0] != null ? imagesLibPath + Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("img")[0].InnerXml) : "";
-                option1Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText) : "";
-                option2Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText) : "";
-                option3Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText) : "";
-                option4Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText) : "";
+
+                if(selectedQ.SelectNodes("answers/answer")[0] != null)
+                {
+                    //selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText) : "";
+                    option1Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText) : "";
+                }
+
+                if(selectedQ.SelectNodes("answers/answer")[1] != null)
+                {
+                    option2Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText) : "";
+                }
+
+                if(selectedQ.SelectNodes("answers/answer")[2] != null)
+                {
+                    option3Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText) : "";
+                }
+
+                if(selectedQ.SelectNodes("answers/answer")[3] != null)
+                {
+                    option4Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText) : "";
+                }
 
                 break;
         }

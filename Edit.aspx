@@ -87,10 +87,8 @@
                                     </button>
 
                                     <div class="imgPreviewWrapper">
-                                        <button id="option1ImgDeleteBtn" type="button" class="close" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <asp:Image ID="option1Img" class="imgPreview" runat="server" />
+                                        <asp:Button ID="option1ImgDeleteBtn" class="close" runat="server" OnClick="option1ImgDeleteBtn_Click" Text="&times;" />
+                                        <asp:Image ID="option1Img" isDeleted="false" class="imgPreview" runat="server" />
                                     </div>
                                 </div>
                             </div>
@@ -107,9 +105,7 @@
                                     </button>
 
                                     <div class="imgPreviewWrapper">
-                                        <button id="option2ImgDeleteBtn" type="button" class="close" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                        <asp:Button ID="option2ImgDeleteBtn" class="close" runat="server" OnClick="option2ImgDeleteBtn_Click" Text="&times;" />
                                         <asp:Image ID="option2Img" class="imgPreview" runat="server" />
                                     </div>
                                 </div>
@@ -127,9 +123,7 @@
                                     </button>
 
                                     <div class="imgPreviewWrapper">
-                                        <button id="option3ImgDeleteBtn" type="button" class="close" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                        <asp:Button ID="option3ImgDeleteBtn" class="close" runat="server" OnClick="option3ImgDeleteBtn_Click" Text="&times;" />
                                         <asp:Image ID="option3Img" class="imgPreview" runat="server" />
                                     </div>
                                 </div>
@@ -147,9 +141,7 @@
                                     </button>
 
                                     <div class="imgPreviewWrapper">
-                                        <button id="option4ImgDeleteBtn" type="button" class="close" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                        <asp:Button ID="option4ImgDeleteBtn" class="close" runat="server" OnClick="option4ImgDeleteBtn_Click" Text="&times;" />
                                         <asp:Image ID="option4Img" class="imgPreview" runat="server" />
                                     </div>
                                 </div>

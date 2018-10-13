@@ -1,20 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
-  <idCounter>103</idCounter>
-  <game gameCode="103" isPublished="false" questionsNumber="1" timePerQuestion="0">
-    <subject>test + game</subject>
-    <questions>
-      <question numberOfTries="0">
-        <questionText>question+text</questionText>
-        <answers>
-          <answer img="" isCorrect="True">option+1+text</answer>
-          <answer img="">option+2+text</answer>
-          <answer img="option1_09-10-18_23-27-18.JPG">option+3+text</answer>
-          <answer img="option4_09-10-18_22-55-35.JPG">option+4+text</answer>
-        </answers>
-      </question>
-    </questions>
-  </game>
+  <idCounter>102</idCounter>
   <game isPublished="True" questionsNumber="4" timePerQuestion="30" gameCode="102">
     <subject>Cinematography</subject>
     <questions>
