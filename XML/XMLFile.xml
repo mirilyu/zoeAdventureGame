@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
   <idCounter>103</idCounter>
-  <game gameCode="103" isPublished="false" questionsNumber="2" timePerQuestion="0">
+  <game gameCode="103" isPublished="false" questionsNumber="1" timePerQuestion="0">
     <subject>test + game</subject>
     <questions>
       <question numberOfTries="0">
-        <questionText>fffs</questionText>
-        <img />
+        <questionText>question+text</questionText>
         <answers>
-          <answer img="option1_08-10-18_16-39-12.JPG" isCorrect="True">s</answer>
-          <answer img="option2_08-10-18_16-43-10.JPG" />
+          <answer img="" isCorrect="True">option+1+text</answer>
+          <answer img="">option+2+text</answer>
+          <answer img="option1_09-10-18_23-27-18.JPG">option+3+text</answer>
+          <answer img="option4_09-10-18_22-55-35.JPG">option+4+text</answer>
         </answers>
       </question>
     </questions>

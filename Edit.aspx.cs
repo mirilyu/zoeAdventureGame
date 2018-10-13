@@ -224,7 +224,7 @@ public partial class Edit : System.Web.UI.Page
         // option 4
         updateAnswerOption(option4Text, option4ImgUpload, option4Img, editedQ, "option4", 3);
 
-        //XmlDataSource1.Save();
+        XmlDataSource1.Save();
         GridView1.DataBind();
     }
 
@@ -286,10 +286,10 @@ public partial class Edit : System.Web.UI.Page
                 option4Text.Text = selectedQ.SelectNodes("answers/answer")[3] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[3].InnerXml) : "";
 
                 qImage.ImageUrl = selectedQ.SelectNodes("img")[0] != null ? imagesLibPath + Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("img")[0].InnerXml) : "";
-                option1Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[0] != null ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText) : "";
-                option2Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[1] != null ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText) : "";
-                option3Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[2] != null ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText) : "";
-                option4Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[3] != null ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText) : "";
+                option1Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText) : "";
+                option2Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText) : "";
+                option3Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText) : "";
+                option4Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText) : "";
 
                 break;
         }

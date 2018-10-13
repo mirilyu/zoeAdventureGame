@@ -90,7 +90,7 @@
                                         <button id="option1ImgDeleteBtn" type="button" class="close" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <asp:Image ID="option1Img" class="imgPreview" src="" runat="server" />
+                                        <asp:Image ID="option1Img" class="imgPreview" runat="server" />
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                         <button id="option2ImgDeleteBtn" type="button" class="close" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <asp:Image ID="option2Img" class="imgPreview" src="" runat="server" />
+                                        <asp:Image ID="option2Img" class="imgPreview" runat="server" />
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                                         <button id="option3ImgDeleteBtn" type="button" class="close" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <asp:Image ID="option3Img" class="imgPreview" src="" runat="server" />
+                                        <asp:Image ID="option3Img" class="imgPreview" runat="server" />
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                                         <button id="option4ImgDeleteBtn" type="button" class="close" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <asp:Image ID="option4Img" class="imgPreview" src="" runat="server" />
+                                        <asp:Image ID="option4Img" class="imgPreview" runat="server" />
                                     </div>
                                 </div>
                             </div>

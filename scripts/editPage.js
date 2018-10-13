@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     var qText = document.getElementById("qText");
-    var qTextImg = document.getElementById("qImageFileUpload");
+    var qImg = document.getElementById("qImage");
 
     var option1 = document.getElementById("option1Text");
     var option1Img = document.getElementById("option1Img");
@@ -19,58 +19,70 @@
 
     var arr = [qText, option1, option2, option3, option4];
 
-    console.log(option3Img.getAttribute('src'));
-
     function validateQData() {
-        if ( (qText.value.length >= 2 || qTextImg.value.length > 0) && (option1.value.length > 0 || option1Img.value.length > 0) && (option2.value.length > 0 || option2Img.value.length > 0)) {
+        if ((qText.value.length >= 2 || document.getElementById("qImage").getAttribute('src').length > 0) && (option1.value.length > 0 || document.getElementById("option1Img").getAttribute('src').length > 0) && (option2.value.length > 0 || document.getElementById("option2Img").getAttribute('src').length > 0)) {
             saveQBtn.disabled = false;
         } else {
             saveQBtn.disabled = true;
         }
     }
 
+    arr.forEach(function (e) {
+        e.addEventListener("keyup", function (e) {
+            validateQData();
+            disableEnableFields();
+            //toggleImgDisableEnable();
+        });
+    })
+
     function disableEnableFields() {
-        //debugger;
-        if (option3.value.length > 0 || document.getElementById("option3Img").getAttribute('src').length > 0) {
-            option4.disabled = false;
-            document.getElementById("option4ImgUploadIcon").disabled = false;
-        } else {
-            if (option4.value.length == 0 && document.getElementById("option4Img").getAttribute('src').length == 0) {
-                option4.disabled = true;
-                document.getElementById("option4ImgUploadIcon").disabled = true;
-            }
-        }
-
-        if (option2.value.length > 0 || document.getElementById("option2Img").getAttribute('src').length > 0) {
-            option3.disabled = false;
-            document.getElementById("option3ImgUploadIcon").disabled = false;
-        } else {
-            if (option4.value.length == 0 && document.getElementById("option4Img").getAttribute('src').length == 0) {
-                option4.disabled = true;
-                document.getElementById("option4ImgUploadIcon").disabled = true;
-            }
-            if (option3.value.length == 0 && document.getElementById("option3Img").getAttribute('src').length == 0) {
-                option3.disabled = true;
-                document.getElementById("option3ImgUploadIcon").disabled = true;
-            }
-        }
-
         if (option1.value.length > 0 || document.getElementById("option1Img").getAttribute('src').length > 0) {
-            option2.disabled = false;
-            document.getElementById("option2ImgUploadIcon").disabled = false;
-        } else {
-            if (option4.value.length == 0 && document.getElementById("option4Img").getAttribute('src').length == 0) {
-                option4.disabled = true;
-                document.getElementById("option4ImgUploadIcon").disabled = true;
-            }
-            if (option3.value.length == 0 && document.getElementById("option3Img").getAttribute('src').length == 0) {
+            if (option2.value.length > 0 || document.getElementById("option2Img").getAttribute('src').length > 0) {
+                if (option3.value.length > 0 || document.getElementById("option3Img").getAttribute('src').length > 0) {
+                    if (option4.value.length > 0 || document.getElementById("option4Img").getAttribute('src').length > 0) {
+                        return;
+                    } else {
+                        option4.disabled = false;
+                        document.getElementById("option4ImgUploadIcon").disabled = false;
+                    }
+                } else {
+                    option3.disabled = false;
+                    document.getElementById("option3ImgUploadIcon").disabled = false;
+
+                    option4.disabled = true;
+                    option4.value = "";
+                    document.getElementById("option4ImgUploadIcon").disabled = true;
+                    document.getElementById("option4Img").src = "";
+                }
+            } else {
+                option2.disabled = false;
+                document.getElementById("option2ImgUploadIcon").disabled = false;
+
                 option3.disabled = true;
+                option3.value = "";
                 document.getElementById("option3ImgUploadIcon").disabled = true;
+                document.getElementById("option3Img").src = "";
+
+                option4.disabled = true;
+                option4.value = "";
+                document.getElementById("option4ImgUploadIcon").disabled = true;
+                document.getElementById("option4Img").src = "";
             }
-            if (option2.value.length == 0 && document.getElementById("option2Img").getAttribute('src').length == 0) {
-                option2.disabled = true;
-                document.getElementById("option2ImgUploadIcon").disabled = true;
-            }
+        } else {
+            option2.disabled = true;
+            option2.value = "";
+            document.getElementById("option2ImgUploadIcon").disabled = true;
+            document.getElementById("option2Img").src = "";
+
+            option3.disabled = true;
+            option3.value = "";
+            document.getElementById("option3ImgUploadIcon").disabled = true;
+            document.getElementById("option3Img").src = "";
+
+            option4.disabled = true;
+            option4.value = "";
+            document.getElementById("option4ImgUploadIcon").disabled = true;
+            document.getElementById("option4Img").src = "";
         }
     }
 
@@ -100,14 +112,7 @@
         }
     }
 
-    arr.forEach(function (e) {
-        e.addEventListener("keyup", function (e) {
-            validateQData();
-            disableEnableFields();
-            toggleImgDisableEnable();
-        });
-    })
-
+    // initial field values after page loading
     if (option1.value.length == 0 && option1Img.getAttribute('src').length == 0) {
         option2.disabled = true;
         document.getElementById("option2ImgUploadIcon").disabled = true;
