@@ -1,6 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
-  <idCounter>102</idCounter>
+  <idCounter>103</idCounter>
+  <game gameCode="103" isPublished="false" questionsNumber="2" timePerQuestion="50">
+    <subject>test+name</subject>
+    <questions>
+      <question numberOfTries="0">
+        <questionText>What+is+Masha+afraid+of%3f</questionText>
+        <img />
+        <answers>
+          <answer img="option1_13-10-18_13-53-16.jpg" isCorrect="True">cockroaches</answer>
+          <answer img="" isCorrect="False">cocks</answer>
+          <answer img="" isCorrect="False">poo</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>question+2+text</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">test1</answer>
+          <answer img="" isCorrect="False">test2</answer>
+        </answers>
+      </question>
+    </questions>
+  </game>
   <game isPublished="True" questionsNumber="4" timePerQuestion="30" gameCode="102">
     <subject>Cinematography</subject>
     <questions>
@@ -9,8 +31,8 @@
         <img />
         <answers>
           <answer isCorrect="true">Wes Anderson</answer>
-          <answer>Martin Scorsese</answer>
-          <answer>steven_soderbergh.png</answer>
+          <answer isCorrect="false">Martin Scorsese</answer>
+          <answer isCorrect="false">steven_soderbergh.png</answer>
         </answers>
       </question>
       <question numberOfTries="0">
@@ -18,26 +40,17 @@
         <img>actor.jpg</img>
         <answers>
           <answer isCorrect="true">Russell Crowe</answer>
-          <answer>Kurt Russell</answer>
+          <answer isCorrect="false">Kurt Russell</answer>
         </answers>
       </question>
       <question numberOfTries="0">
         <questionText>What was the first film directed by Quentin Tarantino?</questionText>
         <img />
         <answers>
-          <answer isCorrect="false">Pulp Fiction</answer>
-          <answer>The Hateful Eight</answer>
-          <answer>kill_bill.jpeg</answer>
-          <answer>Reservoir Dogs</answer>
-        </answers>
-      </question>
-      <question numberOfTries="0">
-        <questionText>Who was the leading actor in the Lord of the Rings?</questionText>
-        <img />
-        <answers>
-          <answer isCorrect="false">Dominic Monaghan</answer>
-          <answer>Billy Boyd</answer>
-          <answer>Elijah Wood</answer>
+          <answer isCorrect="true">Pulp Fiction</answer>
+          <answer isCorrect="false">The Hateful Eight</answer>
+          <answer isCorrect="false">kill_bill.jpeg</answer>
+          <answer isCorrect="false">Reservoir Dogs</answer>
         </answers>
       </question>
     </questions>
@@ -49,7 +62,7 @@
         <questionText>In which year began world war two?</questionText>
         <img />
         <answers>
-          <answer isCorrect="true">1934</answer>
+          <answer isCorrect="true">1939</answer>
           <answer isCorrect="false">1919</answer>
           <answer isCorrect="false">1824</answer>
         </answers>
@@ -59,19 +72,9 @@
         <img />
         <answers>
           <answer isCorrect="true">Dallas</answer>
-          <answer>Massachusetts</answer>
-          <answer>Austin</answer>
-          <answer>Cleveland</answer>
-        </answers>
-      </question>
-      <question numberOfTries="0">
-        <questionText>Who wrote Israel's national anthem ?</questionText>
-        <img />
-        <answers>
-          <answer isCorrect="true">Naftali_Hertz_Imber.jpeg</answer>
-          <answer>Judah_Halevi.jpeg</answer>
-          <answer>Chaim Nachman Bialik</answer>
-          <answer>Zvike_Pik.jpeg</answer>
+          <answer isCorrect="false">Massachusetts</answer>
+          <answer isCorrect="false">Austin</answer>
+          <answer isCorrect="false">Cleveland</answer>
         </answers>
       </question>
       <question numberOfTries="0">
@@ -79,9 +82,9 @@
         <img />
         <answers>
           <answer isCorrect="true">1967</answer>
-          <answer>1673</answer>
-          <answer>1948</answer>
-          <answer>1960</answer>
+          <answer isCorrect="false">1673</answer>
+          <answer isCorrect="false">1948</answer>
+          <answer isCorrect="false">1960</answer>
         </answers>
       </question>
     </questions>

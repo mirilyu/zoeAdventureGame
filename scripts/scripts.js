@@ -21,7 +21,7 @@ function addGameScene() {
     clock.clockText.color = "#333";
     
     placeLibEl(1200, 600, statueCounter);
-    getJSON();
+    //getJSON();
 }
 
 function configureQuestions(data) {
@@ -29,7 +29,7 @@ function configureQuestions(data) {
 }
 
 function getJSON() {
-    gameCodeUser = 101;
+    gameCodeUser = parseInt(document.getElementById("gameCodeInput").value);
 
     $.post("/Handler.ashx", {
         gameCode: gameCodeUser
@@ -38,6 +38,9 @@ function getJSON() {
         if (response == "game not found") {
             console.log("not found");
         } else {
+            cleanStage();
+            addGameScene();
+
             var gameObj = JSON.parse(response);
             chosenTopicQuestions = configureQuestions(gameObj);
             numberOfQuestions = chosenTopicQuestions.length;

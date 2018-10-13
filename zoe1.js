@@ -11808,8 +11808,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,127.1,199.8);
 		playBtn.on('click', function() {
 			console.log($(this));
 			if(playBtn.enabled) {
-				cleanStage();
-				addGameScene();
+				getJSON();
 			} else {
 				console.log("do nothing")
 			}
@@ -11880,9 +11879,9 @@ lib.properties = {
 	color: "#182E30",
 	opacity: 1.00,
 	manifest: [
-		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1537770982378", id:"lib/jquery-2.2.4.min.js"},
-		{src:"components/sdk/anwidget.js?1537770982378", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1537770982378", id:"an.TextInput"}
+		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1539428298759", id:"lib/jquery-2.2.4.min.js"},
+		{src:"components/sdk/anwidget.js?1539428298759", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1539428298759", id:"an.TextInput"}
 	],
 	preloads: []
 };

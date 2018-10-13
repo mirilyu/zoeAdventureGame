@@ -124,6 +124,7 @@ public partial class Edit : System.Web.UI.Page
         if (option2Text.Text.Length > 0 || option2ImgUpload.PostedFile.ContentLength > 0)
         {
             XmlElement answer2 = addAnswerOption(xmlDoc, option2Text, option2ImgUpload, option2Img, "option2");
+            answer2.SetAttribute("isCorrect", "False");
             newAnswers.AppendChild(answer2);
         }
 
@@ -131,6 +132,7 @@ public partial class Edit : System.Web.UI.Page
         if (option3Text.Text.Length > 0 || option3ImgUpload.PostedFile.ContentLength > 0)
         {
             XmlElement answer3 = addAnswerOption(xmlDoc, option3Text, option3ImgUpload, option3Img, "option3");
+            answer3.SetAttribute("isCorrect", "False");
             newAnswers.AppendChild(answer3);
         }
 
@@ -138,6 +140,7 @@ public partial class Edit : System.Web.UI.Page
         if (option4Text.Text.Length > 0 || option4ImgUpload.PostedFile.ContentLength > 0)
         {
             XmlElement answer4 = addAnswerOption(xmlDoc, option4Text, option4ImgUpload, option4Img, "option4");
+            answer4.SetAttribute("isCorrect", "False");
             newAnswers.AppendChild(answer4);
         }
 
@@ -267,6 +270,9 @@ public partial class Edit : System.Web.UI.Page
         if(isCorrect == true)
         {
             answer.SetAttribute("isCorrect", "True");
+        } else
+        {
+            answer.SetAttribute("isCorrect", "False");
         }
         answer.InnerXml = (optionText != "") ? Server.UrlEncode(optionText) : null;
         answer.SetAttribute("img", uploadImage(optionFile, prefix));

@@ -13,6 +13,10 @@ var optionsArray = [];
 var cursorsArray = [];
 var questionTries = {};
 
+function decodeString(string) {
+    return decodeURIComponent(string.replace(new RegExp("\\+", "g"), ' '));
+}
+
 function startTimer() {
 	clock.clockText.text = questionTime;
 
@@ -50,15 +54,15 @@ function printQuestion() {
 
     qBoard.qBoardText.color = "#333333";
     qBoard.qBoardText.font = "20px 'Heebo'";
-    qBoard.qBoardText.text = chosenTopicQuestions[0].questionText;
+    qBoard.qBoardText.text = decodeString(chosenTopicQuestions[0].questionText);
 
-	chosenTopicQuestions[0].answers.answer.forEach(function(option, index) {
+    chosenTopicQuestions[0].answers.answer.forEach(function (option, index) {
         var questionOption = new lib.optionStone();
         var optionWidth = questionOption.nominalBounds.width;
 
         questionOption.stoneText.color = "#333333";
         questionOption.stoneText.font = "16px 'Heebo'";
-		questionOption.stoneText.text = option["#text"];
+        questionOption.stoneText.text = decodeURIComponent(option["#text"]);
 		questionOption.optionCorrect.alpha = 0;
 		questionOption.optionWrong.alpha = 0;
         
@@ -73,7 +77,7 @@ function printQuestion() {
 			chosenTopicQuestions[0]["@numberOfTries"]++;
 			
 			var isCorrect = questionOption.isCorrect;
-			if(isCorrect === "true") {
+			if(isCorrect === "True") {
 				correctAnswer(questionOption);
 			} else {
 				wrongAnswer(questionOption);
