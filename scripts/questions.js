@@ -1,4 +1,4 @@
-var chosenTopicQuestions;
+﻿var chosenTopicQuestions;
 var numberOfQuestions;
 var timerSeconds;
 
@@ -15,6 +15,21 @@ var questionTries = {};
 
 function decodeString(string) {
     return decodeURIComponent(string.replace(new RegExp("\\+", "g"), ' '));
+}
+
+function resizeImage(box, content) {
+    console.log(content);
+    //debugger;
+    var boxBounds = box.nominalBounds;
+    var contentBounds = content.getBounds();
+
+    var toScale = 0;
+    if (boxBounds.height / contentBounds.height < boxBounds.width / contentBounds.width) {
+        toScale = boxBounds.height / contentBounds.height;
+    } else {
+        toScale = (boxBounds.width-60) / contentBounds.width;
+    }
+    return toScale;
 }
 
 function startTimer() {
@@ -60,11 +75,26 @@ function printQuestion() {
         var questionOption = new lib.optionStone();
         var optionWidth = questionOption.nominalBounds.width;
 
-        questionOption.stoneText.color = "#333333";
-        questionOption.stoneText.font = "16px 'Heebo'";
-        questionOption.stoneText.text = decodeURIComponent(option["#text"]);
+        if (option["@img"].length == 0) {
+            questionOption.stoneText.color = "#333333";
+            questionOption.stoneText.font = "16px 'Heebo'";
+            questionOption.stoneText.text = decodeURIComponent(option["#text"]);
+        } else {
+            var img = new Image();
+            img.src = "uploads/" + option["@img"];
+
+            var bmp = new createjs.Bitmap(img);
+            bmp.x = 20 + 30 + (optionWidth * index); bmp.y = 530;
+            bmp.alpha = 0;
+            setTimeout(function () {
+                bmp.set({ scaleX: resizeImage(questionOption, bmp), scaleY: resizeImage(questionOption, bmp) });
+                  bmp.alpha = 1;
+            }, 1000);
+        }
+
 		questionOption.optionCorrect.alpha = 0;
 		questionOption.optionWrong.alpha = 0;
+		questionOption.instance.alpha = 1;
         
         questionOption.x = 20+(optionWidth * index);
         questionOption.y = 450;
@@ -85,6 +115,7 @@ function printQuestion() {
 		});
 
         stage.addChild(questionOption);
+        stage.addChild(bmp);
     })
 }
 

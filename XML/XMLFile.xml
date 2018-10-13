@@ -9,8 +9,8 @@
         <img />
         <answers>
           <answer img="option1_13-10-18_13-53-16.jpg" isCorrect="True">cockroaches</answer>
-          <answer img="" isCorrect="False">cocks</answer>
-          <answer img="" isCorrect="False">poo</answer>
+          <answer img="option1_13-10-18_16-08-34.JPG" isCorrect="False">cocks</answer>
+          <answer img="option1_13-10-18_15-56-35.jpg" isCorrect="False">kitties</answer>
         </answers>
       </question>
       <question numberOfTries="0">
