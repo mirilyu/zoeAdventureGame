@@ -21,7 +21,6 @@ function addGameScene() {
     clock.clockText.color = "#333";
     
     placeLibEl(1200, 600, statueCounter);
-    //getJSON();
 }
 
 function configureQuestions(data) {
@@ -41,9 +40,10 @@ function getJSON() {
             cleanStage();
             addGameScene();
 
-            var gameObj = JSON.parse(response);
+            gameObj = JSON.parse(response);
             chosenTopicQuestions = configureQuestions(gameObj);
             numberOfQuestions = chosenTopicQuestions.length;
+            questionTime = gameObj.game["@timePerQuestion"];
             printQuestion();
         }
     })

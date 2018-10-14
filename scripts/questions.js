@@ -1,15 +1,17 @@
-﻿var chosenTopicQuestions;
+﻿var gameObj;
+var chosenTopicQuestions;
 var numberOfQuestions;
 var timerSeconds;
 
 // counters
 var correctAnswersCounter = 0;
-var questionTime = 9;
+var questionTime;
 var timeSpent = 0;
 var goldQuantity = 10;
 
 // arrays and objects
 var optionsArray = [];
+var optionImagesArray = [];
 var cursorsArray = [];
 var questionTries = {};
 
@@ -18,8 +20,6 @@ function decodeString(string) {
 }
 
 function resizeImage(box, content) {
-    console.log(content);
-    //debugger;
     var boxBounds = box.nominalBounds;
     var contentBounds = content.getBounds();
 
@@ -63,6 +63,12 @@ function printQuestion() {
 		});
 	}
 
+	if (optionImagesArray.length > 0) {
+	    optionImagesArray.forEach(function (optionImg) {
+	        stage.removeChild(optionImg);
+	    });
+	}
+
 	startTimer();
 
 	stage.removeChild(continueBtn);
@@ -83,9 +89,23 @@ function printQuestion() {
             var img = new Image();
             img.src = "uploads/" + option["@img"];
 
+            var bigBmp;
+
             var bmp = new createjs.Bitmap(img);
             bmp.x = 20 + 30 + (optionWidth * index); bmp.y = 530;
             bmp.alpha = 0;
+
+            bmp.addEventListener('mouseover', function (e) {
+                bigBmp = new createjs.Bitmap(img);
+                bigBmp.x = 0;
+                bigBmp.y = 0;
+                stage.addChild(bigBmp);
+            });
+
+            bmp.addEventListener('mouseout', function (e) {
+                stage.removeChild(bigBmp);
+            });
+
             setTimeout(function () {
                 bmp.set({ scaleX: resizeImage(questionOption, bmp), scaleY: resizeImage(questionOption, bmp) });
                   bmp.alpha = 1;
@@ -101,6 +121,7 @@ function printQuestion() {
         questionOption.isCorrect = option["@isCorrect"];
         
         optionsArray.push(questionOption);
+        optionImagesArray.push(bmp);
 
         questionOption.addEventListener("click", function() {
 			stopTimer();
