@@ -262,6 +262,10 @@
     })
 
     // checking if there is an option img onload
+    if (qImage.attr('src').length > 0) {
+        qImage.closest(".imgPreviewWrapper").show();
+        qImgUploadIcon.hide();
+    }
     if (option1Img.attr('src').length > 0) {
         option1Img.closest(".imgPreviewWrapper").show();
         option1ImgUploadIcon.hide();

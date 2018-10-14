@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
   <idCounter>103</idCounter>
-  <game gameCode="103" isPublished="false" questionsNumber="2" timePerQuestion="50">
+  <game gameCode="103" isPublished="false" questionsNumber="3" timePerQuestion="50">
     <subject>test+name</subject>
     <questions>
       <question numberOfTries="0">
         <questionText>What+is+Masha+afraid+of%3f</questionText>
-        <img />
+        <img>qImg_14-10-18_20-42-25.JPG</img>
         <answers>
           <answer img="option1_13-10-18_13-53-16.jpg" isCorrect="True">cockroaches</answer>
           <answer img="option1_13-10-18_16-08-34.JPG" isCorrect="False">cocks</answer>
@@ -19,6 +19,16 @@
         <answers>
           <answer img="" isCorrect="True">test1</answer>
           <answer img="" isCorrect="False">test2</answer>
+          <answer isCorrect="False" img="">test3</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>Find+a+kitty</questionText>
+        <img>qImg_14-10-18_21-22-01.jpg</img>
+        <answers>
+          <answer img="option1_14-10-18_21-21-13.jpg" isCorrect="True" />
+          <answer img="" isCorrect="False">test</answer>
+          <answer img="option3_14-10-18_21-21-13.jpg" isCorrect="False" />
         </answers>
       </question>
     </questions>

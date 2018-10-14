@@ -66,7 +66,7 @@
                                     <button id="qImgDeleteBtn" type="button" class="close" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <asp:Image ID="qImage" class="imgPreview" src="" runat="server" />
+                                    <asp:Image ID="qImage" class="imgPreview" runat="server" />
                                 </div>
                             </div>
                         </div>

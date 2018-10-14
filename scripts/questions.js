@@ -2,6 +2,8 @@
 var chosenTopicQuestions;
 var numberOfQuestions;
 var timerSeconds;
+var questionBoard;
+var questionImg;
 
 // counters
 var correctAnswersCounter = 0;
@@ -32,6 +34,19 @@ function resizeImage(box, content) {
     return toScale;
 }
 
+function resizeImageFixed(box, img) {
+    var imgDimensions = img.getBounds();
+
+    var toScale;
+
+    if (box.height / imgDimensions.height < box.width / imgDimensions.width) {
+        toScale = box.height / imgDimensions.height;
+    } else {
+        toScale = (box.width - 60) / imgDimensions.width;
+    }
+    return toScale;
+}
+
 function startTimer() {
 	clock.clockText.text = questionTime;
 
@@ -49,6 +64,32 @@ function startTimer() {
 function stopTimer() {
     clearInterval(timerSeconds);
     timeSpent += questionTime - parseInt(clock.clockText.text);
+}
+
+function addQuestionBoard() {
+    // if there is a question image, place the question board which has space for an image
+    if (chosenTopicQuestions[0].img) {
+        questionBoard = qBoardImg;
+        questionImg = new createjs.Bitmap("uploads/" + chosenTopicQuestions[0].img);
+        questionImg.x = 175;
+        questionImg.y = 125;
+        questionImg.alpha = 0;
+        placeLibEl(10, 80, questionBoard);
+
+        box = {
+            height: 300,
+            width: 300
+        }
+
+        setTimeout(function () {
+            questionImg.set({ scaleX: resizeImageFixed(box, questionImg), scaleY: resizeImageFixed(box, questionImg) });
+            questionImg.alpha = 1;
+            stage.addChild(questionImg);
+        }, 500)
+    } else {
+        questionBoard = qBoard;
+        placeLibEl(10, 80, questionBoard);
+    }
 }
 
 function printQuestion() {
@@ -69,13 +110,18 @@ function printQuestion() {
 	    });
 	}
 
+	questionImg = null;
+	stage.removeChild(questionBoard);
+
 	startTimer();
 
 	stage.removeChild(continueBtn);
 
-    qBoard.qBoardText.color = "#333333";
-    qBoard.qBoardText.font = "20px 'Heebo'";
-    qBoard.qBoardText.text = decodeString(chosenTopicQuestions[0].questionText);
+	addQuestionBoard();
+    
+	questionBoard.qBoardText.color = "#333333";
+	questionBoard.qBoardText.font = "20px 'Heebo'";
+	questionBoard.qBoardText.text = decodeString(chosenTopicQuestions[0].questionText);
 
     chosenTopicQuestions[0].answers.answer.forEach(function (option, index) {
         var questionOption = new lib.optionStone();
@@ -94,11 +140,31 @@ function printQuestion() {
             var bmp = new createjs.Bitmap(img);
             bmp.x = 20 + 30 + (optionWidth * index); bmp.y = 530;
             bmp.alpha = 0;
+            bmp.isCorrect = option["@isCorrect"];
+
+            bmp.addEventListener("click", function () {
+                stopTimer();
+                chosenTopicQuestions[0]["@numberOfTries"]++;
+
+                var isCorrect = bmp.isCorrect;
+                if (isCorrect === "True") {
+                    correctAnswer(questionOption);
+                } else {
+                    wrongAnswer(questionOption);
+                }
+            })
 
             bmp.addEventListener('mouseover', function (e) {
                 bigBmp = new createjs.Bitmap(img);
                 bigBmp.x = 0;
                 bigBmp.y = 0;
+
+                box = {
+                    height: 500,
+                    width: 1000
+                }
+
+                bigBmp.set({ scaleX: resizeImageFixed(box, bigBmp), scaleY: resizeImageFixed(box, bigBmp) });
                 stage.addChild(bigBmp);
             });
 
@@ -108,13 +174,13 @@ function printQuestion() {
 
             setTimeout(function () {
                 bmp.set({ scaleX: resizeImage(questionOption, bmp), scaleY: resizeImage(questionOption, bmp) });
-                  bmp.alpha = 1;
+                bmp.alpha = 1;
             }, 1000);
         }
 
 		questionOption.optionCorrect.alpha = 0;
 		questionOption.optionWrong.alpha = 0;
-		questionOption.instance.alpha = 1;
+		//questionOption.instance.alpha = 1;
         
         questionOption.x = 20+(optionWidth * index);
         questionOption.y = 450;

@@ -245,6 +245,7 @@ public partial class Edit : System.Web.UI.Page
         XmlNode editedQ = xmlDoc.SelectNodes("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/questions/question")[RowIndex];
 
         editedQ["questionText"].InnerXml = Server.UrlEncode(qText.Text);
+        editedQ["img"].InnerXml = uploadImage(qImageFileUpload, "qImg");
 
         // option 1
         updateAnswerOption(option1Text, option1ImgUpload, option1Img, editedQ, "option1", 0);
@@ -322,7 +323,7 @@ public partial class Edit : System.Web.UI.Page
                 option3Text.Text = selectedQ.SelectNodes("answers/answer")[2] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[2].InnerXml) : "";
                 option4Text.Text = selectedQ.SelectNodes("answers/answer")[3] != null ? Server.UrlDecode(selectedQ.SelectNodes("answers/answer")[3].InnerXml) : "";
 
-                qImage.ImageUrl = selectedQ.SelectNodes("img")[0] != null ? imagesLibPath + Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("img")[0].InnerXml) : "";
+                qImage.ImageUrl = selectedQ.SelectNodes("img")[0].InnerText != "" ? imagesLibPath + Server.UrlDecode(selectedQ.SelectNodes("img")[0].InnerXml) : "";
 
                 if(selectedQ.SelectNodes("answers/answer")[0] != null)
                 {
