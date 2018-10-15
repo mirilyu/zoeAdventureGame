@@ -40,10 +40,17 @@ function getJSON() {
             addGameScene();
 
             gameObj = JSON.parse(response);
+
+            gameObj.game.questions.question.forEach(function (element) {
+                shuffle(element.answers.answer);
+            })
+
             chosenTopicQuestions = configureQuestions(gameObj);
             numberOfQuestions = chosenTopicQuestions.length;
             questionTime = gameObj.game["@timePerQuestion"];
             navigation.children[5].text = decodeString(gameObj.game.subject);
+            statueCounter.statueText.text = statuesNumber + "/" + numberOfQuestions;
+            statueCounter.statueText.font = "20px 'Heebo'";
             printQuestion();
         }
     })

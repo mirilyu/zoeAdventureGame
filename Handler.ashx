@@ -16,10 +16,18 @@ public class Handler : IHttpHandler {
         XmlNode gameNode = myDoc.SelectSingleNode("//game[@gameCode='" + gameCode + "']");
         if (gameNode != null)
         {
-            string jsonText = JsonConvert.SerializeXmlNode(gameNode);
-
-            context.Response.Write(jsonText);
-        } else
+            //gameNode.SelectNodes("answers/answer")[qIndex].Attributes["img"].InnerText
+            if(gameNode.Attributes["isPublished"].InnerText != "false")
+            {
+                string jsonText = JsonConvert.SerializeXmlNode(gameNode);
+                context.Response.Write(jsonText);
+            }
+            else
+            {
+                context.Response.Write("game not found");
+            }
+        }
+        else
         {
             context.Response.Write("game not found");
         }

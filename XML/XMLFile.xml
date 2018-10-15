@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
   <idCounter>103</idCounter>
-  <game gameCode="103" isPublished="false" questionsNumber="3" timePerQuestion="50">
+  <game gameCode="103" isPublished="True" questionsNumber="3" timePerQuestion="50">
     <subject>test+name</subject>
     <questions>
       <question numberOfTries="0">
@@ -65,7 +65,7 @@
       </question>
     </questions>
   </game>
-  <game isPublished="False" questionsNumber="4" timePerQuestion="50" gameCode="101">
+  <game isPublished="false" questionsNumber="4" timePerQuestion="50" gameCode="101">
     <subject>World History</subject>
     <questions>
       <question numberOfTries="0">

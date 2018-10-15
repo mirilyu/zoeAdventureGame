@@ -9,13 +9,24 @@ var questionImg;
 var correctAnswersCounter = 0;
 var questionTime;
 var timeSpent = 0;
-var goldQuantity = 10;
+var statuesNumber = 0;
 
 // arrays and objects
 var optionsArray = [];
 var optionImagesArray = [];
 var cursorsArray = [];
 var questionTries = {};
+
+function shuffle(a) { // from https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+}
 
 function decodeString(string) {
     return decodeURIComponent(string.replace(new RegExp("\\+", "g"), ' '));
@@ -98,6 +109,7 @@ function printQuestion() {
 		return;
 	}
 
+    // removing previous quesiton things
 	if(optionsArray.length > 0) {
 		optionsArray.forEach(function(option) {
 			stage.removeChild(option);
@@ -113,10 +125,10 @@ function printQuestion() {
 	questionImg = null;
 	stage.removeChild(questionBoard);
 
-	startTimer();
-
 	stage.removeChild(continueBtn);
 
+    // starting new question
+	startTimer();
 	addQuestionBoard();
     
 	questionBoard.qBoardText.color = "#333333";
@@ -138,7 +150,7 @@ function printQuestion() {
             var bigBmp;
 
             var bmp = new createjs.Bitmap(img);
-            bmp.x = 20 + 30 + (optionWidth * index); bmp.y = 530;
+            bmp.x = 20 + 30 + (optionWidth * index); bmp.y = 560;
             bmp.alpha = 0;
             bmp.isCorrect = option["@isCorrect"];
 
@@ -183,7 +195,7 @@ function printQuestion() {
 		//questionOption.instance.alpha = 1;
         
         questionOption.x = 20+(optionWidth * index);
-        questionOption.y = 450;
+        questionOption.y = 480;
         questionOption.isCorrect = option["@isCorrect"];
         
         optionsArray.push(questionOption);
@@ -207,6 +219,9 @@ function printQuestion() {
 }
 
 function correctAnswer(questionOption) {
+    statuesNumber++;
+    statueCounter.statueText.text = statuesNumber + "/" + numberOfQuestions;
+
     var currentQuestionNumberOfTries = chosenTopicQuestions[0]["@numberOfTries"];
     if (!questionTries[chosenTopicQuestions[0]["@numberOfTries"]]) {
         questionTries[chosenTopicQuestions[0]["@numberOfTries"]] = 1;
