@@ -14,8 +14,7 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <div class="row justify-content-start">
-                    <img src="#" alt="Alternate Text" />
-                    <span>zoe</span>
+                    <img src="images/zoe-logo.png" class="logo" alt="Alternate Text" />
                 </div>
             </div>
 

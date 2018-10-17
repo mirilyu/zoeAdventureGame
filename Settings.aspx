@@ -13,8 +13,7 @@
         <div class="row align-items-center">
             <div class="col-4">
                 <div class="row justify-content-start">
-                    <img src="#" alt="Alternate Text" />
-                    <span>zoe</span>
+                    <img src="images/zoe-logo.png" class="logo" alt="Alternate Text" />
                 </div>
             </div>
 
@@ -58,8 +57,8 @@
                             <asp:DropDownList ID="gameTimeDropdown" runat="server">
                                 <asp:ListItem Value="30">30 שניות</asp:ListItem>
                                 <asp:ListItem Value="40">40 שניות</asp:ListItem>
-                                <asp:ListItem Value="50">50 שניות</asp:ListItem>
-                                <asp:ListItem Value="0">ללא הגבלה</asp:ListItem>
+                                <asp:ListItem Value="60">60 שניות</asp:ListItem>
+                                <asp:ListItem Value="90">90 שניות</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>

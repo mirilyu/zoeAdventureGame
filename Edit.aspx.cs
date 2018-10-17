@@ -55,7 +55,7 @@ public partial class Edit : System.Web.UI.Page
 
     protected void goBack_Click(object sender, EventArgs e)
     {
-       
+        Response.Redirect("GamesList.aspx");
     }
 
     protected void option1ImgDeleteBtn_Click(object sender, EventArgs e)
