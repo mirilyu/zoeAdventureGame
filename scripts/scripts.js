@@ -2,6 +2,8 @@ function cleanStage() {
     stage.removeAllChildren();
     navigation.x = 0;
     navigation.y = 0;
+    placeLibEl(0, 0, qBg);
+    qBg.alpha = 0.5;
     stage.addChild(navigation);
 }
 
@@ -12,14 +14,12 @@ function placeLibEl(x, y, el) {
 }
 
 function addGameScene() {
-    placeLibEl(0, 75, qBg);
-    qBg.alpha = 0.5;
-
     placeLibEl(1200, 100, clock);
     clock.clockText.font = "50px 'Heebo'";
     clock.clockText.color = "#333";
     
     placeLibEl(1200, 600, statueCounter);
+    placeLibEl(1000, 290, zoe);
 }
 
 function configureQuestions(data) {
