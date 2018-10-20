@@ -5,6 +5,7 @@ function cleanStage() {
     placeLibEl(0, 0, qBg);
     qBg.alpha = 0.5;
     stage.addChild(navigation);
+    stage.removeChild(gameNotFound);
 }
 
 function placeLibEl(x, y, el) {
@@ -35,7 +36,7 @@ function getJSON() {
     })
     .done(function (response) {
         if (response == "game not found") {
-            console.log("not found");
+            placeLibEl(565, 420, gameNotFound);
         } else {
             cleanStage();
             addGameScene();
