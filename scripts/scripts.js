@@ -20,6 +20,7 @@ function addGameScene() {
     
     placeLibEl(1200, 600, statueCounter);
     placeLibEl(1000, 290, zoe);
+    placeLibEl(900, 270, statueAnimation);
 }
 
 function configureQuestions(data) {

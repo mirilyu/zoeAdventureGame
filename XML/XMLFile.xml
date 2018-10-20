@@ -5,17 +5,17 @@
     <subject>Cinematography</subject>
     <questions>
       <question numberOfTries="0">
-        <questionText>Who directed The Isle of Dogs?</questionText>
+        <questionText>Who+directed+The+Isle+of+Dogs%3f</questionText>
         <img />
         <answers>
-          <answer isCorrect="True" img="">Wes Anderson</answer>
-          <answer isCorrect="False" img="">Martin Scorsese</answer>
-          <answer isCorrect="False" img="">steven_soderbergh.png</answer>
+          <answer isCorrect="True" img="">Wes+Anderson</answer>
+          <answer isCorrect="False" img="">Martin+Scorsese</answer>
+          <answer isCorrect="False" img="option1_19-10-18_23-58-24.png">steven+soderbergh</answer>
         </answers>
       </question>
       <question numberOfTries="0">
         <questionText>What's the name of this actor?</questionText>
-        <img>actor.jpg</img>
+        <img />
         <answers>
           <answer isCorrect="True" img="">Russell Crowe</answer>
           <answer isCorrect="False" img="">Kurt Russell</answer>

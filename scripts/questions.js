@@ -142,7 +142,7 @@ function printQuestion() {
         if (option["@img"].length == 0) {
             questionOption.stoneText.color = "#333333";
             questionOption.stoneText.font = "16px 'Heebo'";
-            questionOption.stoneText.text = decodeURIComponent(option["#text"]);
+            questionOption.stoneText.text = decodeString(option["#text"]);
         } else {
             var img = new Image();
             img.src = "uploads/" + option["@img"];
@@ -219,6 +219,8 @@ function printQuestion() {
 }
 
 function correctAnswer(questionOption) {
+    zoe.gotoAndPlay(21);
+    statueAnimation.gotoAndPlay(0);
     statuesNumber++;
     statueCounter.statueText.text = statuesNumber + "/" + numberOfQuestions;
 
@@ -246,6 +248,7 @@ function correctAnswer(questionOption) {
 }
 
 function wrongAnswer(questionOption) {
+    zoe.gotoAndPlay(9);
 	questionOption.optionWrong.alpha = 1;
 	stage.addChild(continueBtn);
 	moveQuestionToEnd();
