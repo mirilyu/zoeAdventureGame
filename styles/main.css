@@ -168,3 +168,7 @@ form img {
 #qImgPanel .imgPreviewWrapper img {
     max-height: 90px;
 }
+
+.aspNetDisabled {
+    opacity: 0.5;
+}

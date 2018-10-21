@@ -30,6 +30,16 @@ public partial class GamesList : System.Web.UI.Page
         return canPublish;
     }
 
+    public bool CheckIfIsPublished(string gameCode)
+    {
+        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
+        XmlNode myGame = xmlDoc.SelectSingleNode("/project/game[@gameCode=" + gameCode + "]");
+
+        bool isPublished = myGame.Attributes["isPublished"].InnerXml == "True" ? true : false;
+
+        return isPublished;
+    }
+
     protected void createGame_Click(object sender, EventArgs e)
     {
         // loading XML file
@@ -110,6 +120,9 @@ public partial class GamesList : System.Web.UI.Page
 
     void deleteGame(string theId)
     {
+        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
+        deletedGameName.Text = Server.UrlDecode(xmlDoc.SelectNodes("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/subject").Item(0).InnerText);
+
         confirmDeleteBtn.Attributes["data-id"] = theId;
         deleteGamePopup.Style.Add("display", "block");
         modalBackdrop.Style.Add("display", "block");

@@ -12,12 +12,18 @@ public partial class Edit : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
+
         var path = "/project/game[@gameCode=" + Session["theItemIdSession"] + "]/questions/question".ToString();
         XmlDataSource2.XPath = path;
 
-        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
-        qNumber.Text = Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]").Attributes["questionsNumber"].InnerText);
+        var questionsNumber = Convert.ToInt16(Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]").Attributes["questionsNumber"].InnerText));
+
+        qNumber.Text = questionsNumber.ToString();
         gameSubject.Text = Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/subject").InnerXml);
+
+        ifCanPublishText.Text = (questionsNumber >= 10) ? "ניתן לפרסם את המסחק" : "לפחות 10 שאלות לפרסום";
+        ifCanPublishText.CssClass = (questionsNumber >= 10) ? "mr-4 text-success" : "mr-4 text-danger";
     }
 
     void resetForm()

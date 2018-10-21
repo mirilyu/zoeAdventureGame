@@ -24,7 +24,7 @@
                         <span class="nav-link disabled">עזרה</span>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">אודות</a>
+                        <a href="/About.aspx" class="nav-link">אודות</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/zoe1.html">למשחק</a>
@@ -171,7 +171,8 @@
                             <asp:Label ID="qNumber" runat="server" Text="Label"></asp:Label>
                         </b>
                         <span>שאלות</span>
-                        <small class="mr-4 text-danger">לפחות 10 שאלות לפרסום</small>
+                        <small><asp:Label ID="ifCanPublishText" runat="server" Text="Label"></asp:Label></small>
+                        <%--<small class="mr-4 text-danger">לפחות 10 שאלות לפרסום</small>--%>
                     </h5>
 
                     <asp:Panel ID="gameQuestionsPanel" runat="server">

@@ -23,7 +23,7 @@
                         <span class="nav-link disabled">עזרה</span>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">אודות</a>
+                        <a href="/About.aspx" class="nav-link">אודות</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/zoe1.html">למשחק</a>
@@ -71,6 +71,7 @@
                                 <asp:TemplateField HeaderText="קוד">
                                     <ItemTemplate>
                                         <asp:Label ID="gameCode" runat="server"
+                                            Enabled='<%#CheckIfIsPublished(XPathBinder.Eval(Container.DataItem,"@gameCode").ToString())%>'
                                             Text='<%#XPathBinder.Eval(Container.DataItem, "@gameCode") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -130,7 +131,8 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <p class="popup-text">האם אתה בטוח שברצונך למחוק את משחק?</p>
+                                    <p class="popup-text">האם אתה בטוח שברצונך למחוק את משחק:</p>
+                                    <asp:Label ID="deletedGameName" runat="server" Text="Label" class="font-weight-bold"></asp:Label>
                                 </div>
 
                                 <div class="modal-footer justify-content-start">

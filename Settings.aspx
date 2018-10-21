@@ -23,10 +23,10 @@
                         <span class="nav-link disabled">עזרה</span>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">אודות</a>
+                        <a href="/About.aspx" class="nav-link">אודות</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">למשחק</a>
+                        <a class="nav-link" href="/zoe1.html">למשחק</a>
                     </li>
                 </ul>
             </nav>
