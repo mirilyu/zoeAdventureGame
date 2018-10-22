@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
   <idCounter>103</idCounter>
-  <game isPublished="True" questionsNumber="5" timePerQuestion="90" gameCode="102">
+  <game isPublished="True" questionsNumber="4" timePerQuestion="90" gameCode="102">
     <subject>Cinematography</subject>
     <questions>
       <question numberOfTries="0">
@@ -14,31 +14,32 @@
         </answers>
       </question>
       <question numberOfTries="0">
-        <questionText>What's the name of this actor?</questionText>
+        <questionText>What%27s+the+name+of+this+actor%3f</questionText>
         <img />
         <answers>
-          <answer isCorrect="True" img="">Russell Crowe</answer>
-          <answer isCorrect="False" img="">Kurt Russell</answer>
+          <answer isCorrect="True" img="">Russell+Crowe</answer>
+          <answer isCorrect="False" img="">Kurt+Russell</answer>
+          <answer isCorrect="False" img="option4_22-10-18_22-32-48.png" />
+          <answer isCorrect="False" img="option1_22-10-18_22-33-58.png" />
         </answers>
       </question>
       <question numberOfTries="0">
-        <questionText>What was the first film directed by Quentin Tarantino?</questionText>
+        <questionText>What+was+the+first+film+directed+by+Quentin+Tarantino%3f</questionText>
         <img />
         <answers>
-          <answer img="" isCorrect="True">Pulp Fiction</answer>
-          <answer img="" isCorrect="False">The Hateful Eight</answer>
+          <answer img="" isCorrect="True">Pulp+Fiction</answer>
+          <answer img="" isCorrect="False">The+Hateful+Eight</answer>
           <answer img="" isCorrect="False">kill_bill.jpeg</answer>
-          <answer img="" isCorrect="False">Reservoir Dogs</answer>
+          <answer img="" isCorrect="False">Reservoir+Dogs</answer>
         </answers>
       </question>
       <question numberOfTries="0">
-        <questionText>Who+is+this%3f</questionText>
-        <img>qImage_17-10-18_20-41-19.png</img>
+        <questionText>test</questionText>
+        <img />
         <answers>
-          <answer img="" isCorrect="True">a+man</answer>
-          <answer img="" isCorrect="False">your+dad</answer>
-          <answer img="option3_17-10-18_20-41-19.jpg" isCorrect="False" />
-          <answer img="option4_17-10-18_20-41-19.jpg" isCorrect="False" />
+          <answer img="" isCorrect="True">test+1</answer>
+          <answer img="option2_22-10-18_22-10-23.png" isCorrect="False" />
+          <answer isCorrect="False" img="">sss</answer>
         </answers>
       </question>
     </questions>

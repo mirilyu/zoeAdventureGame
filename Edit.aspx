@@ -171,8 +171,8 @@
                             <asp:Label ID="qNumber" runat="server" Text="Label"></asp:Label>
                         </b>
                         <span>שאלות</span>
-                        <small><asp:Label ID="ifCanPublishText" runat="server" Text="Label"></asp:Label></small>
-                        <%--<small class="mr-4 text-danger">לפחות 10 שאלות לפרסום</small>--%>
+                        <small>
+                            <asp:Label ID="ifCanPublishText" runat="server" Text="Label"></asp:Label></small>
                     </h5>
 
                     <asp:Panel ID="gameQuestionsPanel" runat="server">
@@ -212,11 +212,31 @@
                         </asp:GridView>
                         <asp:XmlDataSource ID="XmlDataSource2" runat="server" DataFile="~/XML/XMLFile.xml"></asp:XmlDataSource>
                     </div>
-
                 </div>
+
+                <asp:Panel ID="deleteQPopup" Style="display: none;" CssClass="modal fade show" runat="server">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">אישור מחיקה</h5>
+                            </div>
+
+                            <div class="modal-body">
+                                <p class="popup-text">האם אתה בטוח שברצונך למחוק את שאלה?</p>
+                            </div>
+
+                            <div class="modal-footer justify-content-start">
+                                <asp:Button ID="confirmDeleteBtn" data-id="" CssClass="btn btn-primary ml-3" runat="server" Text="כן - מחק" OnClick="confirmDeleteBtn_Click" />
+                                <asp:Button ID="cancelDeleteBtn" CssClass="btn btn-secondary" runat="server" Text="לא - חזור" OnClick="cancelDeleteBtn_Click" />
+                            </div>
+                        </div>
+                    </div>
+                </asp:Panel>
             </form>
         </div>
     </main>
+
+    <asp:Panel ID="modalBackdrop" Style="display: none;" CssClass="modal-backdrop fade show" runat="server"></asp:Panel>
 
     <script src="scripts/editPage.js"></script>
 

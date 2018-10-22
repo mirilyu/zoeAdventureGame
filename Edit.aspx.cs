@@ -12,18 +12,9 @@ public partial class Edit : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
 
         var path = "/project/game[@gameCode=" + Session["theItemIdSession"] + "]/questions/question".ToString();
         XmlDataSource2.XPath = path;
-
-        var questionsNumber = Convert.ToInt16(Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]").Attributes["questionsNumber"].InnerText));
-
-        qNumber.Text = questionsNumber.ToString();
-        gameSubject.Text = Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/subject").InnerXml);
-
-        ifCanPublishText.Text = (questionsNumber >= 10) ? "ניתן לפרסם את המסחק" : "לפחות 10 שאלות לפרסום";
-        ifCanPublishText.CssClass = (questionsNumber >= 10) ? "mr-4 text-success" : "mr-4 text-danger";
     }
 
     void resetForm()
@@ -57,6 +48,14 @@ public partial class Edit : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
+        var questionsNumber = Convert.ToInt16(Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]").Attributes["questionsNumber"].InnerText));
+
+        qNumber.Text = questionsNumber.ToString();
+        gameSubject.Text = Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/subject").InnerXml);
+
+        ifCanPublishText.Text = (questionsNumber >= 10) ? "ניתן לפרסם את המסחק" : "לפחות 10 שאלות לפרסום";
+        ifCanPublishText.CssClass = (questionsNumber >= 10) ? "mr-4 text-success" : "mr-4 text-danger";
     }
 
     protected void goBack_Click(object sender, EventArgs e)
@@ -169,6 +168,7 @@ public partial class Edit : System.Web.UI.Page
 
         // cleaning the gameName form field
         resetForm();
+        Response.Redirect("Edit.aspx");
     }
 
     XmlElement addAnswerOption(XmlDocument xmlDoc, TextBox optionInput, FileUpload optionFile, Image optionImg, string prefix)
@@ -202,9 +202,9 @@ public partial class Edit : System.Web.UI.Page
 
     void updateAnswerOption(TextBox optionText, FileUpload optionImgUpload, Image optionImg, XmlNode editedQ, string prefix, int qIndex)
     {
-        if (optionText.Text.Length > 0 || optionImg.ImageUrl.Length > 0)
+        if (optionText.Text.Length > 0 || optionImg.ImageUrl.Length > 0 || optionImgUpload.PostedFile.ContentLength > 0)
         {   
-            // if it is an exising answer option
+            // if it is an exising answer option or a new answer to which a text is beign added
             if (editedQ.SelectNodes("answers/answer")[qIndex] != null)
             {
                 editedQ.SelectNodes("answers/answer")[qIndex].InnerXml = optionText.Text != "" ? Server.UrlEncode(optionText.Text) : null;
@@ -303,20 +303,10 @@ public partial class Edit : System.Web.UI.Page
         switch (e.CommandName)
         {
             case "qDelete":
-                // removing question node
-                selectedQ.ParentNode.RemoveChild(selectedQ);
-
-                // updating questionsNumber attribute
-                int questionsNumber = Convert.ToInt16(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]").Attributes["questionsNumber"].InnerText);
-                questionsNumber--;
-                string newQuestionsNumber = questionsNumber.ToString();
-
-                XmlNode game = xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]");
-                game.Attributes["questionsNumber"].InnerText = newQuestionsNumber;
-
-                // saving changes to XML file
-                XmlDataSource1.Save();
-                GridView1.DataBind();
+                // showing delete confirmation popup
+                confirmDeleteBtn.Attributes["data-id"] = RowIndex.ToString();
+                deleteQPopup.Style.Add("display", "block");
+                modalBackdrop.Style.Add("display", "block");
                 break;
 
             case "qEdit":
@@ -331,28 +321,63 @@ public partial class Edit : System.Web.UI.Page
 
                 qImage.ImageUrl = selectedQ.SelectNodes("img")[0].InnerText != "" ? imagesLibPath + Server.UrlDecode(selectedQ.SelectNodes("img")[0].InnerXml) : "";
 
-                if(selectedQ.SelectNodes("answers/answer")[0] != null)
+                option1Img.ImageUrl = "";
+                option2Img.ImageUrl = "";
+                option3Img.ImageUrl = "";
+                option4Img.ImageUrl = "";
+
+                if (selectedQ.SelectNodes("answers/answer")[0] != null)
                 {
-                    //selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText) : "";
-                    option1Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText) : "";
+                    option1Img.ImageUrl = (selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText.Length != 0) ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[0].Attributes["img"].InnerText) : "";
                 }
 
                 if(selectedQ.SelectNodes("answers/answer")[1] != null)
                 {
-                    option2Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText) : "";
+                    option2Img.ImageUrl = (selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText.Length != 0) ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[1].Attributes["img"].InnerText) : "";
                 }
 
                 if(selectedQ.SelectNodes("answers/answer")[2] != null)
                 {
-                    option3Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText) : "";
+                    option3Img.ImageUrl = (selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText.Length != 0) ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[2].Attributes["img"].InnerText) : "";
                 }
 
                 if(selectedQ.SelectNodes("answers/answer")[3] != null)
                 {
-                    option4Img.ImageUrl = selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText.Length != 0 ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText) : "";
+                    option4Img.ImageUrl = (selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText.Length != 0) ? Server.UrlDecode(imagesLibPath + selectedQ.SelectNodes("answers/answer")[3].Attributes["img"].InnerText) : "";
                 }
 
                 break;
         }
+    }
+
+    protected void confirmDeleteBtn_Click(object sender, EventArgs e)
+    {
+        // removing question node
+        XmlDocument xmlDoc = XmlDataSource1.GetXmlDocument();
+        XmlNode selectedQ = xmlDoc.SelectNodes("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/questions/question")[Convert.ToInt16(confirmDeleteBtn.Attributes["data-id"])];
+        selectedQ.ParentNode.RemoveChild(selectedQ);
+
+        // updating questionsNumber attribute
+        int questionsNumber = Convert.ToInt16(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]").Attributes["questionsNumber"].InnerText);
+        questionsNumber--;
+        string newQuestionsNumber = questionsNumber.ToString();
+
+        XmlNode game = xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]");
+        game.Attributes["questionsNumber"].InnerText = newQuestionsNumber;
+
+        // saving changes to XML file
+        XmlDataSource1.Save();
+        GridView1.DataBind();
+
+        deleteQPopup.Style.Add("display", "none");
+        modalBackdrop.Style.Add("display", "none");
+
+        Response.Redirect("Edit.aspx");
+    }
+
+    protected void cancelDeleteBtn_Click(object sender, EventArgs e)
+    {
+        deleteQPopup.Style.Add("display", "none");
+        modalBackdrop.Style.Add("display", "none");
     }
 }
