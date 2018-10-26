@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
-  <idCounter>103</idCounter>
-  <game isPublished="True" questionsNumber="4" timePerQuestion="90" gameCode="102">
+  <idCounter>105</idCounter>
+  <game isPublished="True" questionsNumber="4" timePerQuestion="60" gameCode="102">
     <subject>Cinematography</subject>
     <questions>
       <question numberOfTries="0">
@@ -10,12 +10,12 @@
         <answers>
           <answer isCorrect="True" img="">Wes+Anderson</answer>
           <answer isCorrect="False" img="">Martin+Scorsese</answer>
-          <answer isCorrect="False" img="option1_19-10-18_23-58-24.png">steven+soderbergh</answer>
+          <answer isCorrect="False" img="">steven+soderbergh</answer>
         </answers>
       </question>
       <question numberOfTries="0">
         <questionText>What%27s+the+name+of+this+actor%3f</questionText>
-        <img />
+        <img>qImg_26-10-18_21-36-19.png</img>
         <answers>
           <answer isCorrect="True" img="">Russell+Crowe</answer>
           <answer isCorrect="False" img="">Kurt+Russell</answer>
@@ -44,7 +44,7 @@
       </question>
     </questions>
   </game>
-  <game isPublished="False" questionsNumber="4" timePerQuestion="0" gameCode="101">
+  <game isPublished="False" questionsNumber="4" timePerQuestion="60" gameCode="101">
     <subject>World+History</subject>
     <questions>
       <question numberOfTries="0">

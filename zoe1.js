@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"zoe1_atlas_", frames: [[0,770,900,546],[1368,382,50,50],[0,0,1366,768],[902,1127,900,126],[1368,0,300,380],[902,770,900,355],[1420,382,32,32]]}
+		{name:"zoe1_atlas_", frames: [[0,770,900,546],[1368,658,50,50],[0,0,1366,768],[902,1127,900,126],[1368,276,300,380],[902,770,900,355],[1368,710,32,32],[1368,0,440,274]]}
 ];
 
 
@@ -57,6 +57,13 @@ lib.ssMetadata = [
 	this.spriteSheet = ss["zoe1_atlas_"];
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
+
+
+
+(lib.timesup = function() {
+	this.spriteSheet = ss["zoe1_atlas_"];
+	this.gotoAndStop(7);
+}).prototype = p = new cjs.Sprite();
 // helper functions:
 
 function mc_symbol_clone() {
@@ -104,6 +111,19 @@ function getMCSymbolPrototype(symbol, nominalBounds, frameBounds) {
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
 }).prototype = getMCSymbolPrototype(lib.uarm, new cjs.Rectangle(0,0,38.4,76.4), null);
+
+
+(lib.timesUp = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// Layer_1
+	this.instance = new lib.timesup();
+	this.instance.parent = this;
+	this.instance.setTransform(0,0,0.864,0.864);
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
+
+}).prototype = getMCSymbolPrototype(lib.timesUp, new cjs.Rectangle(0,0,380,236.6), null);
 
 
 (lib.an_TextInput = function(options) {
@@ -1823,10 +1843,17 @@ p._updateVisibility = _updateVisibility;
 	this.initialize(mode,startPosition,loop,{});
 
 	// option-stone.ai
+	this.text = new cjs.Text(":בחר בתשובה נכונה", "14px 'Heebo'", "#454545");
+	this.text.textAlign = "right";
+	this.text.lineHeight = 23;
+	this.text.lineWidth = 151;
+	this.text.parent = this;
+	this.text.setTransform(787,265.3);
+
 	this.qBoardText = new cjs.Text("", "12px 'Times New Roman'", "#6D451D");
 	this.qBoardText.name = "qBoardText";
 	this.qBoardText.lineHeight = 15;
-	this.qBoardText.lineWidth = 324;
+	this.qBoardText.lineWidth = 316;
 	this.qBoardText.parent = this;
 	this.qBoardText.setTransform(472.2,55.3);
 
@@ -1834,7 +1861,7 @@ p._updateVisibility = _updateVisibility;
 	this.instance.parent = this;
 	this.instance.setTransform(0,0,0.92,0.92);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.qBoardText}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.qBoardText},{t:this.text}]}).wait(1));
 
 }).prototype = getMCSymbolPrototype(lib.qBoardImg, new cjs.Rectangle(0,0,828,326.6), null);
 
@@ -1843,6 +1870,13 @@ p._updateVisibility = _updateVisibility;
 	this.initialize(mode,startPosition,loop,{});
 
 	// option-stone.ai
+	this.text = new cjs.Text(":בחר בתשובה נכונה", "14px 'Heebo'", "#454545");
+	this.text.textAlign = "right";
+	this.text.lineHeight = 23;
+	this.text.lineWidth = 151;
+	this.text.parent = this;
+	this.text.setTransform(787,265.3);
+
 	this.qBoardText = new cjs.Text("", "12px 'Times New Roman'", "#33CCCC");
 	this.qBoardText.name = "qBoardText";
 	this.qBoardText.lineHeight = 15;
@@ -1854,7 +1888,7 @@ p._updateVisibility = _updateVisibility;
 	this.instance.parent = this;
 	this.instance.setTransform(0,0,0.92,0.92);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.qBoardText}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.qBoardText},{t:this.text}]}).wait(1));
 
 }).prototype = getMCSymbolPrototype(lib.qBoard, new cjs.Rectangle(0,0,828,326.6), null);
 
@@ -3901,17 +3935,17 @@ p.nominalBounds = new cjs.Rectangle(0,0,186,55.2);
 	this.text.textAlign = "right";
 	this.text.lineHeight = 30;
 	this.text.parent = this;
-	this.text.setTransform(108.9,2);
+	this.text.setTransform(108.9,-5);
 
 	this.text_1 = new cjs.Text("משחק לדוגמה: 101", "18px 'Heebo'", "#FFFFFF");
 	this.text_1.textAlign = "right";
 	this.text_1.lineHeight = 30;
 	this.text_1.parent = this;
-	this.text_1.setTransform(142,92.5);
+	this.text_1.setTransform(142,91.5);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.text_1},{t:this.text}]}).wait(1));
 
-}).prototype = getMCSymbolPrototype(lib.introTexts, new cjs.Rectangle(-4.5,0,148.5,120.9), null);
+}).prototype = getMCSymbolPrototype(lib.introTexts, new cjs.Rectangle(-4.5,-7,148.5,126.9), null);
 
 
 (lib.gameNotFound = function(mode,startPosition,loop) {
@@ -5322,6 +5356,7 @@ p.nominalBounds = new cjs.Rectangle(-26,0,174,479);
 	// timeline functions:
 	this.frame_0 = function() {
 		function declareLibraryElements() {
+			timesUp = new lib.timesUp();
 			gameNotFound = new lib.gameNotFound();
 			aboutModal = new lib.aboutModal();
 			zoe = new lib.zoe();
@@ -5342,19 +5377,31 @@ p.nominalBounds = new cjs.Rectangle(-26,0,174,479);
 		    navigation = new lib.navigation();
 			continueBtn = new lib.continueBtn();
 			qBg = new lib.qBg();
+			blackBG = new lib.blackBG();
 			navigation = new lib.navigation();
 			navigation.x = 0;
 			navigation.y = 0;
 			stage.addChild(navigation);
 			
 			navigation.aboutLink.addEventListener("click", function () {
+				placeLibEl(0, 0, blackBG);
+				blackBG.alpha = 0.5;
 				placeLibEl(225, 100, aboutModal);
+				if(document.getElementById('gameCodeInput')) {
+					document.getElementById('gameCodeInput').style.display = 'none';
+				}
 			});
 			aboutModal.instance.addEventListener("click", function () {
 				stage.removeChild(aboutModal);
+				stage.removeChild(blackBG);
+				if(document.getElementById('gameCodeInput')) {
+					document.getElementById('gameCodeInput').style.display = 'block';
+				}
+				
 			});
+			
 			aboutModal.aboutModalLink.addEventListener("click", function () {
-				window.location.href = "http://stackoverflow.com";
+				window.open('https://www.hit.ac.il/telem/overview', '_blank');
 			});
 			navigation.editorLink.addEventListener("click", function () {
 				window.location.href = "/Login.aspx";
@@ -5378,6 +5425,13 @@ p.nominalBounds = new cjs.Rectangle(-26,0,174,479);
 		continueBtn.x = 400;
 		continueBtn.y = 420;
 		continueBtn.on("click", function() {
+			console.log("continueBtn click");
+			printQuestion();
+		});
+		
+		timesUp.addEventListener("click", function () {
+			stage.removeChild(blackBG);
+			stage.removeChild(timesUp);
 			printQuestion();
 		});
 	}
@@ -5403,7 +5457,7 @@ p.nominalBounds = new cjs.Rectangle(-26,0,174,479);
 
 	this.instance_3 = new lib.test();
 	this.instance_3.parent = this;
-	this.instance_3.setTransform(683,301,1,1,0,0,0,50,11);
+	this.instance_3.setTransform(683.2,293,1.8,2.273,0,0,0,50.1,11);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_3},{t:this.instance_2},{t:this.instance_1}]}).wait(1));
 
@@ -5439,10 +5493,10 @@ lib.properties = {
 	color: "#182E30",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/zoe1_atlas_.png?1540112030404", id:"zoe1_atlas_"},
-		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1540112032392", id:"lib/jquery-2.2.4.min.js"},
-		{src:"components/sdk/anwidget.js?1540112032392", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1540112032392", id:"an.TextInput"}
+		{src:"images/zoe1_atlas_.png?1540577672302", id:"zoe1_atlas_"},
+		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1540577674770", id:"lib/jquery-2.2.4.min.js"},
+		{src:"components/sdk/anwidget.js?1540577674770", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1540577674770", id:"an.TextInput"}
 	],
 	preloads: []
 };

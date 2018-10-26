@@ -58,18 +58,54 @@ function resizeImageFixed(box, img) {
     return toScale;
 }
 
-function startTimer() {
-	clock.clockText.text = questionTime;
+function hideZoestatueCounterclock() {
+    zoe.alpha = 0;
+    statueCounter.alpha = 0;
+    clock.alpha = 0;
+}
 
-	timerSeconds = setInterval(function() {
-		var remainingTime = clock.clockText.text - 1;
-		if(remainingTime == 0) {
-			stopTimer();
-			moveQuestionToEnd();
-			stage.addChild(continueBtn);
-		}
-		clock.clockText.text = remainingTime;
-	}, 1000);
+function showZoestatueCounterclock() {
+    zoe.alpha = 1;
+    statueCounter.alpha = 1;
+    clock.alpha = 1;
+}
+
+function startTimer() {
+    console.log("starting timer");
+    clock.clockText.text = questionTime;
+    timerSeconds = setInterval(myTimer, 1000);
+}
+
+function myTimer() {
+    //console.log(parseInt(clock.clockText.text));
+    if (parseInt(clock.clockText.text) == 0) {
+
+        clearInterval(timerSeconds);
+        timeSpent += questionTime - parseInt(clock.clockText.text);
+
+        moveQuestionToEnd();
+
+        // removing elements from scene
+        questionImg = null;
+        stage.removeChild(questionBoard);
+        optionsArray.forEach(function (option) {
+            stage.removeChild(option);
+        });
+
+        optionImagesArray.forEach(function (option) {
+            stage.removeChild(option);
+        });
+
+        hideZoestatueCounterclock();
+
+        // add time's up popup
+        placeLibEl(0, 0, blackBG);
+        blackBG.alpha = 0.5;
+        placeLibEl(450, 200, timesUp);
+        
+    } else {
+        clock.clockText.text = clock.clockText.text - 1;
+    }
 }
 
 function stopTimer() {
@@ -96,7 +132,28 @@ function addQuestionBoard() {
             questionImg.set({ scaleX: resizeImageFixed(box, questionImg), scaleY: resizeImageFixed(box, questionImg) });
             questionImg.alpha = 1;
             stage.addChild(questionImg);
-        }, 500)
+        }, 500);
+
+        var bigBmp;
+
+        questionImg.addEventListener('mouseover', function (e) {
+            bigBmp = new createjs.Bitmap("uploads/" + chosenTopicQuestions[0].img);
+            bigBmp.x = 820;
+            bigBmp.y = 80;
+
+            box = {
+                height: 400,
+                width: 550
+            }
+
+            bigBmp.set({ scaleX: resizeImageFixed(box, bigBmp), scaleY: resizeImageFixed(box, bigBmp) });
+            stage.addChild(bigBmp);
+        });
+
+        questionImg.addEventListener('mouseout', function (e) {
+            stage.removeChild(bigBmp);
+        });
+
     } else {
         questionBoard = qBoard;
         placeLibEl(10, 80, questionBoard);
@@ -104,6 +161,8 @@ function addQuestionBoard() {
 }
 
 function printQuestion() {
+    console.log("printing question");
+
 	if(chosenTopicQuestions.length == 0) {
 		alert("Game is over");
 		return;
@@ -130,6 +189,8 @@ function printQuestion() {
     // starting new question
 	startTimer();
 	addQuestionBoard();
+
+	showZoestatueCounterclock();
     
 	questionBoard.qBoardText.color = "#333333";
 	questionBoard.qBoardText.font = "20px 'Heebo'";
@@ -168,12 +229,12 @@ function printQuestion() {
 
             bmp.addEventListener('mouseover', function (e) {
                 bigBmp = new createjs.Bitmap(img);
-                bigBmp.x = 0;
-                bigBmp.y = 0;
+                bigBmp.x = 820;
+                bigBmp.y = 80;
 
                 box = {
-                    height: 500,
-                    width: 1000
+                    height: 400,
+                    width: 550
                 }
 
                 bigBmp.set({ scaleX: resizeImageFixed(box, bigBmp), scaleY: resizeImageFixed(box, bigBmp) });
@@ -192,7 +253,6 @@ function printQuestion() {
 
 		questionOption.optionCorrect.alpha = 0;
 		questionOption.optionWrong.alpha = 0;
-		//questionOption.instance.alpha = 1;
         
         questionOption.x = 20+(optionWidth * index);
         questionOption.y = 480;

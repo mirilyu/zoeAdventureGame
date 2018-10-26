@@ -222,7 +222,7 @@
                             </div>
 
                             <div class="modal-body">
-                                <p class="popup-text">האם אתה בטוח שברצונך למחוק את שאלה?</p>
+                                <p class="popup-text">האם אתה בטוח שברצונך למחוק את השאלה?</p>
                             </div>
 
                             <div class="modal-footer justify-content-start">

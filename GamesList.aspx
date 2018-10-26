@@ -131,7 +131,7 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <p class="popup-text">האם אתה בטוח שברצונך למחוק את משחק:</p>
+                                    <p class="popup-text">האם אתה בטוח שברצונך למחוק את המשחק:</p>
                                     <asp:Label ID="deletedGameName" runat="server" Text="Label" class="font-weight-bold"></asp:Label>
                                 </div>
 
