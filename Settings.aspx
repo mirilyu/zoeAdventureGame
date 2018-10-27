@@ -54,6 +54,7 @@
                         </div>
                     </div>
 
+                    <h5 class="text-secondary">זמן לשאלה</h5>
                     <div class="row">
                         <div class="form-group col-4">
                             <asp:DropDownList ID="gameTimeDropdown" runat="server">

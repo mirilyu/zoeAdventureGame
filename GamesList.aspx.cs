@@ -54,7 +54,7 @@ public partial class GamesList : System.Web.UI.Page
         // creating game node
         XmlElement newGameNode = xmlDoc.CreateElement("game");
         newGameNode.SetAttribute("gameCode", myNewId);
-        newGameNode.SetAttribute("isPublished", "false");
+        newGameNode.SetAttribute("isPublished", "False");
         newGameNode.SetAttribute("questionsNumber", "0");
         newGameNode.SetAttribute("timePerQuestion", "30");
 

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
-  <idCounter>107</idCounter>
-  <game gameCode="107" isPublished="false" questionsNumber="10" timePerQuestion="30">
+  <idCounter>102</idCounter>
+  <game gameCode="102" isPublished="True" questionsNumber="10" timePerQuestion="30">
     <subject>%d7%a7%d7%99%d7%a0%d7%95%d7%97%d7%99%d7%9d+%d7%95%d7%9e%d7%9e%d7%aa%d7%a7%d7%99%d7%9d</subject>
     <questions>
       <question numberOfTries="0">
@@ -101,7 +101,7 @@
       </question>
     </questions>
   </game>
-  <game gameCode="106" isPublished="True" questionsNumber="11" timePerQuestion="30">
+  <game gameCode="101" isPublished="True" questionsNumber="12" timePerQuestion="30">
     <subject>%d7%a1%d7%a8%d7%98%d7%99%d7%9d+%d7%95%d7%91%d7%9e%d7%90%d7%99%d7%9d</subject>
     <questions>
       <question numberOfTries="0">
@@ -121,7 +121,7 @@
           <answer img="" isCorrect="True">%d7%a8%d7%a7%d7%95%d7%95%d7%99%d7%90%d7%9d+%d7%9c%d7%97%d7%9c%d7%95%d7%9d+-+2000</answer>
           <answer img="" isCorrect="False">%d7%94%d7%aa%d7%a4%d7%95%d7%96+%d7%94%d7%9e%d7%9b%d7%a0%d7%99+-+1971</answer>
           <answer img="" isCorrect="False">%d7%94%d7%a4%d7%a1%d7%a0%d7%aa%d7%a8%d7%9f+-+2002</answer>
-          <answer img="" isCorrect="False">%d7%a7%d7%9f+%d7%94%d7%a7%d7%95%d7%a7%d7%99%d7%94+1975</answer>
+          <answer img="" isCorrect="False">%d7%a7%d7%9f+%d7%94%d7%a7%d7%95%d7%a7%d7%99%d7%94+-+1975</answer>
         </answers>
       </question>
       <question numberOfTries="0">
@@ -210,81 +210,14 @@
           <answer img="option3_26-10-18_22-56-09.png" isCorrect="False" />
         </answers>
       </question>
-    </questions>
-  </game>
-  <game isPublished="False" questionsNumber="4" timePerQuestion="60" gameCode="102">
-    <subject>Cinematography</subject>
-    <questions>
       <question numberOfTries="0">
-        <questionText>Who+directed+The+Isle+of+Dogs%3f</questionText>
-        <img />
+        <questionText>%d7%9e%d7%99+%d7%9e%d7%94%d7%93%d7%9e%d7%95%d7%99%d7%95%d7%aa+%d7%94%d7%91%d7%90%d7%95%d7%aa+%d7%9c%d7%90+%d7%94%d7%a9%d7%aa%d7%aa%d7%a3+%d7%91%d7%a1%d7%a8%d7%98+%d7%94%d7%9e%d7%95%d7%a6%d7%92+%d7%91%d7%aa%d7%9e%d7%95%d7%a0%d7%94%3f</questionText>
+        <img>qImage_27-10-18_17-33-58.png</img>
         <answers>
-          <answer isCorrect="True" img="">Wes+Anderson</answer>
-          <answer isCorrect="False" img="">Martin+Scorsese</answer>
-          <answer isCorrect="False" img="">steven+soderbergh</answer>
-        </answers>
-      </question>
-      <question numberOfTries="0">
-        <questionText>What%27s+the+name+of+this+actor%3f</questionText>
-        <img>qImg_26-10-18_21-36-19.png</img>
-        <answers>
-          <answer isCorrect="True" img="">Russell+Crowe</answer>
-          <answer isCorrect="False" img="">Kurt+Russell</answer>
-          <answer isCorrect="False" img="option4_22-10-18_22-32-48.png" />
-          <answer isCorrect="False" img="option1_22-10-18_22-33-58.png" />
-        </answers>
-      </question>
-      <question numberOfTries="0">
-        <questionText>What+was+the+first+film+directed+by+Quentin+Tarantino%3f</questionText>
-        <img />
-        <answers>
-          <answer img="" isCorrect="True">Pulp+Fiction</answer>
-          <answer img="" isCorrect="False">The+Hateful+Eight</answer>
-          <answer img="" isCorrect="False">kill_bill.jpeg</answer>
-          <answer img="" isCorrect="False">Reservoir+Dogs</answer>
-        </answers>
-      </question>
-      <question numberOfTries="0">
-        <questionText>test</questionText>
-        <img />
-        <answers>
-          <answer img="" isCorrect="True">test+1</answer>
-          <answer img="option2_22-10-18_22-10-23.png" isCorrect="False" />
-          <answer isCorrect="False" img="">sss</answer>
-        </answers>
-      </question>
-    </questions>
-  </game>
-  <game isPublished="True" questionsNumber="4" timePerQuestion="60" gameCode="101">
-    <subject>World+History</subject>
-    <questions>
-      <question numberOfTries="0">
-        <questionText>In which year began world war two?</questionText>
-        <img />
-        <answers>
-          <answer img="" isCorrect="True">1939</answer>
-          <answer img="" isCorrect="False">1919</answer>
-          <answer img="" isCorrect="False">1824</answer>
-        </answers>
-      </question>
-      <question numberOfTries="0">
-        <questionText>Where was John F.Kennedy assassinated?</questionText>
-        <img />
-        <answers>
-          <answer img="" isCorrect="True">Dallas</answer>
-          <answer img="" isCorrect="False">Massachusetts</answer>
-          <answer img="" isCorrect="False">Austin</answer>
-          <answer img="" isCorrect="False">Cleveland</answer>
-        </answers>
-      </question>
-      <question numberOfTries="0">
-        <questionText>In what year was the Israeli Six-Day war?</questionText>
-        <img />
-        <answers>
-          <answer img="" isCorrect="True">1967</answer>
-          <answer img="" isCorrect="False">1673</answer>
-          <answer img="" isCorrect="False">1948</answer>
-          <answer img="" isCorrect="False">1960</answer>
+          <answer img="" isCorrect="True">%d7%a7%d7%a4%d7%98%d7%9f+%d7%a7%d7%99%d7%a8%d7%a7</answer>
+          <answer img="" isCorrect="False">%d7%9c%d7%99%d7%94+%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%94</answer>
+          <answer img="option3_27-10-18_17-33-58.png" isCorrect="False" />
+          <answer img="option4_27-10-18_17-33-58.png" isCorrect="False" />
         </answers>
       </question>
     </questions>

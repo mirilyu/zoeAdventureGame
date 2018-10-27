@@ -54,7 +54,7 @@ public partial class Edit : System.Web.UI.Page
         qNumber.Text = questionsNumber.ToString();
         gameSubject.Text = Server.UrlDecode(xmlDoc.SelectSingleNode("/project/game[@gameCode=" + Session["theItemIdSession"] + "]/subject").InnerXml);
 
-        ifCanPublishText.Text = (questionsNumber >= 10) ? "ניתן לפרסם את המסחק" : "לפחות 10 שאלות לפרסום";
+        ifCanPublishText.Text = (questionsNumber >= 10) ? "ניתן לפרסם את המשחק" : "לפחות 10 שאלות לפרסום";
         ifCanPublishText.CssClass = (questionsNumber >= 10) ? "mr-4 text-success" : "mr-4 text-danger";
     }
 

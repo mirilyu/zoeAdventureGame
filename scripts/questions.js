@@ -4,6 +4,7 @@ var numberOfQuestions;
 var timerSeconds;
 var questionBoard;
 var questionImg;
+var isAnswerSelected;
 
 // counters
 var correctAnswersCounter = 0;
@@ -175,6 +176,8 @@ function addQuestionBoard() {
 }
 
 function printQuestion() {
+    isAnswerSelected = false;
+
 	if(chosenTopicQuestions.length == 0) {
 		alert("Game is over");
 		return;
@@ -230,6 +233,12 @@ function printQuestion() {
             bmp.isCorrect = option["@isCorrect"];
 
             bmp.addEventListener("click", function () {
+                if (isAnswerSelected == true) {
+                    return;
+                }
+
+                isAnswerSelected = true;
+
                 stopTimer();
                 chosenTopicQuestions[0]["@numberOfTries"]++;
 
@@ -275,7 +284,13 @@ function printQuestion() {
         optionsArray.push(questionOption);
         optionImagesArray.push(bmp);
 
-        questionOption.addEventListener("click", function() {
+        questionOption.addEventListener("click", function () {
+            if (isAnswerSelected == true) {
+                return;
+            }
+
+            isAnswerSelected = true;
+
 			stopTimer();
 			chosenTopicQuestions[0]["@numberOfTries"]++;
 			
@@ -305,6 +320,7 @@ function correctAnswer(questionOption) {
         questionTries[chosenTopicQuestions[0]["@numberOfTries"]]++;
 	}
 	
+    
 	stage.addChild(continueBtn);
 	chosenTopicQuestions.splice(0,1);
 	questionOption.optionCorrect.alpha = 1;
@@ -340,7 +356,8 @@ function correctAnswer(questionOption) {
 
 function wrongAnswer(questionOption) {
     zoe.gotoAndPlay(9);
-	questionOption.optionWrong.alpha = 1;
+    questionOption.optionWrong.alpha = 1;
+    
 	stage.addChild(continueBtn);
 	moveQuestionToEnd();
 }
