@@ -113,7 +113,7 @@
                                             ID="isPublished" runat="server"
                                             AutoPostBack="true"
                                             ToolTip="דרושות לפחות  10 שאלות לפרסום"
-                                            Enabled='<%#CheckIfCanPublish(XPathBinder.Eval(Container.DataItem,"@gameCode").ToString())%>'  
+                                            Enabled='<%#CheckIfCanPublish(XPathBinder.Eval(Container.DataItem,"@gameCode").ToString())%>'
                                             OnCheckedChanged="isPublished_CheckedChanged"
                                             Checked='<%#Convert.ToBoolean(XPathBinder.Eval(Container.DataItem,"@isPublished"))%>'
                                             theItemId='<%#XPathBinder.Eval(Container.DataItem,"@gameCode")%>' />
@@ -138,6 +138,32 @@
                                 <div class="modal-footer justify-content-start">
                                     <asp:Button ID="confirmDeleteBtn" data-id="" CssClass="btn btn-primary ml-3" runat="server" Text="כן - מחק" OnClick="confirmDeleteBtn_Click" />
                                     <asp:Button ID="cancelDeleteBtn" CssClass="btn btn-secondary" runat="server" Text="לא - חזור" OnClick="cancelDeleteBtn_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </asp:Panel>
+
+                    <asp:Panel ID="publishGameModal" Style="display: none;" CssClass="modal fade show" runat="server">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">פרסום משחק</h5>
+                                </div>
+
+                                <div class="modal-body">
+                                    <p class="popup-text">
+                                        <span>פורסם משחק:</span>
+                                        <asp:Label ID="publishGameModal_gameSubject" runat="server" Text="Label" class="font-weight-bold"></asp:Label>
+                                    </p>
+
+                                    <p class="popup-text mt-4">
+                                        <span>קוד משחק:</span>
+                                        <asp:Label ID="publishGameModal_gameCode" runat="server" Text="Label" class="font-weight-bold"></asp:Label>
+                                    </p>
+                                </div>
+
+                                <div class="modal-footer justify-content-start">
+                                    <asp:Button ID="publishGameModal_okBtn" data-id="" CssClass="btn btn-primary ml-3" runat="server" Text="אישור" OnClick="publishGameModal_Click" />
                                 </div>
                             </div>
                         </div>

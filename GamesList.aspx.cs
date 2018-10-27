@@ -56,7 +56,7 @@ public partial class GamesList : System.Web.UI.Page
         newGameNode.SetAttribute("gameCode", myNewId);
         newGameNode.SetAttribute("isPublished", "false");
         newGameNode.SetAttribute("questionsNumber", "0");
-        newGameNode.SetAttribute("timePerQuestion", "50");
+        newGameNode.SetAttribute("timePerQuestion", "30");
 
         // creating game subject node
         XmlElement newGameSubjectNode = xmlDoc.CreateElement("subject");
@@ -94,6 +94,17 @@ public partial class GamesList : System.Web.UI.Page
         // saving the XML file
         XmlDataSource1.Save();
         GridView1.DataBind();
+
+        // showing modal
+        if(newIsPublished)
+        {
+            publishGameModal_gameSubject.Text = Server.UrlDecode(xmlDoc.SelectNodes("/project/game[@gameCode=" + theGame.Attributes["gameCode"].InnerXml + "]/subject").Item(0).InnerText);
+            publishGameModal_gameCode.Text = Server.UrlDecode(theGame.Attributes["gameCode"].InnerXml);
+
+            publishGameModal.Style.Add("display", "block");
+            publishGameModal.Style.Add("display", "block");
+            modalBackdrop.Style.Add("display", "block");
+        }
     }
 
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -144,6 +155,13 @@ public partial class GamesList : System.Web.UI.Page
     protected void cancelDeleteBtn_Click(object sender, EventArgs e)
     {
         deleteGamePopup.Style.Add("display", "none");
+        modalBackdrop.Style.Add("display", "none");
+    }
+
+    protected void publishGameModal_Click(object sender, EventArgs e)
+    {
+        publishGameModal.Style.Add("display", "none");
+        publishGameModal.Style.Add("display", "none");
         modalBackdrop.Style.Add("display", "none");
     }
 }

@@ -28,6 +28,20 @@ function shuffle(a) { // from https://stackoverflow.com/questions/6274339/how-ca
     return a;
 }
 
+function secondsToMinutes(seconds) {
+    var minutes = Math.floor(seconds / 60);
+    var remainder = seconds % 60;
+
+    if (minutes < 10) {
+        minutes = '0' + minutes;
+    }
+    if (remainder < 10) {
+        remainder = '0' + remainder;
+    }
+
+    return minutes + ':' + remainder;
+}
+
 function decodeString(string) {
     return decodeURIComponent(string.replace(new RegExp("\\+", "g"), ' '));
 }
@@ -38,7 +52,7 @@ function resizeImage(box, content) {
 
     var toScale = 0;
     if (boxBounds.height / contentBounds.height < boxBounds.width / contentBounds.width) {
-        toScale = boxBounds.height / contentBounds.height;
+        toScale = (boxBounds.height - 120) / contentBounds.height;
     } else {
         toScale = (boxBounds.width-60) / contentBounds.width;
     }
@@ -71,8 +85,8 @@ function showZoestatueCounterclock() {
 }
 
 function startTimer() {
-    console.log("starting timer");
     clock.clockText.text = questionTime;
+    clock.clockText.font = "40px 'Heebo'";
     timerSeconds = setInterval(myTimer, 1000);
 }
 
@@ -119,12 +133,12 @@ function addQuestionBoard() {
         questionBoard = qBoardImg;
         questionImg = new createjs.Bitmap("uploads/" + chosenTopicQuestions[0].img);
         questionImg.x = 175;
-        questionImg.y = 125;
+        questionImg.y = 150;
         questionImg.alpha = 0;
         placeLibEl(10, 80, questionBoard);
 
         box = {
-            height: 300,
+            height: 200,
             width: 300
         }
 
@@ -161,8 +175,6 @@ function addQuestionBoard() {
 }
 
 function printQuestion() {
-    console.log("printing question");
-
 	if(chosenTopicQuestions.length == 0) {
 		alert("Game is over");
 		return;
@@ -194,6 +206,7 @@ function printQuestion() {
     
 	questionBoard.qBoardText.color = "#333333";
 	questionBoard.qBoardText.font = "20px 'Heebo'";
+	questionBoard.qBoardText.lineHeight = 32;
 	questionBoard.qBoardText.text = decodeString(chosenTopicQuestions[0].questionText);
 
     chosenTopicQuestions[0].answers.answer.forEach(function (option, index) {
@@ -203,6 +216,7 @@ function printQuestion() {
         if (option["@img"].length == 0) {
             questionOption.stoneText.color = "#333333";
             questionOption.stoneText.font = "16px 'Heebo'";
+            questionOption.stoneText.lineHeight = 20;
             questionOption.stoneText.text = decodeString(option["#text"]);
         } else {
             var img = new Image();
@@ -303,7 +317,11 @@ function correctAnswer(questionOption) {
 			finalScore += parseInt(questionTries[property1])*(100 / (numberOfQuestions * parseInt(property1)));
 		}
 
-		alert("Your final score is: " + finalScore);
+		cleanStage();
+		placeLibEl(0, 80, resultScene);
+		resultScene.gameSubjectText.text = decodeString(gameObj.game.subject);
+		resultScene.finalScore.text = Math.round(finalScore);
+		resultScene.finalTime.text = secondsToMinutes(timeSpent);
 	}
 }
 

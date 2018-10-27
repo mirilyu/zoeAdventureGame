@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"zoe1_atlas_", frames: [[0,770,900,546],[1368,658,50,50],[0,0,1366,768],[902,1127,900,126],[1368,276,300,380],[902,770,900,355],[1368,710,32,32],[1368,0,440,274]]}
+		{name:"zoe1_atlas_", frames: [[0,1540,900,546],[1670,276,50,50],[0,0,1366,768],[902,1897,900,126],[1368,276,300,380],[902,1540,900,355],[0,770,1366,768],[1722,276,32,32],[1368,0,440,274]]}
 ];
 
 
@@ -53,16 +53,23 @@ lib.ssMetadata = [
 
 
 
-(lib.TextInput = function() {
+(lib.result = function() {
 	this.spriteSheet = ss["zoe1_atlas_"];
 	this.gotoAndStop(6);
 }).prototype = p = new cjs.Sprite();
 
 
 
-(lib.timesup = function() {
+(lib.TextInput = function() {
 	this.spriteSheet = ss["zoe1_atlas_"];
 	this.gotoAndStop(7);
+}).prototype = p = new cjs.Sprite();
+
+
+
+(lib.timesup = function() {
+	this.spriteSheet = ss["zoe1_atlas_"];
+	this.gotoAndStop(8);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
 
@@ -1814,10 +1821,10 @@ p._updateVisibility = _updateVisibility;
 	this.shape_169.graphics.f("#FCF6ED").s().p("AmEGFQihiiAAjjQAAjjChihQChihDjAAQDjAACiChQChChAADjQAADjihCiQiiChjjAAQjjAAihihg");
 	this.shape_169.setTransform(55,55);
 
-	this.statueText = new cjs.Text("", "12px 'Open Sans Hebrew'", "#FFFFFF");
+	this.statueText = new cjs.Text("", "12px 'Heebo'", "#FFFFFF");
 	this.statueText.name = "statueText";
 	this.statueText.textAlign = "center";
-	this.statueText.lineHeight = 18;
+	this.statueText.lineHeight = 20;
 	this.statueText.lineWidth = 84;
 	this.statueText.parent = this;
 	this.statueText.setTransform(55,111.2);
@@ -1839,11 +1846,68 @@ p._updateVisibility = _updateVisibility;
 }).prototype = getMCSymbolPrototype(lib.qBg, new cjs.Rectangle(0,0,1366,768), null);
 
 
+(lib.resultScene = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// Layer_1
+	this.gameSubjectText = new cjs.Text("", "bold 22px 'Heebo'");
+	this.gameSubjectText.name = "gameSubjectText";
+	this.gameSubjectText.textAlign = "center";
+	this.gameSubjectText.lineHeight = 34;
+	this.gameSubjectText.lineWidth = 476;
+	this.gameSubjectText.parent = this;
+	this.gameSubjectText.setTransform(972.2,275.2);
+
+	this.finalTime = new cjs.Text("", "bold 22px 'Heebo'");
+	this.finalTime.name = "finalTime";
+	this.finalTime.textAlign = "center";
+	this.finalTime.lineHeight = 34;
+	this.finalTime.lineWidth = 97;
+	this.finalTime.parent = this;
+	this.finalTime.setTransform(1031.7,359.1);
+
+	this.finalScore = new cjs.Text("", "bold 22px 'Heebo'");
+	this.finalScore.name = "finalScore";
+	this.finalScore.textAlign = "center";
+	this.finalScore.lineHeight = 34;
+	this.finalScore.lineWidth = 84;
+	this.finalScore.parent = this;
+	this.finalScore.setTransform(1038.3,316.3);
+
+	this.text = new cjs.Text(":זמן", "18px 'Heebo'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 28;
+	this.text.lineWidth = 72;
+	this.text.parent = this;
+	this.text.setTransform(1133.3,357.3);
+
+	this.text_1 = new cjs.Text(":ציון", "18px 'Heebo'");
+	this.text_1.textAlign = "center";
+	this.text_1.lineHeight = 28;
+	this.text_1.lineWidth = 70;
+	this.text_1.parent = this;
+	this.text_1.setTransform(1132.3,316.3);
+
+	this.text_2 = new cjs.Text("סיימת את המשחק בנושא", "18px 'Heebo'");
+	this.text_2.textAlign = "center";
+	this.text_2.lineHeight = 28;
+	this.text_2.lineWidth = 376;
+	this.text_2.parent = this;
+	this.text_2.setTransform(979.2,231.6);
+
+	this.instance = new lib.result();
+	this.instance.parent = this;
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.text_2},{t:this.text_1},{t:this.text},{t:this.finalScore},{t:this.finalTime},{t:this.gameSubjectText}]}).wait(1));
+
+}).prototype = getMCSymbolPrototype(lib.resultScene, new cjs.Rectangle(0,0,1366,768), null);
+
+
 (lib.qBoardImg = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
 	// option-stone.ai
-	this.text = new cjs.Text(":בחר בתשובה נכונה", "14px 'Heebo'", "#454545");
+	this.text = new cjs.Text("בחר בתשובה נכונה:", "14px 'Heebo'", "#454545");
 	this.text.textAlign = "right";
 	this.text.lineHeight = 23;
 	this.text.lineWidth = 151;
@@ -1852,10 +1916,11 @@ p._updateVisibility = _updateVisibility;
 
 	this.qBoardText = new cjs.Text("", "12px 'Times New Roman'", "#6D451D");
 	this.qBoardText.name = "qBoardText";
-	this.qBoardText.lineHeight = 15;
+	this.qBoardText.textAlign = "right";
+	this.qBoardText.lineHeight = 16;
 	this.qBoardText.lineWidth = 316;
 	this.qBoardText.parent = this;
-	this.qBoardText.setTransform(472.2,55.3);
+	this.qBoardText.setTransform(788,55.3);
 
 	this.instance = new lib.questionArea();
 	this.instance.parent = this;
@@ -1870,7 +1935,7 @@ p._updateVisibility = _updateVisibility;
 	this.initialize(mode,startPosition,loop,{});
 
 	// option-stone.ai
-	this.text = new cjs.Text(":בחר בתשובה נכונה", "14px 'Heebo'", "#454545");
+	this.text = new cjs.Text("בחר בתשובה נכונה:", "14px 'Heebo'", "#454545");
 	this.text.textAlign = "right";
 	this.text.lineHeight = 23;
 	this.text.lineWidth = 151;
@@ -1879,10 +1944,11 @@ p._updateVisibility = _updateVisibility;
 
 	this.qBoardText = new cjs.Text("", "12px 'Times New Roman'", "#33CCCC");
 	this.qBoardText.name = "qBoardText";
-	this.qBoardText.lineHeight = 15;
+	this.qBoardText.textAlign = "right";
+	this.qBoardText.lineHeight = 16;
 	this.qBoardText.lineWidth = 622;
 	this.qBoardText.parent = this;
-	this.qBoardText.setTransform(165.1,62.1);
+	this.qBoardText.setTransform(787,62.1);
 
 	this.instance = new lib.questionArea();
 	this.instance.parent = this;
@@ -3870,30 +3936,30 @@ p.nominalBounds = new cjs.Rectangle(0,0,186,55.2);
 	this.shape_30.graphics.f("#18473F").s().p("AgqIVQgIgCAKhJIAYiuIAKhZQgNAqgPAlQgSAugVApIgoBDQgTAagOAPQgOAOgEgDQgFgDAGgSQAEgOAOgiIBUjOQgWAfgXAeQg+BQg5A7QgYAZgQAOQgQANgEgDQgEgDAIgTQAJgTATgeQAhg0BKhgIA4hIIhTBVIiKCQIgqAsQgRAPgEgDQgFgCAKgWQAKgWAUggIAZgjIATgZQhXA7gIgKQgGgIA3g1QA3g2BUhDQA4gtAogcIkGB5QhDAegFgHQgDgFAOgOQAPgQAcgTQAbgUAqgYIAigTQhsAZhJAKQhLAKgDgKQgCgKBQgaQBQgbBzgbIAigIIhCADQh+AEhjgEQhegEAAgKQAAgLBcgLQBUgKCNgFIA7gBIj9gTQhZgHAAgJQAAgFAXgGQAZgFApgEIBhgEQBBABA2AFQAXACAkAFIhNgWQg+gRg8gNIhkgWQgygLgSgFQgZgIAAgFQABgFAagCQAcgCArACIAxAEQAeAEAZAEQAuAHA7APIinhKQhVgmADgIQABgFAZADQAaAEApAKICiA4IikhXQhCgjACgHQACgFAZAFQAbAEAoAOIAsAQIgBgCQgdgagPgUQgPgSAEgEQAGgHBHAvIBMA0IAEADQg8g+gjgqQgjgrAFgGQAIgHBEA3QBEA3BZBWIASARIgRgSQhuhyglgoQg9hCAHgHQAHgIBHA3QAxAmAqAnIgFgJQgdgwgQgjQgRgkgHgYQgHgXAFgCQAHgEAyBHIA1BNIA2BRQgYgwgNgdIgTguQgJgVgGgTQgNgkgEgZQgEgXAFgCQAFgCANAUQAJAOAVAnIA+BxQgNg3gMg8QgPhRAJgDQAFgCALAUQALAVANAjQARAtAUBCQgEhFACgqQABgmAFgXQAEgWAFAAQAJAAALBRQAMBVAKBcQgBg9ACgmQABg1AGgnQAFglAIgYQAHgWAFABQAFABACAXIADA8IAFCCIAbh6QAHgfAEgbIACgPIACgHQADgCAEAFQAFAGADAMQAGAVgBApIADgHQARghAPgVQAOgSAFACQAEADgFAWQgCAKgOAwIgSBAIAGgKIAggrIAfgjQALgLARgQIAXgSQAVgOADAEQAEADgOAVIgQAXIgVAfIgZAlIgbArQgiA7gUAsQgRAlgRAsQAZgqAUgeQAigyAkgrQAqgvAXgXQAdgbAUgOQAUgOADAEQAEADgNAUQgKAQgaAkIg3BLIhCBdQgkA2gaApIgrBJQArg0BXhbQAxg0BbhcIA0g3QAEgEACAAQADAAAAAHQABAIgEALQgIAWgXAhQgRAagWAaQAmgdAWgOQAggWAXgLQAVgKADAFQADAEgQARIgsAsIhDBAIhJBEQBbg8AzgZQAjgSAVgGQAKgCAIAAQAHABAAACQABADgFAEIg6AuQhYBDhHAvIgGADIAUgHQBwgnBVgWQBTgWAEAKQAEAKhPAjQhIAih4AqIgOAFICZggQBJgPAEAJQABAFgRAKQgTALggAOQgdAMgwAPIgdAHIC8gRQBZgIACAJQACALhXAWQgqALg2AJQg8AKg6AGIgwADIDPAZQBTAKAAAKQAAAFgWAEQgYAEgmACQgoADg0gDQgwgBhBgIQhqgOhegeQgcgJgNgGIAGCLQgBA4gGArQgFAygMAxIgLAqQgEARgGATQgMAggKATQgJARgFAAIgBgBg");
 	this.shape_30.setTransform(1236.9,29.5,0.438,0.438);
 
-	this.gameName = new cjs.Text("", "bold 18px 'Open Sans Hebrew'", "#002929");
+	this.gameName = new cjs.Text("", "bold 18px 'Heebo'", "#002929");
 	this.gameName.name = "gameName";
 	this.gameName.textAlign = "right";
-	this.gameName.lineHeight = 28;
+	this.gameName.lineHeight = 30;
 	this.gameName.lineWidth = 527;
 	this.gameName.parent = this;
 	this.gameName.setTransform(1134.9,16.9);
 
-	this.howToPlayLink = new cjs.Text("?איך משחקים", "bold 18px 'Open Sans Hebrew'", "#677F4E");
+	this.howToPlayLink = new cjs.Text("איך משחקים?", "bold 18px 'Heebo'", "#677F4E");
 	this.howToPlayLink.name = "howToPlayLink";
-	this.howToPlayLink.lineHeight = 28;
+	this.howToPlayLink.lineHeight = 30;
 	this.howToPlayLink.parent = this;
 	this.howToPlayLink.setTransform(125.7,16.5);
 
-	this.editorLink = new cjs.Text("עורך", "bold 18px 'Open Sans Hebrew'", "#677F4E");
+	this.editorLink = new cjs.Text("עורך", "bold 18px 'Heebo'", "#677F4E");
 	this.editorLink.name = "editorLink";
-	this.editorLink.lineHeight = 28;
+	this.editorLink.lineHeight = 30;
 	this.editorLink.parent = this;
 	this.editorLink.setTransform(258,16.5);
 
-	this.aboutLink = new cjs.Text("אודות", "bold 18px 'Open Sans Hebrew'", "#677F4E");
+	this.aboutLink = new cjs.Text("אודות", "bold 18px 'Heebo'", "#677F4E");
 	this.aboutLink.name = "aboutLink";
 	this.aboutLink.textAlign = "right";
-	this.aboutLink.lineHeight = 28;
+	this.aboutLink.lineHeight = 30;
 	this.aboutLink.parent = this;
 	this.aboutLink.setTransform(89.4,16.5);
 
@@ -3952,17 +4018,17 @@ p.nominalBounds = new cjs.Rectangle(0,0,186,55.2);
 	this.initialize(mode,startPosition,loop,{});
 
 	// Layer_1
-	this.gameNotFound = new cjs.Text("המשחק אינו קיים", "bold 18px 'Open Sans Hebrew'", "#FF3333");
+	this.gameNotFound = new cjs.Text("המשחק אינו קיים", "bold 18px 'Heebo'", "#FF3333");
 	this.gameNotFound.name = "gameNotFound";
 	this.gameNotFound.textAlign = "center";
-	this.gameNotFound.lineHeight = 28;
+	this.gameNotFound.lineHeight = 30;
 	this.gameNotFound.lineWidth = 234;
 	this.gameNotFound.parent = this;
-	this.gameNotFound.setTransform(119,2);
+	this.gameNotFound.setTransform(119,3);
 
 	this.timeline.addTween(cjs.Tween.get(this.gameNotFound).wait(1));
 
-}).prototype = getMCSymbolPrototype(lib.gameNotFound, new cjs.Rectangle(0,0,238.1,55.3), null);
+}).prototype = getMCSymbolPrototype(lib.gameNotFound, new cjs.Rectangle(0,1,238.1,55.3), null);
 
 
 (lib.gametitle = function(mode,startPosition,loop) {
@@ -4032,13 +4098,13 @@ p.nominalBounds = new cjs.Rectangle(0,0,50,50);
 	this.initialize(mode,startPosition,loop,{});
 
 	// clock.ai
-	this.clockText = new cjs.Text("", "24px 'Times New Roman'", "#FF9933");
+	this.clockText = new cjs.Text("", "24px 'Heebo'", "#FF9933");
 	this.clockText.name = "clockText";
 	this.clockText.textAlign = "center";
-	this.clockText.lineHeight = 31;
+	this.clockText.lineHeight = 40;
 	this.clockText.lineWidth = 52;
 	this.clockText.parent = this;
-	this.clockText.setTransform(56,20.7);
+	this.clockText.setTransform(55,26.7);
 
 	this.shape = new cjs.Shape();
 	this.shape.graphics.f("#534741").s().p("AADFyQgEAAgEgEQgEgEAAgFQAAgFAEgEQAEgEAEAAIABAAQAGAAADADQAEAEAAAGQAAAFgEAEQgDAEgGAAgAi1FCIAAAAIAAAAQgFgDgBgFQgCgFADgFQAEgHAHAAQAEAAADACIAAAAQAFADABAFQACAFgDAFQgDAHgIAAQgEAAgDgCgACrE6QgDgFABgFQABgGAFgCIABgBIAGgCQAIAAAEAHQACAFgBAFQgBAFgFADIAAAAQgDACgEAAQgHAAgEgGgAk+C8IAAgBQgDgFABgFQACgFAEgDQAEgCADAAQAIAAAEAHIAAAAQACAFgBAFQgBAGgFACQgDACgEAAQgHAAgEgGgAExC6QgFgDgBgFQgCgFADgFIAAgBQAEgGAIAAQADAAADABQAFADABAFQACAFgDAFIAAABQgEAHgIAAQgEAAgCgCgAltAMQgEgEAAgGIAAAAQAAgFAEgEQAEgDAFAAQAGAAADADQAEAEAAAFIAAAAQAAAGgDAEQgEADgGABQgFAAgEgEgAFcAEQgEgEAAgEIAAgBQgBgFAEgEQAEgEAGAAQAFAAAEAEQAEAEAAAFIAAABQAAAEgEAEQgEAEgFAAQgGAAgDgEgAk7ikQgFgDgBgFQgCgGADgEIAAgBQAEgHAHAAQAEAAADACQAFADABAFQABAFgCAFIAAABQgEAGgIAAQgDAAgDgBgAEniwIgBAAQgCgFABgFQABgFAFgDIAHgCQAHAAAEAGIAAABQADAFgBAFQgBAFgFADQgDACgEAAQgHAAgEgHgAi+ktQgCgFABgFQABgFAFgDIAAAAIAHgCQAIAAAEAHQACAEgBAGQgBAFgFADIgBAAQgCACgEAAQgIAAgEgHgACmksIAAAAQgFgCgBgGQgCgFADgFQAEgHAHAAQAEAAADACIAAAAIAAAAQAFADACAFQABAFgDAFQgDAHgIAAQgEAAgDgCgAAAlXQgFAAgEgDQgEgEAAgGQAAgFAEgEQAEgEAFAAIAAAAQAGAAADAEQAEAEAAAFQAAAGgEAEQgDADgGAAg");
@@ -4333,10 +4399,11 @@ p.nominalBounds = null;
 
 	this.stoneText = new cjs.Text("", "12px 'Times New Roman'", "#33CCCC");
 	this.stoneText.name = "stoneText";
+	this.stoneText.textAlign = "right";
 	this.stoneText.lineHeight = 15;
 	this.stoneText.lineWidth = 158;
 	this.stoneText.parent = this;
-	this.stoneText.setTransform(34,83.1);
+	this.stoneText.setTransform(192,83.1);
 
 	this.instance = new lib.optionArea();
 	this.instance.parent = this;
@@ -5333,20 +5400,21 @@ p.nominalBounds = new cjs.Rectangle(-26,0,174,479);
 	this.instance.setTransform(10.1,10.3,0.9,0.9);
 	new cjs.ButtonHelper(this.instance, 0, 1, 1);
 
-	this.aboutModalLink = new cjs.Text("הפקולטה לטכנולוגיות למידה", "bold 16px 'Open Sans Hebrew'", "#0066CC");
+	this.aboutModalLink = new cjs.Text("הפקולטה לטכנולוגיות למידה", "bold 18px 'Heebo'", "#0066CC");
 	this.aboutModalLink.name = "aboutModalLink";
 	this.aboutModalLink.textAlign = "center";
-	this.aboutModalLink.lineHeight = 24;
-	this.aboutModalLink.lineWidth = 203;
+	this.aboutModalLink.lineHeight = 28;
+	this.aboutModalLink.lineWidth = 227;
 	this.aboutModalLink.parent = this;
-	this.aboutModalLink.setTransform(451.5,457.3);
+	this.aboutModalLink.setTransform(450,458.3);
 
 	this.instance_1 = new lib.about();
 	this.instance_1.parent = this;
+	this.instance_1.setTransform(0,1);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.aboutModalLink},{t:this.instance}]}).wait(1));
 
-}).prototype = getMCSymbolPrototype(lib.aboutModal, new cjs.Rectangle(0,0,900,546), null);
+}).prototype = getMCSymbolPrototype(lib.aboutModal, new cjs.Rectangle(0,1,900,546), null);
 
 
 // stage content:
@@ -5357,6 +5425,7 @@ p.nominalBounds = new cjs.Rectangle(-26,0,174,479);
 	this.frame_0 = function() {
 		function declareLibraryElements() {
 			timesUp = new lib.timesUp();
+			resultScene = new lib.resultScene();
 			gameNotFound = new lib.gameNotFound();
 			aboutModal = new lib.aboutModal();
 			zoe = new lib.zoe();
@@ -5493,10 +5562,10 @@ lib.properties = {
 	color: "#182E30",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/zoe1_atlas_.png?1540577672302", id:"zoe1_atlas_"},
-		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1540577674770", id:"lib/jquery-2.2.4.min.js"},
-		{src:"components/sdk/anwidget.js?1540577674770", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1540577674770", id:"an.TextInput"}
+		{src:"images/zoe1_atlas_.png?1540631634135", id:"zoe1_atlas_"},
+		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1540631636147", id:"lib/jquery-2.2.4.min.js"},
+		{src:"components/sdk/anwidget.js?1540631636147", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1540631636147", id:"an.TextInput"}
 	],
 	preloads: []
 };

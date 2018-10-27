@@ -17,7 +17,7 @@ public class Handler : IHttpHandler {
         if (gameNode != null)
         {
             //gameNode.SelectNodes("answers/answer")[qIndex].Attributes["img"].InnerText
-            if(gameNode.Attributes["isPublished"].InnerText != "false")
+            if(gameNode.Attributes["isPublished"].InnerText != "False")
             {
                 string jsonText = JsonConvert.SerializeXmlNode(gameNode);
                 context.Response.Write(jsonText);
