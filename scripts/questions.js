@@ -317,11 +317,24 @@ function correctAnswer(questionOption) {
 			finalScore += parseInt(questionTries[property1])*(100 / (numberOfQuestions * parseInt(property1)));
 		}
 
-		cleanStage();
+		stage.removeAllChildren();
+
+		placeLibEl(0, 0, qBg);
+		qBg.alpha = 0.5;
+
 		placeLibEl(0, 80, resultScene);
 		resultScene.gameSubjectText.text = decodeString(gameObj.game.subject);
 		resultScene.finalScore.text = Math.round(finalScore);
 		resultScene.finalTime.text = secondsToMinutes(timeSpent);
+
+		resultScene.playAgain.addEventListener('click', function () {
+		    location.reload();
+		});
+
+		navigation.x = 0;
+		navigation.y = 0;
+		stage.addChild(navigation);
+		stage.removeChild(gameNotFound);
 	}
 }
 

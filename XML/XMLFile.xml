@@ -1,6 +1,106 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <project>
-  <idCounter>106</idCounter>
+  <idCounter>107</idCounter>
+  <game gameCode="107" isPublished="false" questionsNumber="10" timePerQuestion="30">
+    <subject>%d7%a7%d7%99%d7%a0%d7%95%d7%97%d7%99%d7%9d+%d7%95%d7%9e%d7%9e%d7%aa%d7%a7%d7%99%d7%9d</subject>
+    <questions>
+      <question numberOfTries="0">
+        <questionText>%d7%9e%d7%94+%d7%94%d7%99%d7%99%d7%aa%d7%94+%d7%94%d7%a1%d7%99%d7%91%d7%94+%d7%a9%d7%91%d7%92%d7%9c%d7%9c%d7%94+%d7%94%d7%a4%d7%9b%d7%94+%d7%94%d7%97%d7%9c%d7%95%d7%95%d7%94+%d7%9c%d7%a4%d7%a8%d7%99%d7%98+%d7%97%d7%95%d7%91%d7%94+%d7%91%d7%9e%d7%a0%d7%95%d7%aa+%d7%94%d7%a7%d7%a8%d7%91+%d7%94%d7%a6%d7%94%22%d7%9c%d7%99%d7%95%d7%aa+%d7%a2%d7%95%d7%93+%d7%9e%d7%99%d7%99%d7%9e%d7%99+%d7%a7%d7%95%d7%9d+%d7%94%d7%9e%d7%93%d7%99%d7%a0%d7%94%3f</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">%d7%a2%d7%a8%d7%9b%d7%99%d7%94+%d7%94%d7%aa%d7%96%d7%95%d7%a0%d7%aa%d7%99%d7%99%d7%9d+%d7%94%d7%92%d7%91%d7%95%d7%94%d7%99%d7%9d</answer>
+          <answer img="" isCorrect="False">%d7%9e%d7%a9%d7%a7%d7%9c%d7%94+%d7%94%d7%a4%d7%99%d7%a1%d7%99+%d7%94%d7%a0%d7%9e%d7%95%d7%9a</answer>
+          <answer img="" isCorrect="False">%d7%a6%d7%91%d7%a2%d7%94+%d7%94%d7%a0%d7%99%d7%98%d7%a8%d7%9c%d7%99</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>%d7%9e%d7%99+%d7%9e%d7%91%d7%99%d7%9f+%d7%94%d7%9e%d7%aa%d7%95%d7%a7%d7%99%d7%9d+%d7%94%d7%91%d7%90%d7%99%d7%9d+%d7%94%d7%92%d7%99%d7%a2+%d7%9e%d7%90%d7%a8%d7%92%d7%a0%d7%98%d7%99%d7%a0%d7%94%3f</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">%d7%90%d7%9c%d7%a4%d7%97%d7%95%d7%a8%d7%a1</answer>
+          <answer img="" isCorrect="False">%d7%a9%d7%9c%d7%95%d7%95%d7%94</answer>
+          <answer img="" isCorrect="False">%d7%a7%d7%a8%d7%9e%d7%9c</answer>
+          <answer img="" isCorrect="False">%d7%a6%27%d7%90%d7%a7+%d7%91%d7%99%d7%a1</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>%d7%91%d7%90%d7%99%d7%96%d7%95+%d7%9e%d7%a1%d7%a2%d7%93%d7%94+%d7%99%d7%9b%d7%95%d7%9c%d7%99%d7%9d+%d7%9c%d7%94%d7%a6%d7%99%d7%a2+%d7%9c%d7%9b%d7%9d+%d7%9c%d7%a9%d7%aa%d7%95%d7%aa+%d7%9c%d7%90%d7%a1%d7%99+%d7%95%d7%9c%d7%90%d7%9b%d7%95%d7%9c+%d7%9e%d7%a7%d7%99%d7%a0%d7%95%d7%97+%d7%94%d7%91%d7%a0%d7%95%d7%a4%d7%99%3f</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">%d7%94%d7%95%d7%93%d7%99%d7%aa</answer>
+          <answer img="" isCorrect="False">%d7%91%d7%9c%d7%92%d7%99%d7%aa</answer>
+          <answer img="" isCorrect="False">%d7%99%d7%a4%d7%a0%d7%99%d7%aa</answer>
+          <answer img="" isCorrect="False">%d7%98%d7%95%d7%a8%d7%9b%d7%99%d7%aa</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>%d7%90%d7%99%d7%96%d7%95+%d7%9e%d7%95%d7%aa%d7%92+%d7%98%d7%9b%d7%a0%d7%95%d7%9c%d7%95%d7%92%d7%99+%d7%9e%d7%a9%d7%aa%d7%9e%d7%a9+%d7%91%d7%a9%d7%9e%d7%95%d7%aa+%d7%a9%d7%9c+%d7%9e%d7%9e%d7%aa%d7%a7%d7%99%d7%9d+%d7%95%d7%a7%d7%99%d7%a0%d7%95%d7%97%d7%99%d7%9d+%0d%0a+(+Donut+Ice-Cream+Sandwich%2c+Kit+Kat%2c++Gingerbread)+%d7%a2%d7%91%d7%95%d7%a8+%d7%92%d7%a8%d7%a1%d7%90%d7%95%d7%aa+%d7%94%d7%a2%d7%93%d7%9b%d7%95%d7%9f+%d7%a9%d7%9c%d7%95%3f+%0d%0a</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">GOOGLE-Android</answer>
+          <answer img="" isCorrect="False">APPLE-IOS</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>%d7%9e%d7%99+%d7%94%d7%99%d7%aa%d7%94+%d7%a1%d7%95%d7%9b%d7%a8%d7%99%d7%99%d7%aa+%d7%94%d7%9e%d7%a0%d7%98%d7%94+%d7%94%d7%a8%d7%90%d7%a9%d7%95%d7%a0%d7%94+%d7%a9%d7%94%d7%a6%d7%98%d7%a8%d7%a4%d7%94+%d7%9c%d7%aa%d7%a2%d7%a9%d7%99%d7%99%d7%aa+%d7%94%d7%9e%d7%9e%d7%aa%d7%a7%d7%99%d7%9d+%d7%94%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%90%d7%99%d7%aa+%d7%9c%d7%90%d7%97%d7%a8+%d7%a9%d7%9b%d7%a9%d7%9c%d7%94+%d7%9b%d7%a1%d7%95%d7%9b%d7%a8%d7%99%d7%99%d7%aa+%d7%9e%d7%a0%d7%98%d7%94+%d7%9c%d7%92%d7%9e%d7%99%d7%9c%d7%94+%d7%9e%d7%a2%d7%99%d7%a9%d7%95%d7%9f+%d7%a2%d7%91%d7%95%d7%a8+%d7%9e%d7%91%d7%95%d7%92%d7%a8%d7%99%d7%9d+%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94+%d7%91%d7%a9%d7%a0%d7%aa+1927%3f</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">PEZ</answer>
+          <answer img="" isCorrect="False">KALFANI</answer>
+          <answer img="" isCorrect="False">TIC+TAK</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>%d7%9e%d7%99+%d7%9e%d7%91%d7%99%d7%9f+%d7%94%d7%9e%d7%aa%d7%95%d7%a7%d7%99%d7%9d+%d7%94%d7%91%d7%90%d7%99%d7%9d+%d7%9e%d7%a9%d7%95%d7%99%d7%99%d7%9a+%d7%9c%d7%90%d7%96%d7%95%d7%a8+%d7%94%d7%9e%d7%96%d7%a8%d7%97+%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f%3f</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">%d7%a8%d7%97%d7%aa+%d7%9c%d7%95%d7%a7%d7%95%d7%9d</answer>
+          <answer img="" isCorrect="False">%d7%a6%27%d7%95%d7%a8%d7%95%d7%a1</answer>
+          <answer img="" isCorrect="False">%d7%a1%d7%99%d7%a8%d7%95%d7%a4+%d7%9e%d7%99%d7%99%d7%a4%d7%9c</answer>
+          <answer img="" isCorrect="False">%d7%9c%d7%90%d7%a1%d7%99</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>%d7%9e%d7%99+%d7%99%d7%a6%d7%a8+%d7%90%d7%aa+%d7%a9%d7%95%d7%a7%d7%95%d7%9c%d7%93+%d7%94%d7%97%d7%9c%d7%91+%d7%94%d7%a8%d7%90%d7%a9%d7%95%d7%9f+%d7%91%d7%a9%d7%a0%d7%aa+1875+%d7%91%d7%a9%d7%95%d7%95%d7%99%d7%a5+%d7%a2%d7%9c+%d7%99%d7%93%d7%99+%d7%a2%d7%a8%d7%91%d7%95%d7%91+%d7%a9%d7%9c+%d7%90%d7%91%d7%a7%d7%aa+%d7%97%d7%9c%d7%91+%d7%a2%d7%9d+%d7%a9%d7%95%d7%a7%d7%95%d7%9c%d7%93%3f</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">%d7%93%d7%a0%d7%99%d7%90%d7%9c+%d7%a4%d7%98%d7%a8+%d7%95%d7%94%d7%a0%d7%a8%d7%99+%d7%a0%d7%a1%d7%98%d7%9c%d7%94</answer>
+          <answer img="" isCorrect="False">%d7%a6%27%d7%90%d7%a8%d7%9c%d7%a1+%d7%94%d7%a1+%d7%95%d7%90%d7%95%d7%a1%d7%a7%d7%a8+%d7%94%d7%95%d7%a7%d7%a1%d7%94</answer>
+          <answer img="" isCorrect="False">%d7%a4%d7%95%d7%a8%d7%a1%d7%98+%d7%a7%d7%a7%d7%90%d7%95+</answer>
+          <answer img="" isCorrect="False">%d7%90%d7%a1%d7%a4%d7%a8%d7%a0%d7%98%d7%95+%d7%9e%d7%90%d7%a8%d7%a1</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>%d7%9e%d7%99+%d7%94%d7%99%d7%95+%d7%94%d7%a8%d7%90%d7%a9%d7%95%d7%a0%d7%99%d7%9d+%d7%9c%d7%94%d7%a9%d7%aa%d7%9e%d7%a9+%d7%91%d7%a4%d7%95%d7%9c%d7%99+%d7%a2%d7%a5+%d7%94%d7%a7%d7%a7%d7%90%d7%95+%d7%9c%d7%94%d7%9b%d7%a0%d7%aa+%d7%9e%d7%a9%d7%a7%d7%94%3f</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">%d7%91%d7%a0%d7%99+%d7%a9%d7%91%d7%98+%d7%94%d7%9e%d7%90%d7%99%d7%94+%d7%95%d7%94%d7%90%d7%a6%d7%98%d7%a7%d7%99%d7%9d</answer>
+          <answer img="" isCorrect="False">%d7%a7%d7%a8%d7%9c%d7%95%d7%a1+%d7%94%d7%a8%d7%90%d7%a9%d7%95%d7%9f+%d7%9e%d7%9c%d7%9a+%d7%a1%d7%a4%d7%a8%d7%93</answer>
+          <answer img="" isCorrect="False">%d7%a7%d7%95%d7%a0%d7%a8%d7%93+%d7%95%d7%9f+%d7%94%d7%95%d7%98%d7%9f+%d7%94%d7%94%d7%95%d7%9c%d7%a0%d7%93%d7%99</answer>
+          <answer img="" isCorrect="False">%d7%a9%d7%91%d7%98%d7%99%d7%9d+%d7%9e%d7%a7%d7%95%d7%9e%d7%99%d7%99%d7%9d+%d7%91%d7%97%d7%95%d7%a3+%d7%94%d7%a9%d7%a0%d7%94%d7%91+%d7%95%d7%a7%d7%9e%d7%a8%d7%95%d7%9f</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>%d7%90%d7%99%d7%96%d7%94+%d7%9e%d7%9e%d7%aa%d7%a7+%d7%99%d7%95%d7%a6%d7%a8+%d7%9c%d7%a8%d7%90%d7%a9%d7%95%d7%a0%d7%94+%d7%91%d7%aa%d7%a7%d7%95%d7%a4%d7%aa+%d7%9e%d7%9c%d7%97%d7%9e%d7%aa+%d7%94%d7%a2%d7%95%d7%9c%d7%9d+%d7%94%d7%a9%d7%a0%d7%99%d7%94+%d7%91%d7%9e%d7%98%d7%a8%d7%94+%d7%9c%d7%99%d7%99%d7%a6%d7%a8+%d7%97%d7%98%d7%99%d7%a3+%d7%a9%d7%90%d7%99%d7%a0%d7%95+%d7%a0%d7%9e%d7%a1+%d7%a2%d7%91%d7%95%d7%a8+%d7%97%d7%99%d7%99%d7%9c%d7%99+%d7%90%d7%a8%d7%a6%d7%95%d7%aa+%d7%94%d7%91%d7%a8%d7%99%d7%aa%3f</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">M%26M</answer>
+          <answer img="" isCorrect="False">%d7%98%d7%95%d7%91%d7%9c%d7%a8%d7%95%d7%9f</answer>
+          <answer img="" isCorrect="False">%d7%95%d7%95%d7%a4%d7%9c+%d7%9c%d7%95%d7%90%d7%a7%d7%a8</answer>
+          <answer isCorrect="False" img="">%d7%90%d7%95%d7%a8%d7%90%d7%95</answer>
+        </answers>
+      </question>
+      <question numberOfTries="0">
+        <questionText>%d7%9e%d7%94%d7%95+%d7%94%d7%9e%d7%a0%d7%94%d7%92+%d7%94%d7%9e%d7%a1%d7%95%d7%a8%d7%aa%d7%99+%d7%90%d7%95%d7%aa%d7%95+%d7%9e%d7%a6%d7%99%d7%99%d7%a0%d7%99%d7%9d+%d7%99%d7%9c%d7%93%d7%99%d7%9d+%d7%91%d7%99%d7%9e%d7%99%d7%a0%d7%95%2c+%d7%a9%d7%9e%d7%a7%d7%95%d7%a8%d7%95+%d7%91%d7%a4%d7%a1%d7%98%d7%99%d7%91%d7%9c+%d7%a2%d7%aa%d7%99%d7%a7+%d7%a9%d7%97%d7%92%d7%92+%d7%90%d7%aa+%d7%94%d7%a7%d7%a9%d7%a8+%d7%91%d7%99%d7%9f+%d7%9e%d7%97%d7%96%d7%95%d7%a8%d7%99+%d7%94%d7%a2%d7%95%d7%a0%d7%94+%d7%9c%d7%9e%d7%97%d7%96%d7%95%d7%a8%d7%99+%d7%94%d7%97%d7%99%d7%99%d7%9d+%d7%91%d7%aa%d7%a8%d7%91%d7%95%d7%aa+%d7%94%d7%a7%d7%9c%d7%98%d7%99%d7%aa%3f</questionText>
+        <img />
+        <answers>
+          <answer img="" isCorrect="True">%d7%9e%d7%9e%d7%aa%d7%a7+%d7%90%d7%95+%d7%aa%d7%a2%d7%9c%d7%95%d7%9c</answer>
+          <answer img="" isCorrect="False">%d7%9e%d7%a9%d7%9c%d7%95%d7%97+%d7%9e%d7%a0%d7%95%d7%aa</answer>
+          <answer img="" isCorrect="False">%d7%a2%d7%99%d7%93+%d7%90%d7%9c+%d7%a4%d7%99%d7%98%d7%a8</answer>
+        </answers>
+      </question>
+    </questions>
+  </game>
   <game gameCode="106" isPublished="True" questionsNumber="11" timePerQuestion="30">
     <subject>%d7%a1%d7%a8%d7%98%d7%99%d7%9d+%d7%95%d7%91%d7%9e%d7%90%d7%99%d7%9d</subject>
     <questions>

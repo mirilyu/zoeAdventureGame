@@ -1846,63 +1846,6 @@ p._updateVisibility = _updateVisibility;
 }).prototype = getMCSymbolPrototype(lib.qBg, new cjs.Rectangle(0,0,1366,768), null);
 
 
-(lib.resultScene = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
-
-	// Layer_1
-	this.gameSubjectText = new cjs.Text("", "bold 22px 'Heebo'");
-	this.gameSubjectText.name = "gameSubjectText";
-	this.gameSubjectText.textAlign = "center";
-	this.gameSubjectText.lineHeight = 34;
-	this.gameSubjectText.lineWidth = 476;
-	this.gameSubjectText.parent = this;
-	this.gameSubjectText.setTransform(972.2,275.2);
-
-	this.finalTime = new cjs.Text("", "bold 22px 'Heebo'");
-	this.finalTime.name = "finalTime";
-	this.finalTime.textAlign = "center";
-	this.finalTime.lineHeight = 34;
-	this.finalTime.lineWidth = 97;
-	this.finalTime.parent = this;
-	this.finalTime.setTransform(1031.7,359.1);
-
-	this.finalScore = new cjs.Text("", "bold 22px 'Heebo'");
-	this.finalScore.name = "finalScore";
-	this.finalScore.textAlign = "center";
-	this.finalScore.lineHeight = 34;
-	this.finalScore.lineWidth = 84;
-	this.finalScore.parent = this;
-	this.finalScore.setTransform(1038.3,316.3);
-
-	this.text = new cjs.Text(":זמן", "18px 'Heebo'");
-	this.text.textAlign = "center";
-	this.text.lineHeight = 28;
-	this.text.lineWidth = 72;
-	this.text.parent = this;
-	this.text.setTransform(1133.3,357.3);
-
-	this.text_1 = new cjs.Text(":ציון", "18px 'Heebo'");
-	this.text_1.textAlign = "center";
-	this.text_1.lineHeight = 28;
-	this.text_1.lineWidth = 70;
-	this.text_1.parent = this;
-	this.text_1.setTransform(1132.3,316.3);
-
-	this.text_2 = new cjs.Text("סיימת את המשחק בנושא", "18px 'Heebo'");
-	this.text_2.textAlign = "center";
-	this.text_2.lineHeight = 28;
-	this.text_2.lineWidth = 376;
-	this.text_2.parent = this;
-	this.text_2.setTransform(979.2,231.6);
-
-	this.instance = new lib.result();
-	this.instance.parent = this;
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.text_2},{t:this.text_1},{t:this.text},{t:this.finalScore},{t:this.finalTime},{t:this.gameSubjectText}]}).wait(1));
-
-}).prototype = getMCSymbolPrototype(lib.resultScene, new cjs.Rectangle(0,0,1366,768), null);
-
-
 (lib.qBoardImg = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
@@ -1957,6 +1900,27 @@ p._updateVisibility = _updateVisibility;
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.qBoardText},{t:this.text}]}).wait(1));
 
 }).prototype = getMCSymbolPrototype(lib.qBoard, new cjs.Rectangle(0,0,828,326.6), null);
+
+
+(lib.playagain = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// Layer_1
+	this.text = new cjs.Text("שחק שוב", "18px 'Heebo'", "#FFFFFF");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 28;
+	this.text.lineWidth = 100;
+	this.text.parent = this;
+	this.text.setTransform(56.7,9.6);
+
+	this.shape = new cjs.Shape();
+	this.shape.graphics.f("#FF9933").s().p("ApDDYIAAmvISHAAIAAGvg");
+	this.shape.setTransform(58,21.6);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape},{t:this.text}]}).wait(1));
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(0,0,116.1,43.3);
 
 
 (lib.playBtn = function(mode,startPosition,loop) {
@@ -4383,6 +4347,73 @@ p.nominalBounds = new cjs.Rectangle(0,0,50,50);
 p.nominalBounds = null;
 
 
+(lib.resultScene = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
+
+	// btn-continue
+	this.playAgain = new lib.playagain();
+	this.playAgain.name = "playAgain";
+	this.playAgain.parent = this;
+	this.playAgain.setTransform(983.1,462.3,1,1,0,0,0,58,21.6);
+	new cjs.ButtonHelper(this.playAgain, 0, 1, 1);
+
+	this.timeline.addTween(cjs.Tween.get(this.playAgain).wait(1));
+
+	// Layer_1
+	this.gameSubjectText = new cjs.Text("", "bold 22px 'Heebo'");
+	this.gameSubjectText.name = "gameSubjectText";
+	this.gameSubjectText.textAlign = "center";
+	this.gameSubjectText.lineHeight = 34;
+	this.gameSubjectText.lineWidth = 476;
+	this.gameSubjectText.parent = this;
+	this.gameSubjectText.setTransform(972.2,186.2);
+
+	this.finalTime = new cjs.Text("", "bold 22px 'Heebo'");
+	this.finalTime.name = "finalTime";
+	this.finalTime.textAlign = "right";
+	this.finalTime.lineHeight = 34;
+	this.finalTime.lineWidth = 97;
+	this.finalTime.parent = this;
+	this.finalTime.setTransform(974.3,296.1);
+
+	this.finalScore = new cjs.Text("", "bold 22px 'Heebo'");
+	this.finalScore.name = "finalScore";
+	this.finalScore.textAlign = "right";
+	this.finalScore.lineHeight = 34;
+	this.finalScore.lineWidth = 84;
+	this.finalScore.parent = this;
+	this.finalScore.setTransform(974.3,262.3);
+
+	this.text = new cjs.Text("זמן:", "18px 'Heebo'");
+	this.text.textAlign = "center";
+	this.text.lineHeight = 28;
+	this.text.lineWidth = 72;
+	this.text.parent = this;
+	this.text.setTransform(1027.3,297.3);
+
+	this.text_1 = new cjs.Text("ציון:", "18px 'Heebo'");
+	this.text_1.textAlign = "center";
+	this.text_1.lineHeight = 28;
+	this.text_1.lineWidth = 70;
+	this.text_1.parent = this;
+	this.text_1.setTransform(1026.3,262.3);
+
+	this.text_2 = new cjs.Text("סיימת את המשחק בנושא", "18px 'Heebo'");
+	this.text_2.textAlign = "center";
+	this.text_2.lineHeight = 28;
+	this.text_2.lineWidth = 376;
+	this.text_2.parent = this;
+	this.text_2.setTransform(979.2,151.6);
+
+	this.instance = new lib.result();
+	this.instance.parent = this;
+	this.instance.setTransform(0,-80);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.text_2},{t:this.text_1},{t:this.text},{t:this.finalScore},{t:this.finalTime},{t:this.gameSubjectText}]}).wait(1));
+
+}).prototype = getMCSymbolPrototype(lib.resultScene, new cjs.Rectangle(0,-80,1366,768), null);
+
+
 (lib.optionStone = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
 
@@ -5562,10 +5593,10 @@ lib.properties = {
 	color: "#182E30",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/zoe1_atlas_.png?1540631634135", id:"zoe1_atlas_"},
-		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1540631636147", id:"lib/jquery-2.2.4.min.js"},
-		{src:"components/sdk/anwidget.js?1540631636147", id:"sdk/anwidget.js"},
-		{src:"components/ui/src/textinput.js?1540631636147", id:"an.TextInput"}
+		{src:"images/zoe1_atlas_.png?1540634624329", id:"zoe1_atlas_"},
+		{src:"https://code.jquery.com/jquery-2.2.4.min.js?1540634625839", id:"lib/jquery-2.2.4.min.js"},
+		{src:"components/sdk/anwidget.js?1540634625839", id:"sdk/anwidget.js"},
+		{src:"components/ui/src/textinput.js?1540634625839", id:"an.TextInput"}
 	],
 	preloads: []
 };
