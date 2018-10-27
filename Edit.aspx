@@ -8,6 +8,8 @@
     <script src="scripts/jquery-1.12.0.min.js"></script>
     <link href="styles/bootstrap.css" rel="stylesheet" />
     <link href="styles/main.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 </head>
 <body>
     <header class="header container-fluid">
